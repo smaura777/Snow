@@ -1,0 +1,939 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A5DFE8A81C6655B57D95985 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE7548C684B79F05BC7F83E /* libPods.a */; };
+		6A049D1B1B04685600EA7EF0 /* SnowTaskPriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A049D1A1B04685600EA7EF0 /* SnowTaskPriority.m */; };
+		6A07B31C1AE8A12900DD70F0 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07B31B1AE8A12900DD70F0 /* BackgroundLayer.m */; };
+		6A1A70261AC8DD72000AB2B7 /* SnowTaskCreateTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A70251AC8DD72000AB2B7 /* SnowTaskCreateTVC.m */; };
+		6A1A70291AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A70281AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m */; };
+		6A1A702C1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A702B1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m */; };
+		6A22A6F81AD5D004007E031C /* SnowTaskAllTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22A6F71AD5D004007E031C /* SnowTaskAllTVC.m */; };
+		6A238B411B2E8958000A0EF2 /* blob.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB08E981B2E8403005CEA2E /* blob.caf */; };
+		6A238B421B2E895E000A0EF2 /* woosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB08E991B2E8403005CEA2E /* woosh.caf */; };
+		6A2AA22B1B0C5A8E001B8594 /* SnowSearchResultsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2AA22A1B0C5A8E001B8594 /* SnowSearchResultsTVC.m */; };
+		6A3DCED01AD30BE300A518A8 /* SnowListAllTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DCECF1AD30BE300A518A8 /* SnowListAllTVC.m */; };
+		6A4025151B0E633800DEC927 /* SnowQuickTimerMasterTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4025141B0E633800DEC927 /* SnowQuickTimerMasterTVC.m */; };
+		6A4025181B0E64A300DEC927 /* SnowQuickTimerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4025171B0E64A300DEC927 /* SnowQuickTimerDetailVC.m */; };
+		6A40251B1B0E64ED00DEC927 /* SnowTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A40251A1B0E64ED00DEC927 /* SnowTimer.m */; };
+		6A41C0481B2662210088E5C5 /* SnowSimpleTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A41C0471B2662210088E5C5 /* SnowSimpleTextFieldCell.m */; };
+		6A4E4A721AE94B3E00EA0853 /* SnowAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E4A711AE94B3E00EA0853 /* SnowAppearanceManager.m */; };
+		6A4E4A751AE94DDC00EA0853 /* SnowTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E4A741AE94DDC00EA0853 /* SnowTheme.m */; };
+		6A4E4A791AE955FA00EA0853 /* SnowThemeSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E4A781AE955FA00EA0853 /* SnowThemeSwitcher.m */; };
+		6A4E4A7C1AE97FED00EA0853 /* SnowBaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E4A7B1AE97FED00EA0853 /* SnowBaseTVC.m */; };
+		6A4E4A801AE9CA3900EA0853 /* SnowCardA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E4A7E1AE9CA3900EA0853 /* SnowCardA.m */; };
+		6A4E4A811AE9CA3900EA0853 /* SnowCardA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A4E4A7F1AE9CA3900EA0853 /* SnowCardA.xib */; };
+		6A6592B21B16714C000AF85A /* UIImage+SnowImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6592B11B16714C000AF85A /* UIImage+SnowImageUtils.m */; };
+		6A6592B51B1672F4000AF85A /* SnowButtonTypeA1.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6592B41B1672F4000AF85A /* SnowButtonTypeA1.m */; };
+		6A69817C1B28A623006D32A3 /* SnowSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A69817B1B28A623006D32A3 /* SnowSound.m */; };
+		6A69817E1B28C755006D32A3 /* industrial_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6A69817D1B28C755006D32A3 /* industrial_alarm.caf */; };
+		6A7D81001B11520A0040C4E0 /* SnowQuickTimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D80FF1B11520A0040C4E0 /* SnowQuickTimerVC.m */; };
+		6A8315671AF0C26A005F9A32 /* etower1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A8315661AF0C26A005F9A32 /* etower1.jpg */; };
+		6A8890B41B28C9F600ED6B5B /* phone_vibrate.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6A8890B01B28C9F600ED6B5B /* phone_vibrate.caf */; };
+		6A8890B51B28C9F600ED6B5B /* police_brit_siren.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6A8890B11B28C9F600ED6B5B /* police_brit_siren.caf */; };
+		6A8890B61B28C9F600ED6B5B /* rails_30.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6A8890B21B28C9F600ED6B5B /* rails_30.caf */; };
+		6A8890B71B28C9F600ED6B5B /* school_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6A8890B31B28C9F600ED6B5B /* school_alarm.caf */; };
+		6A8890BA1B28F19B00ED6B5B /* SnowSoundPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8890B91B28F19B00ED6B5B /* SnowSoundPicker.m */; };
+		6A8890BD1B28F21C00ED6B5B /* SnowAboutMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8890BC1B28F21C00ED6B5B /* SnowAboutMaster.m */; };
+		6A8E874C1B1286FC00495521 /* SnowDebugAvailableFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E874B1B1286FC00495521 /* SnowDebugAvailableFonts.m */; };
+		6AA9C4EF1ACF107200B4166B /* SnowReminderDateWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9C4EE1ACF107200B4166B /* SnowReminderDateWidget.m */; };
+		6AA9C4F21ACF10BF00B4166B /* SnowReminderRepeatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9C4F11ACF10BF00B4166B /* SnowReminderRepeatTableViewController.m */; };
+		6AB7A23A1B1FB2C8006220FB /* SnowAllPendingTaskForList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7A2391B1FB2C8006220FB /* SnowAllPendingTaskForList.m */; };
+		6ABDCCE21B00017B00EA5A5C /* SnowButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABDCCE11B00017B00EA5A5C /* SnowButtonCell.m */; };
+		6ABDCCE51B00409600EA5A5C /* SnowTwoLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABDCCE41B00409600EA5A5C /* SnowTwoLabelCell.m */; };
+		6AC283AC1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC283AB1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.m */; };
+		6AC283B81AF1C98B00F6AD0E /* desert_valley_daylight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283AE1AF1C98B00F6AD0E /* desert_valley_daylight.jpg */; };
+		6AC283B91AF1C98B00F6AD0E /* eiffel_bridge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283AF1AF1C98B00F6AD0E /* eiffel_bridge.jpg */; };
+		6AC283BA1AF1C98B00F6AD0E /* eiffel_tower_dawn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B01AF1C98B00F6AD0E /* eiffel_tower_dawn.jpg */; };
+		6AC283BB1AF1C98B00F6AD0E /* london_skyline_dawn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B11AF1C98B00F6AD0E /* london_skyline_dawn.jpg */; };
+		6AC283BC1AF1C98B00F6AD0E /* london_skyline_daylight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B21AF1C98B00F6AD0E /* london_skyline_daylight.jpg */; };
+		6AC283BD1AF1C98B00F6AD0E /* london_skyline_sunset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B31AF1C98B00F6AD0E /* london_skyline_sunset.jpg */; };
+		6AC283BE1AF1C98B00F6AD0E /* monkey_fuscata.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B41AF1C98B00F6AD0E /* monkey_fuscata.jpg */; };
+		6AC283BF1AF1C98B00F6AD0E /* nyc_skyline_night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B51AF1C98B00F6AD0E /* nyc_skyline_night.jpg */; };
+		6AC283C01AF1C98B00F6AD0E /* snow_monkeys.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B61AF1C98B00F6AD0E /* snow_monkeys.jpg */; };
+		6AC283C11AF1C98B00F6AD0E /* tajmahal_daylight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC283B71AF1C98B00F6AD0E /* tajmahal_daylight.jpg */; };
+		6AC283C41AF1CF8400F6AD0E /* SnowBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC283C31AF1CF8400F6AD0E /* SnowBackground.m */; };
+		6AC58F271AC7A38800B2BE18 /* SnowListCreateTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC58F261AC7A38800B2BE18 /* SnowListCreateTVC.m */; };
+		6AC58F2A1AC7AF2D00B2BE18 /* SimpleTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC58F291AC7AF2D00B2BE18 /* SimpleTextViewCell.m */; };
+		6AC65DDE1B0D81EC006DCA9C /* SnowSearchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC65DDD1B0D81EC006DCA9C /* SnowSearchTVC.m */; };
+		6ACF3F5B1AB9C9CB00912A39 /* SnowDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF3F5A1AB9C9CB00912A39 /* SnowDataManager.m */; };
+		6ACF3F5E1AB9CC6B00912A39 /* SnowList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF3F5D1AB9CC6B00912A39 /* SnowList.m */; };
+		6ACF3F611AB9D74F00912A39 /* SnowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF3F601AB9D74F00912A39 /* SnowTableViewController.m */; };
+		6AD2307C1B0A92C4002FB262 /* SnowListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2307B1B0A92C4002FB262 /* SnowListManager.m */; };
+		6AD3B3F41AFDA567000B093A /* SnowTaskDetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD3B3F31AFDA567000B093A /* SnowTaskDetailsTVC.m */; };
+		6AD956371AD36D3000566602 /* SnowNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD956361AD36D3000566602 /* SnowNotificationManager.m */; };
+		6AD9AD2B1B27BF0100EA0F80 /* SnowCardA3.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9AD2A1B27BF0100EA0F80 /* SnowCardA3.m */; };
+		6AE384C41B18D6FC00DDE38D /* SnowButtonTypeA2.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE384C31B18D6FC00DDE38D /* SnowButtonTypeA2.m */; };
+		6AE384C71B18D79700DDE38D /* SnowCellTypeA1.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE384C61B18D79700DDE38D /* SnowCellTypeA1.m */; };
+		6AE384CA1B18DDD600DDE38D /* SnowMenuTVCA1.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE384C91B18DDD600DDE38D /* SnowMenuTVCA1.m */; };
+		6AEA90641ACB2718000574A4 /* SnowMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA90631ACB2718000574A4 /* SnowMenuTableViewController.m */; };
+		6AEA90671ACB33B8000574A4 /* SnowMainContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA90661ACB33B8000574A4 /* SnowMainContainerVC.m */; };
+		6AEA906A1ACB8D41000574A4 /* SnowCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA90691ACB8D41000574A4 /* SnowCustomTransition.m */; };
+		6AF301761AB9C8CC00313723 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF301751AB9C8CC00313723 /* main.m */; };
+		6AF301791AB9C8CC00313723 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF301781AB9C8CC00313723 /* AppDelegate.m */; };
+		6AF3017F1AB9C8CC00313723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF3017D1AB9C8CC00313723 /* Main.storyboard */; };
+		6AF301811AB9C8CC00313723 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF301801AB9C8CC00313723 /* Images.xcassets */; };
+		6AF301841AB9C8CC00313723 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AF301821AB9C8CC00313723 /* LaunchScreen.xib */; };
+		6AF301901AB9C8CC00313723 /* snowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3018F1AB9C8CC00313723 /* snowTests.m */; };
+		6AF695871ABB5B8E00DE530B /* SnowTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF695861ABB5B8E00DE530B /* SnowTask.m */; };
+		6AF6958A1ABBDB4300DE530B /* OverlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF695891ABBDB4300DE530B /* OverlayVC.m */; };
+		6AF6A4571AD77BEA0014AC7B /* SnowCellA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6A4561AD77BEA0014AC7B /* SnowCellA.m */; };
+		6AFD6AD21B229A8C00A8EBF2 /* SnowCardA2.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD6AD11B229A8C00A8EBF2 /* SnowCardA2.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6AF3018A1AB9C8CC00313723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AF301681AB9C8CC00313723 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AF3016F1AB9C8CC00313723;
+			remoteInfo = snow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43E983C3BE672C84F1DD8E84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6A049D191B04685600EA7EF0 /* SnowTaskPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTaskPriority.h; sourceTree = "<group>"; };
+		6A049D1A1B04685600EA7EF0 /* SnowTaskPriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTaskPriority.m; sourceTree = "<group>"; };
+		6A07B31A1AE8A12900DD70F0 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
+		6A07B31B1AE8A12900DD70F0 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		6A1A70241AC8DD72000AB2B7 /* SnowTaskCreateTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTaskCreateTVC.h; sourceTree = "<group>"; };
+		6A1A70251AC8DD72000AB2B7 /* SnowTaskCreateTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTaskCreateTVC.m; sourceTree = "<group>"; };
+		6A1A70271AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCellTypeTwoLabel.h; sourceTree = "<group>"; };
+		6A1A70281AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCellTypeTwoLabel.m; sourceTree = "<group>"; };
+		6A1A702A1AC8EC2D000AB2B7 /* SnowListSelectionTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowListSelectionTVC.h; sourceTree = "<group>"; };
+		6A1A702B1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowListSelectionTVC.m; sourceTree = "<group>"; };
+		6A22A6F61AD5D004007E031C /* SnowTaskAllTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTaskAllTVC.h; sourceTree = "<group>"; };
+		6A22A6F71AD5D004007E031C /* SnowTaskAllTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTaskAllTVC.m; sourceTree = "<group>"; };
+		6A2AA2291B0C5A8E001B8594 /* SnowSearchResultsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowSearchResultsTVC.h; sourceTree = "<group>"; };
+		6A2AA22A1B0C5A8E001B8594 /* SnowSearchResultsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowSearchResultsTVC.m; sourceTree = "<group>"; };
+		6A3DCECE1AD30BE300A518A8 /* SnowListAllTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowListAllTVC.h; sourceTree = "<group>"; };
+		6A3DCECF1AD30BE300A518A8 /* SnowListAllTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowListAllTVC.m; sourceTree = "<group>"; };
+		6A4025131B0E633800DEC927 /* SnowQuickTimerMasterTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowQuickTimerMasterTVC.h; sourceTree = "<group>"; };
+		6A4025141B0E633800DEC927 /* SnowQuickTimerMasterTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowQuickTimerMasterTVC.m; sourceTree = "<group>"; };
+		6A4025161B0E64A300DEC927 /* SnowQuickTimerDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowQuickTimerDetailVC.h; sourceTree = "<group>"; };
+		6A4025171B0E64A300DEC927 /* SnowQuickTimerDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowQuickTimerDetailVC.m; sourceTree = "<group>"; };
+		6A4025191B0E64ED00DEC927 /* SnowTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTimer.h; sourceTree = "<group>"; };
+		6A40251A1B0E64ED00DEC927 /* SnowTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTimer.m; sourceTree = "<group>"; };
+		6A41C0461B2662210088E5C5 /* SnowSimpleTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowSimpleTextFieldCell.h; sourceTree = "<group>"; };
+		6A41C0471B2662210088E5C5 /* SnowSimpleTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowSimpleTextFieldCell.m; sourceTree = "<group>"; };
+		6A4E4A701AE94B3E00EA0853 /* SnowAppearanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowAppearanceManager.h; sourceTree = "<group>"; };
+		6A4E4A711AE94B3E00EA0853 /* SnowAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowAppearanceManager.m; sourceTree = "<group>"; };
+		6A4E4A731AE94DDC00EA0853 /* SnowTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTheme.h; sourceTree = "<group>"; };
+		6A4E4A741AE94DDC00EA0853 /* SnowTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTheme.m; sourceTree = "<group>"; };
+		6A4E4A771AE955FA00EA0853 /* SnowThemeSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowThemeSwitcher.h; sourceTree = "<group>"; };
+		6A4E4A781AE955FA00EA0853 /* SnowThemeSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowThemeSwitcher.m; sourceTree = "<group>"; };
+		6A4E4A7A1AE97FED00EA0853 /* SnowBaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowBaseTVC.h; sourceTree = "<group>"; };
+		6A4E4A7B1AE97FED00EA0853 /* SnowBaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowBaseTVC.m; sourceTree = "<group>"; };
+		6A4E4A7D1AE9CA3900EA0853 /* SnowCardA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCardA.h; sourceTree = "<group>"; };
+		6A4E4A7E1AE9CA3900EA0853 /* SnowCardA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCardA.m; sourceTree = "<group>"; };
+		6A4E4A7F1AE9CA3900EA0853 /* SnowCardA.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnowCardA.xib; sourceTree = "<group>"; };
+		6A6592B01B16714C000AF85A /* UIImage+SnowImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SnowImageUtils.h"; sourceTree = "<group>"; };
+		6A6592B11B16714C000AF85A /* UIImage+SnowImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SnowImageUtils.m"; sourceTree = "<group>"; };
+		6A6592B31B1672F4000AF85A /* SnowButtonTypeA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowButtonTypeA1.h; sourceTree = "<group>"; };
+		6A6592B41B1672F4000AF85A /* SnowButtonTypeA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowButtonTypeA1.m; sourceTree = "<group>"; };
+		6A69817A1B28A623006D32A3 /* SnowSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowSound.h; sourceTree = "<group>"; };
+		6A69817B1B28A623006D32A3 /* SnowSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowSound.m; sourceTree = "<group>"; };
+		6A69817D1B28C755006D32A3 /* industrial_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = industrial_alarm.caf; sourceTree = "<group>"; };
+		6A7D80FE1B11520A0040C4E0 /* SnowQuickTimerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowQuickTimerVC.h; sourceTree = "<group>"; };
+		6A7D80FF1B11520A0040C4E0 /* SnowQuickTimerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowQuickTimerVC.m; sourceTree = "<group>"; };
+		6A8315661AF0C26A005F9A32 /* etower1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = etower1.jpg; sourceTree = "<group>"; };
+		6A8890B01B28C9F600ED6B5B /* phone_vibrate.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = phone_vibrate.caf; sourceTree = "<group>"; };
+		6A8890B11B28C9F600ED6B5B /* police_brit_siren.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = police_brit_siren.caf; sourceTree = "<group>"; };
+		6A8890B21B28C9F600ED6B5B /* rails_30.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rails_30.caf; sourceTree = "<group>"; };
+		6A8890B31B28C9F600ED6B5B /* school_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = school_alarm.caf; sourceTree = "<group>"; };
+		6A8890B81B28F19B00ED6B5B /* SnowSoundPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowSoundPicker.h; sourceTree = "<group>"; };
+		6A8890B91B28F19B00ED6B5B /* SnowSoundPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowSoundPicker.m; sourceTree = "<group>"; };
+		6A8890BB1B28F21C00ED6B5B /* SnowAboutMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowAboutMaster.h; sourceTree = "<group>"; };
+		6A8890BC1B28F21C00ED6B5B /* SnowAboutMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowAboutMaster.m; sourceTree = "<group>"; };
+		6A8E874A1B1286FC00495521 /* SnowDebugAvailableFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowDebugAvailableFonts.h; sourceTree = "<group>"; };
+		6A8E874B1B1286FC00495521 /* SnowDebugAvailableFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowDebugAvailableFonts.m; sourceTree = "<group>"; };
+		6AA9C4ED1ACF107200B4166B /* SnowReminderDateWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnowReminderDateWidget.h; path = ../SnowReminderDateWidget.h; sourceTree = "<group>"; };
+		6AA9C4EE1ACF107200B4166B /* SnowReminderDateWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnowReminderDateWidget.m; path = ../SnowReminderDateWidget.m; sourceTree = "<group>"; };
+		6AA9C4F01ACF10BF00B4166B /* SnowReminderRepeatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnowReminderRepeatTableViewController.h; path = ../SnowReminderRepeatTableViewController.h; sourceTree = "<group>"; };
+		6AA9C4F11ACF10BF00B4166B /* SnowReminderRepeatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnowReminderRepeatTableViewController.m; path = ../SnowReminderRepeatTableViewController.m; sourceTree = "<group>"; };
+		6AB08E981B2E8403005CEA2E /* blob.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blob.caf; sourceTree = "<group>"; };
+		6AB08E991B2E8403005CEA2E /* woosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = woosh.caf; sourceTree = "<group>"; };
+		6AB7A2381B1FB2C8006220FB /* SnowAllPendingTaskForList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowAllPendingTaskForList.h; sourceTree = "<group>"; };
+		6AB7A2391B1FB2C8006220FB /* SnowAllPendingTaskForList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowAllPendingTaskForList.m; sourceTree = "<group>"; };
+		6ABDCCE01B00017B00EA5A5C /* SnowButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowButtonCell.h; sourceTree = "<group>"; };
+		6ABDCCE11B00017B00EA5A5C /* SnowButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowButtonCell.m; sourceTree = "<group>"; };
+		6ABDCCE31B00409600EA5A5C /* SnowTwoLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTwoLabelCell.h; sourceTree = "<group>"; };
+		6ABDCCE41B00409600EA5A5C /* SnowTwoLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTwoLabelCell.m; sourceTree = "<group>"; };
+		6AC283AA1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowBackgroundImageSwitcher.h; sourceTree = "<group>"; };
+		6AC283AB1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowBackgroundImageSwitcher.m; sourceTree = "<group>"; };
+		6AC283AE1AF1C98B00F6AD0E /* desert_valley_daylight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = desert_valley_daylight.jpg; sourceTree = "<group>"; };
+		6AC283AF1AF1C98B00F6AD0E /* eiffel_bridge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eiffel_bridge.jpg; sourceTree = "<group>"; };
+		6AC283B01AF1C98B00F6AD0E /* eiffel_tower_dawn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eiffel_tower_dawn.jpg; sourceTree = "<group>"; };
+		6AC283B11AF1C98B00F6AD0E /* london_skyline_dawn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_skyline_dawn.jpg; sourceTree = "<group>"; };
+		6AC283B21AF1C98B00F6AD0E /* london_skyline_daylight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_skyline_daylight.jpg; sourceTree = "<group>"; };
+		6AC283B31AF1C98B00F6AD0E /* london_skyline_sunset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london_skyline_sunset.jpg; sourceTree = "<group>"; };
+		6AC283B41AF1C98B00F6AD0E /* monkey_fuscata.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monkey_fuscata.jpg; sourceTree = "<group>"; };
+		6AC283B51AF1C98B00F6AD0E /* nyc_skyline_night.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nyc_skyline_night.jpg; sourceTree = "<group>"; };
+		6AC283B61AF1C98B00F6AD0E /* snow_monkeys.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snow_monkeys.jpg; sourceTree = "<group>"; };
+		6AC283B71AF1C98B00F6AD0E /* tajmahal_daylight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tajmahal_daylight.jpg; sourceTree = "<group>"; };
+		6AC283C21AF1CF8400F6AD0E /* SnowBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowBackground.h; sourceTree = "<group>"; };
+		6AC283C31AF1CF8400F6AD0E /* SnowBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowBackground.m; sourceTree = "<group>"; };
+		6AC58F251AC7A38800B2BE18 /* SnowListCreateTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowListCreateTVC.h; sourceTree = "<group>"; };
+		6AC58F261AC7A38800B2BE18 /* SnowListCreateTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowListCreateTVC.m; sourceTree = "<group>"; };
+		6AC58F281AC7AF2D00B2BE18 /* SimpleTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextViewCell.h; sourceTree = "<group>"; };
+		6AC58F291AC7AF2D00B2BE18 /* SimpleTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTextViewCell.m; sourceTree = "<group>"; };
+		6AC65DDC1B0D81EC006DCA9C /* SnowSearchTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowSearchTVC.h; sourceTree = "<group>"; };
+		6AC65DDD1B0D81EC006DCA9C /* SnowSearchTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowSearchTVC.m; sourceTree = "<group>"; };
+		6ACF3F591AB9C9CB00912A39 /* SnowDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowDataManager.h; sourceTree = "<group>"; };
+		6ACF3F5A1AB9C9CB00912A39 /* SnowDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowDataManager.m; sourceTree = "<group>"; };
+		6ACF3F5C1AB9CC6B00912A39 /* SnowList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowList.h; sourceTree = "<group>"; };
+		6ACF3F5D1AB9CC6B00912A39 /* SnowList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowList.m; sourceTree = "<group>"; };
+		6ACF3F5F1AB9D74F00912A39 /* SnowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTableViewController.h; sourceTree = "<group>"; };
+		6ACF3F601AB9D74F00912A39 /* SnowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTableViewController.m; sourceTree = "<group>"; };
+		6AD2307A1B0A92C4002FB262 /* SnowListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowListManager.h; sourceTree = "<group>"; };
+		6AD2307B1B0A92C4002FB262 /* SnowListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowListManager.m; sourceTree = "<group>"; };
+		6AD3B3F21AFDA567000B093A /* SnowTaskDetailsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTaskDetailsTVC.h; sourceTree = "<group>"; };
+		6AD3B3F31AFDA567000B093A /* SnowTaskDetailsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTaskDetailsTVC.m; sourceTree = "<group>"; };
+		6AD956351AD36D3000566602 /* SnowNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowNotificationManager.h; sourceTree = "<group>"; };
+		6AD956361AD36D3000566602 /* SnowNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowNotificationManager.m; sourceTree = "<group>"; };
+		6AD9AD291B27BF0100EA0F80 /* SnowCardA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCardA3.h; sourceTree = "<group>"; };
+		6AD9AD2A1B27BF0100EA0F80 /* SnowCardA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCardA3.m; sourceTree = "<group>"; };
+		6AE384C21B18D6FC00DDE38D /* SnowButtonTypeA2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowButtonTypeA2.h; sourceTree = "<group>"; };
+		6AE384C31B18D6FC00DDE38D /* SnowButtonTypeA2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowButtonTypeA2.m; sourceTree = "<group>"; };
+		6AE384C51B18D79700DDE38D /* SnowCellTypeA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCellTypeA1.h; sourceTree = "<group>"; };
+		6AE384C61B18D79700DDE38D /* SnowCellTypeA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCellTypeA1.m; sourceTree = "<group>"; };
+		6AE384C81B18DDD600DDE38D /* SnowMenuTVCA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowMenuTVCA1.h; sourceTree = "<group>"; };
+		6AE384C91B18DDD600DDE38D /* SnowMenuTVCA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowMenuTVCA1.m; sourceTree = "<group>"; };
+		6AEA90621ACB2718000574A4 /* SnowMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowMenuTableViewController.h; sourceTree = "<group>"; };
+		6AEA90631ACB2718000574A4 /* SnowMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowMenuTableViewController.m; sourceTree = "<group>"; };
+		6AEA90651ACB33B8000574A4 /* SnowMainContainerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowMainContainerVC.h; sourceTree = "<group>"; };
+		6AEA90661ACB33B8000574A4 /* SnowMainContainerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowMainContainerVC.m; sourceTree = "<group>"; };
+		6AEA90681ACB8D41000574A4 /* SnowCustomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCustomTransition.h; sourceTree = "<group>"; };
+		6AEA90691ACB8D41000574A4 /* SnowCustomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCustomTransition.m; sourceTree = "<group>"; };
+		6AF301701AB9C8CC00313723 /* snow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF301741AB9C8CC00313723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF301751AB9C8CC00313723 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6AF301771AB9C8CC00313723 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6AF301781AB9C8CC00313723 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6AF3017E1AB9C8CC00313723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6AF301801AB9C8CC00313723 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6AF301831AB9C8CC00313723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6AF301891AB9C8CC00313723 /* snowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF3018E1AB9C8CC00313723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF3018F1AB9C8CC00313723 /* snowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snowTests.m; sourceTree = "<group>"; };
+		6AF695851ABB5B8E00DE530B /* SnowTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTask.h; sourceTree = "<group>"; };
+		6AF695861ABB5B8E00DE530B /* SnowTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTask.m; sourceTree = "<group>"; };
+		6AF695881ABBDB4300DE530B /* OverlayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayVC.h; sourceTree = "<group>"; };
+		6AF695891ABBDB4300DE530B /* OverlayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayVC.m; sourceTree = "<group>"; };
+		6AF6A4551AD77BEA0014AC7B /* SnowCellA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCellA.h; sourceTree = "<group>"; };
+		6AF6A4561AD77BEA0014AC7B /* SnowCellA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCellA.m; sourceTree = "<group>"; };
+		6AFD6AD01B229A8C00A8EBF2 /* SnowCardA2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCardA2.h; sourceTree = "<group>"; };
+		6AFD6AD11B229A8C00A8EBF2 /* SnowCardA2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowCardA2.m; sourceTree = "<group>"; };
+		CEE7548C684B79F05BC7F83E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70C71FCB8672BD408E005F7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6AF3016D1AB9C8CC00313723 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A5DFE8A81C6655B57D95985 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF301861AB9C8CC00313723 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52917BDBDE6945FC73CAF842 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D70C71FCB8672BD408E005F7 /* Pods.debug.xcconfig */,
+				43E983C3BE672C84F1DD8E84 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6A3DCECD1AD2D82500A518A8 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6AD956351AD36D3000566602 /* SnowNotificationManager.h */,
+				6AD956361AD36D3000566602 /* SnowNotificationManager.m */,
+				6A07B31A1AE8A12900DD70F0 /* BackgroundLayer.h */,
+				6A07B31B1AE8A12900DD70F0 /* BackgroundLayer.m */,
+				6A4E4A731AE94DDC00EA0853 /* SnowTheme.h */,
+				6A4E4A701AE94B3E00EA0853 /* SnowAppearanceManager.h */,
+				6A4E4A711AE94B3E00EA0853 /* SnowAppearanceManager.m */,
+				6A4E4A741AE94DDC00EA0853 /* SnowTheme.m */,
+				6AC283C21AF1CF8400F6AD0E /* SnowBackground.h */,
+				6AC283C31AF1CF8400F6AD0E /* SnowBackground.m */,
+				6A6592B01B16714C000AF85A /* UIImage+SnowImageUtils.h */,
+				6A6592B11B16714C000AF85A /* UIImage+SnowImageUtils.m */,
+				6A6592B31B1672F4000AF85A /* SnowButtonTypeA1.h */,
+				6A6592B41B1672F4000AF85A /* SnowButtonTypeA1.m */,
+				6AE384C21B18D6FC00DDE38D /* SnowButtonTypeA2.h */,
+				6AE384C31B18D6FC00DDE38D /* SnowButtonTypeA2.m */,
+			);
+			name = utilities;
+			sourceTree = "<group>";
+		};
+		6A4E4A761AE9558100EA0853 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6ACF3F5F1AB9D74F00912A39 /* SnowTableViewController.h */,
+				6ACF3F601AB9D74F00912A39 /* SnowTableViewController.m */,
+				6AEA90621ACB2718000574A4 /* SnowMenuTableViewController.h */,
+				6AEA90631ACB2718000574A4 /* SnowMenuTableViewController.m */,
+				6AEA90651ACB33B8000574A4 /* SnowMainContainerVC.h */,
+				6AEA90661ACB33B8000574A4 /* SnowMainContainerVC.m */,
+				6AEA90681ACB8D41000574A4 /* SnowCustomTransition.h */,
+				6AEA90691ACB8D41000574A4 /* SnowCustomTransition.m */,
+				6A4E4A771AE955FA00EA0853 /* SnowThemeSwitcher.h */,
+				6A4E4A781AE955FA00EA0853 /* SnowThemeSwitcher.m */,
+				6A4E4A7A1AE97FED00EA0853 /* SnowBaseTVC.h */,
+				6A4E4A7B1AE97FED00EA0853 /* SnowBaseTVC.m */,
+				6AC283AA1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.h */,
+				6AC283AB1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.m */,
+				6A2AA2291B0C5A8E001B8594 /* SnowSearchResultsTVC.h */,
+				6A2AA22A1B0C5A8E001B8594 /* SnowSearchResultsTVC.m */,
+				6AC65DDC1B0D81EC006DCA9C /* SnowSearchTVC.h */,
+				6AC65DDD1B0D81EC006DCA9C /* SnowSearchTVC.m */,
+				6A4025131B0E633800DEC927 /* SnowQuickTimerMasterTVC.h */,
+				6A4025141B0E633800DEC927 /* SnowQuickTimerMasterTVC.m */,
+				6A4025161B0E64A300DEC927 /* SnowQuickTimerDetailVC.h */,
+				6A4025171B0E64A300DEC927 /* SnowQuickTimerDetailVC.m */,
+				6A7D80FE1B11520A0040C4E0 /* SnowQuickTimerVC.h */,
+				6A7D80FF1B11520A0040C4E0 /* SnowQuickTimerVC.m */,
+				6A8E874A1B1286FC00495521 /* SnowDebugAvailableFonts.h */,
+				6A8E874B1B1286FC00495521 /* SnowDebugAvailableFonts.m */,
+				6AE384C81B18DDD600DDE38D /* SnowMenuTVCA1.h */,
+				6AE384C91B18DDD600DDE38D /* SnowMenuTVCA1.m */,
+				6A8890B81B28F19B00ED6B5B /* SnowSoundPicker.h */,
+				6A8890B91B28F19B00ED6B5B /* SnowSoundPicker.m */,
+				6A8890BB1B28F21C00ED6B5B /* SnowAboutMaster.h */,
+				6A8890BC1B28F21C00ED6B5B /* SnowAboutMaster.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6AC283AD1AF1C70A00F6AD0E /* app_images */ = {
+			isa = PBXGroup;
+			children = (
+				6AC283AE1AF1C98B00F6AD0E /* desert_valley_daylight.jpg */,
+				6AC283AF1AF1C98B00F6AD0E /* eiffel_bridge.jpg */,
+				6AC283B01AF1C98B00F6AD0E /* eiffel_tower_dawn.jpg */,
+				6AC283B11AF1C98B00F6AD0E /* london_skyline_dawn.jpg */,
+				6AC283B21AF1C98B00F6AD0E /* london_skyline_daylight.jpg */,
+				6AC283B31AF1C98B00F6AD0E /* london_skyline_sunset.jpg */,
+				6AC283B41AF1C98B00F6AD0E /* monkey_fuscata.jpg */,
+				6AC283B51AF1C98B00F6AD0E /* nyc_skyline_night.jpg */,
+				6AC283B61AF1C98B00F6AD0E /* snow_monkeys.jpg */,
+				6AC283B71AF1C98B00F6AD0E /* tajmahal_daylight.jpg */,
+				6A8315661AF0C26A005F9A32 /* etower1.jpg */,
+			);
+			name = app_images;
+			sourceTree = "<group>";
+		};
+		6AC6E0E21B15187100A8CADB /* app_sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6A8890B01B28C9F600ED6B5B /* phone_vibrate.caf */,
+				6A8890B11B28C9F600ED6B5B /* police_brit_siren.caf */,
+				6AB08E981B2E8403005CEA2E /* blob.caf */,
+				6AB08E991B2E8403005CEA2E /* woosh.caf */,
+				6A8890B21B28C9F600ED6B5B /* rails_30.caf */,
+				6A8890B31B28C9F600ED6B5B /* school_alarm.caf */,
+				6A69817D1B28C755006D32A3 /* industrial_alarm.caf */,
+			);
+			name = app_sounds;
+			sourceTree = "<group>";
+		};
+		6AEA905E1ACB25C3000574A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6ACF3F5C1AB9CC6B00912A39 /* SnowList.h */,
+				6ACF3F591AB9C9CB00912A39 /* SnowDataManager.h */,
+				6AF695851ABB5B8E00DE530B /* SnowTask.h */,
+				6AF695861ABB5B8E00DE530B /* SnowTask.m */,
+				6ACF3F5A1AB9C9CB00912A39 /* SnowDataManager.m */,
+				6ACF3F5D1AB9CC6B00912A39 /* SnowList.m */,
+				6AD2307A1B0A92C4002FB262 /* SnowListManager.h */,
+				6AD2307B1B0A92C4002FB262 /* SnowListManager.m */,
+				6A4025191B0E64ED00DEC927 /* SnowTimer.h */,
+				6A40251A1B0E64ED00DEC927 /* SnowTimer.m */,
+				6A69817A1B28A623006D32A3 /* SnowSound.h */,
+				6A69817B1B28A623006D32A3 /* SnowSound.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6AEA905F1ACB2644000574A4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6AC58F281AC7AF2D00B2BE18 /* SimpleTextViewCell.h */,
+				6A1A70271AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.h */,
+				6A1A70281AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m */,
+				6AC58F291AC7AF2D00B2BE18 /* SimpleTextViewCell.m */,
+				6AF6A4551AD77BEA0014AC7B /* SnowCellA.h */,
+				6AF6A4561AD77BEA0014AC7B /* SnowCellA.m */,
+				6A4E4A7D1AE9CA3900EA0853 /* SnowCardA.h */,
+				6A4E4A7E1AE9CA3900EA0853 /* SnowCardA.m */,
+				6A4E4A7F1AE9CA3900EA0853 /* SnowCardA.xib */,
+				6ABDCCE01B00017B00EA5A5C /* SnowButtonCell.h */,
+				6ABDCCE11B00017B00EA5A5C /* SnowButtonCell.m */,
+				6ABDCCE31B00409600EA5A5C /* SnowTwoLabelCell.h */,
+				6ABDCCE41B00409600EA5A5C /* SnowTwoLabelCell.m */,
+				6AE384C51B18D79700DDE38D /* SnowCellTypeA1.h */,
+				6AE384C61B18D79700DDE38D /* SnowCellTypeA1.m */,
+				6AFD6AD01B229A8C00A8EBF2 /* SnowCardA2.h */,
+				6AFD6AD11B229A8C00A8EBF2 /* SnowCardA2.m */,
+				6A41C0461B2662210088E5C5 /* SnowSimpleTextFieldCell.h */,
+				6A41C0471B2662210088E5C5 /* SnowSimpleTextFieldCell.m */,
+				6AD9AD291B27BF0100EA0F80 /* SnowCardA3.h */,
+				6AD9AD2A1B27BF0100EA0F80 /* SnowCardA3.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		6AEA90601ACB268F000574A4 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				6AC58F251AC7A38800B2BE18 /* SnowListCreateTVC.h */,
+				6AC58F261AC7A38800B2BE18 /* SnowListCreateTVC.m */,
+				6A1A702A1AC8EC2D000AB2B7 /* SnowListSelectionTVC.h */,
+				6A1A702B1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m */,
+				6A3DCECE1AD30BE300A518A8 /* SnowListAllTVC.h */,
+				6A3DCECF1AD30BE300A518A8 /* SnowListAllTVC.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		6AEA90611ACB269D000574A4 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				6AA9C4F01ACF10BF00B4166B /* SnowReminderRepeatTableViewController.h */,
+				6AA9C4F11ACF10BF00B4166B /* SnowReminderRepeatTableViewController.m */,
+				6AA9C4ED1ACF107200B4166B /* SnowReminderDateWidget.h */,
+				6AA9C4EE1ACF107200B4166B /* SnowReminderDateWidget.m */,
+				6A1A70241AC8DD72000AB2B7 /* SnowTaskCreateTVC.h */,
+				6A1A70251AC8DD72000AB2B7 /* SnowTaskCreateTVC.m */,
+				6A22A6F61AD5D004007E031C /* SnowTaskAllTVC.h */,
+				6A22A6F71AD5D004007E031C /* SnowTaskAllTVC.m */,
+				6AD3B3F21AFDA567000B093A /* SnowTaskDetailsTVC.h */,
+				6AD3B3F31AFDA567000B093A /* SnowTaskDetailsTVC.m */,
+				6A049D191B04685600EA7EF0 /* SnowTaskPriority.h */,
+				6A049D1A1B04685600EA7EF0 /* SnowTaskPriority.m */,
+				6AB7A2381B1FB2C8006220FB /* SnowAllPendingTaskForList.h */,
+				6AB7A2391B1FB2C8006220FB /* SnowAllPendingTaskForList.m */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		6AF301671AB9C8CC00313723 = {
+			isa = PBXGroup;
+			children = (
+				6AF695881ABBDB4300DE530B /* OverlayVC.h */,
+				6AF695891ABBDB4300DE530B /* OverlayVC.m */,
+				6AF301721AB9C8CC00313723 /* snow */,
+				6AF3018C1AB9C8CC00313723 /* snowTests */,
+				6AF301711AB9C8CC00313723 /* Products */,
+				52917BDBDE6945FC73CAF842 /* Pods */,
+				BA6A558435FA91C018E1098F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6AF301711AB9C8CC00313723 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AF301701AB9C8CC00313723 /* snow.app */,
+				6AF301891AB9C8CC00313723 /* snowTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AF301721AB9C8CC00313723 /* snow */ = {
+			isa = PBXGroup;
+			children = (
+				6AC6E0E21B15187100A8CADB /* app_sounds */,
+				6AC283AD1AF1C70A00F6AD0E /* app_images */,
+				6A3DCECD1AD2D82500A518A8 /* utilities */,
+				6AEA90611ACB269D000574A4 /* Task */,
+				6AEA90601ACB268F000574A4 /* List */,
+				6AEA905F1ACB2644000574A4 /* Cell */,
+				6AEA905E1ACB25C3000574A4 /* Model */,
+				6AF301771AB9C8CC00313723 /* AppDelegate.h */,
+				6AF301781AB9C8CC00313723 /* AppDelegate.m */,
+				6AF3017D1AB9C8CC00313723 /* Main.storyboard */,
+				6AF301801AB9C8CC00313723 /* Images.xcassets */,
+				6AF301821AB9C8CC00313723 /* LaunchScreen.xib */,
+				6AF301731AB9C8CC00313723 /* Supporting Files */,
+				6A4E4A761AE9558100EA0853 /* ViewControllers */,
+			);
+			path = snow;
+			sourceTree = "<group>";
+		};
+		6AF301731AB9C8CC00313723 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6AF301741AB9C8CC00313723 /* Info.plist */,
+				6AF301751AB9C8CC00313723 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6AF3018C1AB9C8CC00313723 /* snowTests */ = {
+			isa = PBXGroup;
+			children = (
+				6AF3018F1AB9C8CC00313723 /* snowTests.m */,
+				6AF3018D1AB9C8CC00313723 /* Supporting Files */,
+			);
+			path = snowTests;
+			sourceTree = "<group>";
+		};
+		6AF3018D1AB9C8CC00313723 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6AF3018E1AB9C8CC00313723 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA6A558435FA91C018E1098F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEE7548C684B79F05BC7F83E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6AF3016F1AB9C8CC00313723 /* snow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AF301931AB9C8CC00313723 /* Build configuration list for PBXNativeTarget "snow" */;
+			buildPhases = (
+				004C5BCF5D0FEC0E7BA4EE31 /* Check Pods Manifest.lock */,
+				6AF3016C1AB9C8CC00313723 /* Sources */,
+				6AF3016D1AB9C8CC00313723 /* Frameworks */,
+				6AF3016E1AB9C8CC00313723 /* Resources */,
+				E8268E01FEB705F609982FB1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = snow;
+			productName = snow;
+			productReference = 6AF301701AB9C8CC00313723 /* snow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6AF301881AB9C8CC00313723 /* snowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AF301961AB9C8CC00313723 /* Build configuration list for PBXNativeTarget "snowTests" */;
+			buildPhases = (
+				6AF301851AB9C8CC00313723 /* Sources */,
+				6AF301861AB9C8CC00313723 /* Frameworks */,
+				6AF301871AB9C8CC00313723 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AF3018B1AB9C8CC00313723 /* PBXTargetDependency */,
+			);
+			name = snowTests;
+			productName = snowTests;
+			productReference = 6AF301891AB9C8CC00313723 /* snowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6AF301681AB9C8CC00313723 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "samuel maura";
+				TargetAttributes = {
+					6AF3016F1AB9C8CC00313723 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					6AF301881AB9C8CC00313723 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 6AF3016F1AB9C8CC00313723;
+					};
+				};
+			};
+			buildConfigurationList = 6AF3016B1AB9C8CC00313723 /* Build configuration list for PBXProject "snow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6AF301671AB9C8CC00313723;
+			productRefGroup = 6AF301711AB9C8CC00313723 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AF3016F1AB9C8CC00313723 /* snow */,
+				6AF301881AB9C8CC00313723 /* snowTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6AF3016E1AB9C8CC00313723 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A69817E1B28C755006D32A3 /* industrial_alarm.caf in Resources */,
+				6AC283BA1AF1C98B00F6AD0E /* eiffel_tower_dawn.jpg in Resources */,
+				6A4E4A811AE9CA3900EA0853 /* SnowCardA.xib in Resources */,
+				6A8890B41B28C9F600ED6B5B /* phone_vibrate.caf in Resources */,
+				6A8890B51B28C9F600ED6B5B /* police_brit_siren.caf in Resources */,
+				6A8890B61B28C9F600ED6B5B /* rails_30.caf in Resources */,
+				6AF3017F1AB9C8CC00313723 /* Main.storyboard in Resources */,
+				6A8315671AF0C26A005F9A32 /* etower1.jpg in Resources */,
+				6AF301841AB9C8CC00313723 /* LaunchScreen.xib in Resources */,
+				6AC283C01AF1C98B00F6AD0E /* snow_monkeys.jpg in Resources */,
+				6AC283BD1AF1C98B00F6AD0E /* london_skyline_sunset.jpg in Resources */,
+				6AC283BF1AF1C98B00F6AD0E /* nyc_skyline_night.jpg in Resources */,
+				6AC283C11AF1C98B00F6AD0E /* tajmahal_daylight.jpg in Resources */,
+				6A238B421B2E895E000A0EF2 /* woosh.caf in Resources */,
+				6AC283BB1AF1C98B00F6AD0E /* london_skyline_dawn.jpg in Resources */,
+				6A8890B71B28C9F600ED6B5B /* school_alarm.caf in Resources */,
+				6AF301811AB9C8CC00313723 /* Images.xcassets in Resources */,
+				6AC283B81AF1C98B00F6AD0E /* desert_valley_daylight.jpg in Resources */,
+				6AC283B91AF1C98B00F6AD0E /* eiffel_bridge.jpg in Resources */,
+				6A238B411B2E8958000A0EF2 /* blob.caf in Resources */,
+				6AC283BE1AF1C98B00F6AD0E /* monkey_fuscata.jpg in Resources */,
+				6AC283BC1AF1C98B00F6AD0E /* london_skyline_daylight.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF301871AB9C8CC00313723 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		004C5BCF5D0FEC0E7BA4EE31 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E8268E01FEB705F609982FB1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6AF3016C1AB9C8CC00313723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AEA90641ACB2718000574A4 /* SnowMenuTableViewController.m in Sources */,
+				6AE384CA1B18DDD600DDE38D /* SnowMenuTVCA1.m in Sources */,
+				6AC58F2A1AC7AF2D00B2BE18 /* SimpleTextViewCell.m in Sources */,
+				6A3DCED01AD30BE300A518A8 /* SnowListAllTVC.m in Sources */,
+				6AC283C41AF1CF8400F6AD0E /* SnowBackground.m in Sources */,
+				6AE384C71B18D79700DDE38D /* SnowCellTypeA1.m in Sources */,
+				6A8890BA1B28F19B00ED6B5B /* SnowSoundPicker.m in Sources */,
+				6AA9C4EF1ACF107200B4166B /* SnowReminderDateWidget.m in Sources */,
+				6A4025151B0E633800DEC927 /* SnowQuickTimerMasterTVC.m in Sources */,
+				6ACF3F5E1AB9CC6B00912A39 /* SnowList.m in Sources */,
+				6AD3B3F41AFDA567000B093A /* SnowTaskDetailsTVC.m in Sources */,
+				6ACF3F611AB9D74F00912A39 /* SnowTableViewController.m in Sources */,
+				6AE384C41B18D6FC00DDE38D /* SnowButtonTypeA2.m in Sources */,
+				6AC58F271AC7A38800B2BE18 /* SnowListCreateTVC.m in Sources */,
+				6A6592B51B1672F4000AF85A /* SnowButtonTypeA1.m in Sources */,
+				6A2AA22B1B0C5A8E001B8594 /* SnowSearchResultsTVC.m in Sources */,
+				6A40251B1B0E64ED00DEC927 /* SnowTimer.m in Sources */,
+				6A22A6F81AD5D004007E031C /* SnowTaskAllTVC.m in Sources */,
+				6A69817C1B28A623006D32A3 /* SnowSound.m in Sources */,
+				6A4025181B0E64A300DEC927 /* SnowQuickTimerDetailVC.m in Sources */,
+				6A4E4A751AE94DDC00EA0853 /* SnowTheme.m in Sources */,
+				6ABDCCE21B00017B00EA5A5C /* SnowButtonCell.m in Sources */,
+				6AEA906A1ACB8D41000574A4 /* SnowCustomTransition.m in Sources */,
+				6AA9C4F21ACF10BF00B4166B /* SnowReminderRepeatTableViewController.m in Sources */,
+				6AD9AD2B1B27BF0100EA0F80 /* SnowCardA3.m in Sources */,
+				6A6592B21B16714C000AF85A /* UIImage+SnowImageUtils.m in Sources */,
+				6A41C0481B2662210088E5C5 /* SnowSimpleTextFieldCell.m in Sources */,
+				6A8890BD1B28F21C00ED6B5B /* SnowAboutMaster.m in Sources */,
+				6ABDCCE51B00409600EA5A5C /* SnowTwoLabelCell.m in Sources */,
+				6AF301791AB9C8CC00313723 /* AppDelegate.m in Sources */,
+				6A049D1B1B04685600EA7EF0 /* SnowTaskPriority.m in Sources */,
+				6AB7A23A1B1FB2C8006220FB /* SnowAllPendingTaskForList.m in Sources */,
+				6A07B31C1AE8A12900DD70F0 /* BackgroundLayer.m in Sources */,
+				6AD2307C1B0A92C4002FB262 /* SnowListManager.m in Sources */,
+				6A1A70291AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m in Sources */,
+				6A4E4A791AE955FA00EA0853 /* SnowThemeSwitcher.m in Sources */,
+				6A4E4A721AE94B3E00EA0853 /* SnowAppearanceManager.m in Sources */,
+				6A1A70261AC8DD72000AB2B7 /* SnowTaskCreateTVC.m in Sources */,
+				6AF301761AB9C8CC00313723 /* main.m in Sources */,
+				6A4E4A801AE9CA3900EA0853 /* SnowCardA.m in Sources */,
+				6ACF3F5B1AB9C9CB00912A39 /* SnowDataManager.m in Sources */,
+				6A4E4A7C1AE97FED00EA0853 /* SnowBaseTVC.m in Sources */,
+				6AF6A4571AD77BEA0014AC7B /* SnowCellA.m in Sources */,
+				6AEA90671ACB33B8000574A4 /* SnowMainContainerVC.m in Sources */,
+				6AF695871ABB5B8E00DE530B /* SnowTask.m in Sources */,
+				6AF6958A1ABBDB4300DE530B /* OverlayVC.m in Sources */,
+				6A7D81001B11520A0040C4E0 /* SnowQuickTimerVC.m in Sources */,
+				6AC65DDE1B0D81EC006DCA9C /* SnowSearchTVC.m in Sources */,
+				6AFD6AD21B229A8C00A8EBF2 /* SnowCardA2.m in Sources */,
+				6AD956371AD36D3000566602 /* SnowNotificationManager.m in Sources */,
+				6A1A702C1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m in Sources */,
+				6AC283AC1AF1C5F000F6AD0E /* SnowBackgroundImageSwitcher.m in Sources */,
+				6A8E874C1B1286FC00495521 /* SnowDebugAvailableFonts.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF301851AB9C8CC00313723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF301901AB9C8CC00313723 /* snowTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AF3018B1AB9C8CC00313723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AF3016F1AB9C8CC00313723 /* snow */;
+			targetProxy = 6AF3018A1AB9C8CC00313723 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6AF3017D1AB9C8CC00313723 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AF3017E1AB9C8CC00313723 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6AF301821AB9C8CC00313723 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AF301831AB9C8CC00313723 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6AF301911AB9C8CC00313723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Samuel Maura (H36UPJUP5T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Samuel Maura (H36UPJUP5T)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "05bf6fad-760c-4952-b49d-2c1b5443258e";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6AF301921AB9C8CC00313723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "05bf6fad-760c-4952-b49d-2c1b5443258e";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6AF301941AB9C8CC00313723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D70C71FCB8672BD408E005F7 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = snow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6AF301951AB9C8CC00313723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43E983C3BE672C84F1DD8E84 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = snow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6AF301971AB9C8CC00313723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = snowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/snow.app/snow";
+			};
+			name = Debug;
+		};
+		6AF301981AB9C8CC00313723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = snowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/snow.app/snow";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6AF3016B1AB9C8CC00313723 /* Build configuration list for PBXProject "snow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF301911AB9C8CC00313723 /* Debug */,
+				6AF301921AB9C8CC00313723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AF301931AB9C8CC00313723 /* Build configuration list for PBXNativeTarget "snow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF301941AB9C8CC00313723 /* Debug */,
+				6AF301951AB9C8CC00313723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AF301961AB9C8CC00313723 /* Build configuration list for PBXNativeTarget "snowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF301971AB9C8CC00313723 /* Debug */,
+				6AF301981AB9C8CC00313723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6AF301681AB9C8CC00313723 /* Project object */;
+}
