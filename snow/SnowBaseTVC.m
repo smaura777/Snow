@@ -17,21 +17,25 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  _closeBt = [UIImage
+      getTintedImage:[UIImage imageNamed:@"snow_menu_close"]
+           withColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                         .primary];
+
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  // self.navigationController.navigationBar.translucent = NO;
   self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 
-  //[self applyTheme];
+ /*
+  NSDictionary *titleAttributes = @{
+    NSFontAttributeName :
+        [UIFont fontWithName:@"AvenirNextCondensed-Medium" size:14.0],
+    NSForegroundColorAttributeName : [UIColor whiteColor]
+  };
 
-  // Setup notifications
+  self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
+  */
+    
 }
-
-/*
-
--(UIStatusBarStyle) preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-*/
 
 - (void)viewWillAppear:(BOOL)animated {
   [self applyTheme];
@@ -87,25 +91,7 @@
 
   [self.tableView setBackgroundColor:tableBC];
 
-  /**
-  } completion:^(BOOL finished) {
-      NSLog(@"Color theme did change");
-  }];
-  **/
-
-  /*
-  [self.navigationController.navigationBar
-      setBackgroundImage:navBarBI
-           forBarMetrics:UIBarMetricsDefault];
-
-  */
-
   [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-  /*
-    [self.navigationController.navigationBar setTintColor:navBarTintC];
-
-    [self.tableView setBackgroundColor:tableBC];
-      */
 }
 
 - (void)showEmptyTable:(UITableView *)table
@@ -158,8 +144,6 @@
 
     [table.backgroundView addSubview:_emptyLabel];
   }
-
-  // table.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)showEmptyDataMessageIfNeeded:(NSInteger)sec_count

@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
+    //[UIColor blackColor];
   //[[SnowAppearanceManager sharedInstance] currentTheme].ternary;
   /*
 _reminderDatePicker.tintColor =
@@ -26,8 +27,8 @@ _reminderDatePicker.tintColor =
   //[[UIDatePicker appearance] setTintColor: [[SnowAppearanceManager
   // sharedInstance] currentTheme].primary;
 
-  _reminderDatePicker.backgroundColor =
-      [UIColor colorWithRed:.7 green:.7 blue:.7 alpha:.12];
+    _reminderDatePicker.backgroundColor = [UIColor clearColor];
+      //[UIColor colorWithRed:.7 green:.7 blue:.7 alpha:.77];
 
   // check for key value compliance
 

@@ -15,9 +15,8 @@
 
 @implementation SnowMainContainerVC {
   UIView *_overlay;
-    
-    SystemSoundID wooshSound;
-    
+
+  SystemSoundID wooshSound;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -27,11 +26,12 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-   // NSString *wooshSoundPath =[[NSBundle mainBundle] pathForResource:@"woosh" ofType:@"caf"] ;
-   // NSURL *wooshSoundUrl = [NSURL fileURLWithPath:wooshSoundPath];
-   // AudioServicesCreateSystemSoundID( (__bridge CFURLRef)wooshSoundUrl, &wooshSound);
-    
-    
+  // NSString *wooshSoundPath =[[NSBundle mainBundle] pathForResource:@"woosh"
+  // ofType:@"caf"] ;
+  // NSURL *wooshSoundUrl = [NSURL fileURLWithPath:wooshSoundPath];
+  // AudioServicesCreateSystemSoundID( (__bridge CFURLRef)wooshSoundUrl,
+  // &wooshSound);
+
   _listManager = [SnowListManager new];
 
   [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil]
@@ -39,46 +39,6 @@
         NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:16],
         NSForegroundColorAttributeName : [UIColor whiteColor]
       }];
-
-  //    _snowSearchResults =
-  //    [[SnowSearchResultsTVC alloc] initWithStyle:UITableViewStylePlain];
-  //
-  //    _searchController = [[UISearchController alloc]
-  //                         initWithSearchResultsController:_snowSearchResults];
-  //
-  //    _searchController.searchResultsUpdater = self;
-
-  /**
-
-  // Do any additional setup after loading the view.
-  self.view.backgroundColor = [UIColor yellowColor];
-  // self.view.alpha = 0.5;
-  //
-  CGFloat midY = CGRectGetMidY(self.view.frame) - 180;
-  CGFloat midX = CGRectGetMidX(self.view.frame) - 100;
-
-  CGRect midFrame = CGRectMake(midX, midY, 200, 200);
-
-  UILabel* msg = [[UILabel alloc] init];
-  msg.frame = midFrame;
-
-  msg.textColor = [UIColor lightGrayColor];
-  msg.font = [UIFont fontWithName:@"Helvetica" size:36.0];
-  msg.textAlignment = NSTextAlignmentCenter;
-
-  msg.layer.borderWidth = 10.0;
-  msg.layer.borderColor = [UIColor grayColor].CGColor;
-
-  msg.layer.cornerRadius = 100.0;
-  msg.layer.shadowColor = [UIColor blackColor].CGColor;
-  msg.layer.shadowOffset = CGSizeMake(-24.0, 24.0);
-  msg.layer.shadowOpacity = 1.0;
-
-  msg.text = @"MASTER";
-
-  [self.view addSubview:msg];
-
-  **/
 
   [self loadTopChildViewController];
 }
@@ -248,9 +208,9 @@ preparation before navigation
     // animate top view out of the way
     [UIView animateWithDuration:0.25
         animations:^{
-           //  AudioServicesPlaySystemSound(wooshSound);
+          //  AudioServicesPlaySystemSound(wooshSound);
           _topVC.view.frame = openFrame;
-        
+
         }
         completion:^(BOOL finished) {
           // Add special overlay here
@@ -279,7 +239,7 @@ preparation before navigation
 
     [UIView animateWithDuration:0.25
         animations:^{
-         //  AudioServicesPlaySystemSound(wooshSound);
+          //  AudioServicesPlaySystemSound(wooshSound);
           _topVC.view.frame = self.view.frame;
 
         }

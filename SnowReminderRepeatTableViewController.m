@@ -28,7 +28,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  self.tableView.backgroundColor = [UIColor blackColor];
+  self.tableView.backgroundColor =
+      [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
 }
 
 - (void)didReceiveMemoryWarning {

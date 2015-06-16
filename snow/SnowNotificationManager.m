@@ -8,6 +8,7 @@
 
 #import "SnowNotificationManager.h"
 #import "SnowDataManager.h"
+#import "SnowAppearanceManager.h"
 #import "SnowListManager.h"
 
 NSString *SNOW_COMPLETE_NOTIF = @"SNOW_COMPLETE_NOTIF";
@@ -82,7 +83,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
     noti.fireDate = task.reminder;
   }
 
-  noti.soundName = @"rails_30.caf"; // UILocalNotificationDefaultSoundName;
+  noti.soundName = UILocalNotificationDefaultSoundName;
   noti.timeZone = [NSTimeZone defaultTimeZone];
   noti.alertBody = task.title;
   noti.applicationIconBadgeNumber = 1;
@@ -252,9 +253,11 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
       UILocalNotification *noti = [[UILocalNotification alloc] init];
 
       noti.fireDate = tmFireDate;
-      noti.soundName = UILocalNotificationDefaultSoundName;
+      noti.soundName = [[SnowAppearanceManager sharedInstance] currentAlertTone]
+                           .soundName; // UILocalNotificationDefaultSoundName;
       noti.timeZone = [NSTimeZone defaultTimeZone];
-      noti.alertBody = tm.timerName;
+      noti.alertBody =
+          [NSString stringWithFormat:@" time's up : %@", tm.timerName];
       noti.applicationIconBadgeNumber = 1;
       noti.alertAction = @"Ok";
 

@@ -9,6 +9,7 @@
 #import "SnowListCreateTVC.h"
 #import "SnowDataManager.h"
 #import "SnowTableViewController.h"
+#import "AppDelegate.h"
 
 @interface SnowListCreateTVC ()
 
@@ -22,8 +23,12 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-   self.title = @"Add new list";
-    
+  AppDelegate *app =
+      (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  app.topVC = self;
+
+  self.title = @"Add new list";
+
   [self.tableView registerClass:[SnowSimpleTextFieldCell class]
          forCellReuseIdentifier:@"SnowSimpleTextFieldCell"];
 
@@ -34,59 +39,13 @@
 
   self.navigationItem.rightBarButtonItem = _saveButton;
 
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-      initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                           target:self
-                           action:@selector(cancelAction:)];
-
-  // Uncomment the following line to preserve selection between presentations.
-  // self.clearsSelectionOnViewWillAppear = NO;
-
-  // Uncomment the following line to display an Edit button in the navigation
-  // bar for this view controller.
-  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.navigationItem.leftBarButtonItem =
+      [[UIBarButtonItem alloc] initWithImage:self.closeBt
+                                       style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(cancelAction:)];
 
   _saveButton.enabled = NO;
-
-  /*
-  _textViewCell.backgroundColor =  [UIColor colorWithRed:.12
-                                                   green:.12
-                                                    blue:.12
-                                                   alpha:.7];
-
-  _ListName.backgroundColor =
-  [UIColor colorWithRed:.12
-                  green:.12
-                   blue:.12
-                  alpha:.7];
-
-   */
-
-  //[[SnowAppearanceManager sharedInstance]
-  // currentTheme].ternary;
-  // _textView.alpha = 0.5;
-
-  /**
-
-  _textViewCell.backgroundColor =
-      [UIColor colorWithRed:0.12
-                      green:0.12
-                       blue:0.12
-                      alpha:.7];
-
-  _ListName.attributedPlaceholder = [[NSAttributedString alloc]
-      initWithString:@"enter list name"
-          attributes:@{
-            NSForegroundColorAttributeName :
-                [UIColor colorWithRed:1 green:1 blue:1 alpha:.7]
-          }];
-
-  _ListName.textColor = [UIColor whiteColor];
-
-  _ListName.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-  [_ListName becomeFirstResponder];
-
-  **/
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -132,8 +91,8 @@
 
   cell.textField.delegate = self;
 
-    _ListName = cell.textField;
-    
+  _ListName = cell.textField;
+
   return cell;
 }
 
@@ -164,13 +123,11 @@
     shouldChangeCharactersInRange:(NSRange)range
                 replacementString:(NSString *)string {
 
-  if ([string length] > 0 ) {
+  if ([string length] > 0) {
     _saveButton.enabled = YES;
-  }
-  else if ( ([string length] == 0) && ([textField.text length] > 1) ){
-      _saveButton.enabled = YES;
-  }
-  else {
+  } else if (([string length] == 0) && ([textField.text length] > 1)) {
+    _saveButton.enabled = YES;
+  } else {
     _saveButton.enabled = NO;
   }
 

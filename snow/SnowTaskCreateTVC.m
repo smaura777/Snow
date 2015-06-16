@@ -14,6 +14,7 @@
 #import "SimpleTextViewCell.h"
 #import "SnowTaskPriority.h"
 #import "SnowAppearanceManager.h"
+#import "AppDelegate.h"
 
 @interface SnowTaskCreateTVC ()
 
@@ -26,27 +27,11 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  AppDelegate *app =
+      (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  app.topVC = self;
+
   self.title = @"Add a task";
-
-  // self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-  // self.tableView.separatorColor = [UIColor redColor];
-  // //[[SnowAppearanceManager sharedInstance] currentTheme].secondary;
-
-  // Uncomment the following line to preserve selection between presentations.
-  // self.clearsSelectionOnViewWillAppear = NO;
-
-  // Uncomment the following line to display an Edit button in the navigation
-  // bar for this view controller.
-  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-  //[_taskText becomeFirstResponder];
-  _repeatFrequency = 0;
-
-  // self.tableView.rowHeight = UITableViewAutomaticDimension;
-  // self.tableView.estimatedRowHeight = 100.0;
-
-  // self.tableView.rowHeight = UITableViewAutomaticDimension;
-  // self.tableView.estimatedRowHeight = 60.0;
 
   [self.tableView registerClass:[UITableViewCell class]
          forCellReuseIdentifier:@"basic"];
@@ -62,10 +47,11 @@
                            target:self
                            action:@selector(saveAction:)];
 
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-      initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                           target:self
-                           action:@selector(cancelAction:)];
+  self.navigationItem.leftBarButtonItem =
+      [[UIBarButtonItem alloc] initWithImage:self.closeBt
+                                       style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(cancelAction:)];
 
   // repeat frequency
 

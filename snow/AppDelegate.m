@@ -12,12 +12,15 @@
 #import "SnowNotificationManager.h"
 #import "SnowAppearanceManager.h"
 #import "UIImage+SnowImageUtils.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <AVAudioPlayerDelegate>
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate {
+  AVAudioPlayer *_aPlayer;
+}
 
 //   [UIColor colorWithRed:0 green:.54 blue:.54 alpha:1]
 
@@ -28,10 +31,10 @@
 
   NSError *setCategoryErr;
 
-  [ [AVAudioSession sharedInstance]
+  [[AVAudioSession sharedInstance]
       setCategory:AVAudioSessionCategoryAmbient
       withOptions:AVAudioSessionCategoryOptionMixWithOthers
-            error:&setCategoryErr ];
+            error:&setCategoryErr];
   /*
 [[AVAudioSession sharedInstance]
 setCategory:AVAudioSessionCategoryOptionMixWithOthers
@@ -110,57 +113,135 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   application.applicationIconBadgeNumber = 0;
 
   NSLog(@"************** Received local notification ");
+  UIAlertController *alert;
 
-  UIAlertController *alert =
-      [UIAlertController alertControllerWithTitle:@"Task Alert"
-                                          message:notification.alertBody
-                                   preferredStyle:UIAlertControllerStyleAlert];
+  NSDictionary *timerInfo = notification.userInfo;
+  if ([timerInfo valueForKey:@"TimerItemKey"]) {
 
-  UIAlertAction *action1 =
-      [UIAlertAction actionWithTitle:@"close"
-                               style:UIAlertActionStyleCancel
-                             handler:^(UIAlertAction *action) {
-                                 
-                                 
-                             }];
+      [self prepPlayer];
+      
+    alert = [UIAlertController
+        alertControllerWithTitle:@"Timer"
+                         message:notification.alertBody
+                  preferredStyle:UIAlertControllerStyleAlert];
 
-  UIAlertAction *action2 =
-      [UIAlertAction actionWithTitle:@"Mark as completed"
-                               style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction *action) {
-                               [[SnowNotificationManager sharedInstance]
-                                   completeNotification:notification];
-                             }];
+    UIAlertAction *action1 =
+        [UIAlertAction actionWithTitle:@"close"
+                                 style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction *action){
+                                   
+                                   if (_aPlayer && ([_aPlayer isPlaying]) ){
+                                       [_aPlayer stop];
+                                   }
 
-  UIAlertAction *action3 =
-      [UIAlertAction actionWithTitle:@"clear"
-                               style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction *action) {
-                               [[SnowNotificationManager sharedInstance]
-                                   clearNotification:notification ];
-                             }];
+                               }];
 
-  [alert addAction:action1];
-  [alert addAction:action2];
-  [alert addAction:action3];
+    [alert addAction:action1];
+      if (_aPlayer && (![_aPlayer isPlaying]) ){
+          [_aPlayer play];
+      }
+      
+      
 
-  [self.window.rootViewController presentViewController:alert
-                                               animated:YES
-                                             completion:nil];
+  } else {
+
+    alert = [UIAlertController
+        alertControllerWithTitle:@"Task Alert"
+                         message:notification.alertBody
+                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *action1 =
+        [UIAlertAction actionWithTitle:@"close"
+                                 style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction *action){
+
+                               }];
+
+    UIAlertAction *action2 =
+        [UIAlertAction actionWithTitle:@"Mark as completed"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {
+                                 [[SnowNotificationManager sharedInstance]
+                                     completeNotification:notification];
+                               }];
+
+    UIAlertAction *action3 =
+        [UIAlertAction actionWithTitle:@"clear"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {
+                                 [[SnowNotificationManager sharedInstance]
+                                     clearNotification:notification];
+                               }];
+
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [alert addAction:action3];
+  }
+
+  if (_topVC == nil) {
+
+    [self.window.rootViewController presentViewController:alert
+                                                 animated:YES
+                                               completion:nil];
+  } else {
+
+    [_topVC presentViewController:alert animated:YES completion:nil];
+  }
+}
+
+- (void)prepPlayer {
+
+  _aPlayer = nil;
+
+  NSError *audioErr;
+
+  NSString *defaultSoundFileNameWithExtension =
+      [[SnowAppearanceManager sharedInstance] currentAlertTone].soundName;
+
+  NSString *defaultSoundFileNameExtension =
+      [[defaultSoundFileNameWithExtension componentsSeparatedByString:@"."]
+          objectAtIndex:1];
+  NSString *defaultSoundFileName =
+      [[defaultSoundFileNameWithExtension componentsSeparatedByString:@"."]
+          objectAtIndex:0];
+
+  NSString *alertSoundFilePath =
+      [[NSBundle mainBundle] pathForResource:defaultSoundFileName
+                                      ofType:defaultSoundFileNameExtension];
+
+  if (!alertSoundFilePath) {
+    NSLog(@"Could not find sound file ");
+  }
+
+  NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:alertSoundFilePath];
+
+  _aPlayer =
+      [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&audioErr];
+
+  _aPlayer.delegate = self;
+
+  [_aPlayer prepareToPlay];
+
+  _aPlayer.numberOfLoops = 1; // infinite
+}
+
+#pragma mark - AVAudioPlayerDelegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player
+                       successfully:(BOOL)flag {
 }
 
 - (void)applyTheme {
 
-//  UIColor *tableBC =
-//      [[SnowAppearanceManager sharedInstance] currentTheme]
-//          .ternary;
-//  UIColor *navBarBC =
-//      [[SnowAppearanceManager sharedInstance] currentTheme].primary;
+  //  UIColor *tableBC =
+  //      [[SnowAppearanceManager sharedInstance] currentTheme]
+  //          .ternary;
+  //  UIColor *navBarBC =
+  //      [[SnowAppearanceManager sharedInstance] currentTheme].primary;
 
-//  UIImage *navBarBI = [UIImage imageWithColor:navBarBC];
-//
-//  UIColor *navBarTintC =
-//      [[SnowAppearanceManager sharedInstance] currentTheme].secondary;
+  //  UIImage *navBarBI = [UIImage imageWithColor:navBarBC];
+  //
+  //  UIColor *navBarTintC =
+  //      [[SnowAppearanceManager sharedInstance] currentTheme].secondary;
 
   [[UIApplication sharedApplication]
       setStatusBarStyle:UIStatusBarStyleLightContent];

@@ -61,10 +61,10 @@
   UINavigationController *quickTimerNav =
       [[UINavigationController alloc] initWithRootViewController:masterTimer];
 
-  //quickTimerNav.modalPresentationStyle = UIModalPresentationCustom;
- // quickTimerNav.transitioningDelegate = self;
-    
- quickTimerNav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  // quickTimerNav.modalPresentationStyle = UIModalPresentationCustom;
+  // quickTimerNav.transitioningDelegate = self;
+
+  quickTimerNav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   [self presentViewController:quickTimerNav animated:YES completion:nil];
 }
 
@@ -135,16 +135,6 @@
       [[SnowListCreateTVC alloc] initWithStyle:UITableViewStyleGrouped];
   UINavigationController *sl = [[UINavigationController alloc]
       initWithRootViewController:listCreationVC];
-  /*
-
-UIStoryboard *storyBoard =
-    [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-*/
-
-  /*
-UINavigationController *sl = (UINavigationController *)
-    [storyBoard instantiateViewControllerWithIdentifier:@"list_create_sb"];
-   */
 
   sl.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 
@@ -185,15 +175,17 @@ UINavigationController *sl = (UINavigationController *)
   SnowTaskCreateTVC *createTaskVC =
       [[SnowTaskCreateTVC alloc] initWithStyle:UITableViewStyleGrouped];
 
+  UINavigationController *nav =
+      [[UINavigationController alloc] initWithRootViewController:createTaskVC];
+
   [_listTable objectForKey:[[_listTable allKeys] firstObject]];
-
-
 
   SnowList *defaultOrMostRecentList = [_listManager defaultList];
   if (!defaultOrMostRecentList) {
-      
-      [self showAlertWithTitle:@"Notice" AndMessage:@"Please create a list for your task"];
-      
+
+    [self showAlertWithTitle:@"Notice"
+                  AndMessage:@"Please create a list for your task"];
+
     return;
   }
 
@@ -202,9 +194,6 @@ UINavigationController *sl = (UINavigationController *)
   //[_listTable objectForKey:[[_listTable allKeys] firstObject]];
 
   [createTaskVC populateVC];
-
-  UINavigationController *nav =
-      [[UINavigationController alloc] initWithRootViewController:createTaskVC];
 
   // self.definesPresentationContext = YES;
 
@@ -237,13 +226,13 @@ UINavigationController *sl = (UINavigationController *)
   return;
 
   /**
-  
+
   UIAlertController *alert = [UIAlertController
       alertControllerWithTitle:@"Task"
                        message:@""
                 preferredStyle:UIAlertControllerStyleActionSheet];
 
- 
+
   CGRect toolFrame = CGRectMake(0, 10, 270, 375);
   UIView *toolView = [[UIView alloc] initWithFrame:toolFrame];
 
@@ -318,7 +307,6 @@ UINavigationController *sl = (UINavigationController *)
                    }];
 }
 */
-
 
 /*
 -(UIStatusBarStyle)preferredStatusBarStyle{
@@ -403,7 +391,7 @@ UINavigationController *sl = (UINavigationController *)
   _listManager = [SnowListManager new];
 
   CGRect wrapperFrame = CGRectMake(0, 0, self.tableView.bounds.size.width, 100);
-  //CGRect segmentFrame = CGRectInset(wrapperFrame, 40, 25);
+  // CGRect segmentFrame = CGRectInset(wrapperFrame, 40, 25);
 
   _segmentWrapper = [[UIView alloc] initWithFrame:wrapperFrame];
 

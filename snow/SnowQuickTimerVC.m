@@ -31,7 +31,10 @@
   SnowButtonTypeA1 *_timer90;
   SnowButtonTypeA1 *_timer180;
 
-  UIView *_timerSettings, *_timerCountDown, *_buttonContainer;
+  UIView *_timerSettings;
+  // UIVisualEffectView
+  UIView *_timerCountDown;
+  UIView *_buttonContainer;
 
   UILabel *_timerLabel;
   int _secondsLeft;
@@ -42,16 +45,7 @@
   SnowTimer *_timerObject;
   NSTimer *_timerEngine;
   AVAudioPlayer *_aPlayer;
-
-  // For active timer indicators
-  /*
-     NSTimer *_indicator45, *_indicator25, *_indicator5, *_indicator15,
-       *_indicator10, *_indicator90;
-
-   */
-
   NSTimer *showActiveTimerIndicators_timer;
-
   NSTimeInterval _secondsLeft45, _secondsLeft25, _secondsLeft5, _secondsLeft15,
       _secondsLeft10, _secondsLeft90;
 
@@ -65,46 +59,31 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 - (void)setup {
   CGRect timerSettingsRect = self.view.bounds;
 
+  self.view.backgroundColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].primary;
+
   // Countdown
   _timerCountDown = [[UIView alloc] initWithFrame:timerSettingsRect];
+  //[[UIVisualEffectView alloc] initWithEffect:UIBlurEffectStyleExtraLight];
+  _timerCountDown.frame = timerSettingsRect;
+
   _timerCountDown.tag = 2;
 
-  _timerCountDown.backgroundColor = [UIColor redColor];
+  _timerCountDown.backgroundColor =
+      [UIColor colorWithRed:1 green:1 blue:1 alpha:.9];
 
   [self.view addSubview:_timerCountDown];
 
   // timer pad
   _timerSettings = [[UIView alloc] initWithFrame:timerSettingsRect];
   _timerSettings.tag = 1;
-  
-    _timerSettings.backgroundColor = [UIColor whiteColor];
-   // [UIColor colorWithHue:0 saturation:1 brightness:0.0 alpha:1];
 
-   
-
+  _timerSettings.backgroundColor =
+      [UIColor colorWithRed:1 green:1 blue:1 alpha:.90];
   [self.view addSubview:_timerSettings];
-
-  //[self.view insertSubview:_timerCountDown belowSubview:_timerSettings];
 }
 
 - (void)setupTimerButtons {
-  /*
-    UIColor *buttonBorderColor = STM_buttonBorderColor;
-    UIColor *buttonTextColor = STM_buttonTextColor;
-    UIColor *buttonTextColorSelected = STM_buttonTextColorSelected;
-    CGFloat borderWidth = 0.5;
-  */
-
-  /*
-  UIFont *bf = [UIFont fontWithName:@"GillSans-Light" size:72];
-  bf = [UIFont fontWithName:@"GillSans-UltraBold" size:72];
-  bf = [UIFont fontWithName:@"AvenirNextCondensed-UltraLight" size:72];
-  */
-
-  /*
-  bf = [UIFont fontWithName:@"AvenirNext-UltraLight" size:72];
-  bf = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:72];
-  */
 
   CGRect timerRect25 = CGRectMake(0, 0, 80, 100);
   CGRect timerRect45 = CGRectMake(81, 0, 80, 80);
@@ -114,7 +93,8 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   CGRect timerRect15 = CGRectMake(81, 101, 80, 100);
   CGRect timerRect90 = CGRectMake(161, 101, 80, 80);
 
-    CGRect buttonContainerFrame = _timerSettings.bounds; //CGRectMake(0, 0, 300, 401);
+  CGRect buttonContainerFrame =
+      _timerSettings.bounds; // CGRectMake(0, 0, 300, 401);
 
   _buttonContainer = [[UIView alloc] init];
   _buttonContainer.frame = buttonContainerFrame;
@@ -236,13 +216,14 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 
   CGRect labelFrame = CGRectInset(self.view.frame, 10, 50);
 
- // UIColor *buttonBorderColor = STM_buttonBorderColor;
-  UIColor *buttonTextColor = STM_buttonTextColor;
+  // UIColor *buttonBorderColor = STM_buttonBorderColor;
+  // UIColor *buttonTextColor = STM_buttonTextColor;
   UIColor *buttonTextColorSelected = STM_buttonTextColorSelected;
 
   _timerLabel = [[UILabel alloc] initWithFrame:labelFrame];
   _timerLabel.font = bf;
-  _timerLabel.textColor = buttonTextColor;
+  _timerLabel.textColor = [[SnowAppearanceManager sharedInstance] currentTheme]
+                              .primary; // buttonTextColor;
   _timerLabel.textAlignment = NSTextAlignmentCenter;
 
   _timerLabel.text = @"";
@@ -258,12 +239,44 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
                forControlEvents:UIControlEventTouchUpInside];
 
   [_pauseTimerButton setTitle:@"pause" forState:UIControlStateNormal];
+
   [_cancelTimerButton setTitle:@"cancel" forState:UIControlStateNormal];
 
+  [_pauseTimerButton
+      setTitleColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                        .primary
+           forState:UIControlStateNormal];
+
   [_pauseTimerButton setTitleColor:[UIColor whiteColor]
-                          forState:UIControlStateNormal];
+                          forState:UIControlStateHighlighted];
+
+  [_cancelTimerButton
+      setTitleColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                        .primary
+           forState:UIControlStateNormal];
   [_cancelTimerButton setTitleColor:[UIColor whiteColor]
-                           forState:UIControlStateNormal];
+                           forState:UIControlStateHighlighted];
+
+  [_pauseTimerButton
+      setBackgroundImage:
+          [UIImage
+              imageWithColor:
+                  [[SnowAppearanceManager sharedInstance] currentTheme].primary]
+                forState:UIControlStateHighlighted];
+
+  [_cancelTimerButton
+      setBackgroundImage:
+          [UIImage
+              imageWithColor:
+                  [[SnowAppearanceManager sharedInstance] currentTheme].primary]
+                forState:UIControlStateHighlighted];
+
+  _pauseTimerButton.layer.borderWidth = 1;
+  _pauseTimerButton.layer.borderColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].primary.CGColor;
+  _cancelTimerButton.layer.borderWidth = 1;
+  _cancelTimerButton.layer.borderColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].primary.CGColor;
 
   _isTimerPaused = NO;
 
@@ -280,14 +293,23 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   [_timerComplete setTitle:@"close" forState:UIControlStateNormal];
 
   _timerComplete.layer.borderWidth = 1;
-  _timerComplete.layer.borderColor = buttonTextColor.CGColor;
+  _timerComplete.layer.borderColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].primary.CGColor;
 
-  [_timerComplete setTitleColor:buttonTextColor forState:UIControlStateNormal];
+  [_timerComplete
+      setTitleColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                        .primary
+           forState:UIControlStateNormal];
+
   [_timerComplete setTitleColor:buttonTextColorSelected
                        forState:UIControlStateHighlighted];
 
-  [_timerComplete setBackgroundImage:[UIImage imageWithColor:buttonTextColor]
-                            forState:UIControlStateHighlighted];
+  [_timerComplete
+      setBackgroundImage:
+          [UIImage
+              imageWithColor:
+                  [[SnowAppearanceManager sharedInstance] currentTheme].primary]
+                forState:UIControlStateHighlighted];
 
   [_timerComplete addTarget:self
                      action:@selector(closeCountDownView)
@@ -296,6 +318,86 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   _timerComplete.alpha = 0;
 
   [_timerCountDown addSubview:_timerComplete];
+
+  // button auto layout
+
+  _pauseTimerButton.translatesAutoresizingMaskIntoConstraints = NO;
+  _cancelTimerButton.translatesAutoresizingMaskIntoConstraints = NO;
+
+  [_controlArea addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:_pauseTimerButton
+                                           attribute:NSLayoutAttributeLeftMargin
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:_controlArea
+                                           attribute:NSLayoutAttributeLeftMargin
+                                          multiplier:1
+                                            constant:10]];
+  [_controlArea
+      addConstraint:[NSLayoutConstraint constraintWithItem:_pauseTimerButton
+                                                 attribute:NSLayoutAttributeTop
+                                                 relatedBy:NSLayoutRelationEqual
+                                                    toItem:_controlArea
+                                                 attribute:NSLayoutAttributeTop
+                                                multiplier:1
+                                                  constant:10]];
+
+  [_pauseTimerButton
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_pauseTimerButton
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1
+                                  constant:140]];
+  [_pauseTimerButton
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_pauseTimerButton
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1
+                                  constant:44]];
+
+  [_controlArea
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_cancelTimerButton
+                                 attribute:NSLayoutAttributeRightMargin
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:_controlArea
+                                 attribute:NSLayoutAttributeRightMargin
+                                multiplier:1
+                                  constant:-10]];
+
+  [_controlArea
+      addConstraint:[NSLayoutConstraint constraintWithItem:_cancelTimerButton
+                                                 attribute:NSLayoutAttributeTop
+                                                 relatedBy:NSLayoutRelationEqual
+                                                    toItem:_controlArea
+                                                 attribute:NSLayoutAttributeTop
+                                                multiplier:1
+                                                  constant:10]];
+
+  [_cancelTimerButton
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_cancelTimerButton
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1
+                                  constant:140]];
+
+  [_cancelTimerButton
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_cancelTimerButton
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1
+                                  constant:44]];
 }
 
 - (void)createTimerWithValue:(NSInteger)tval {
@@ -485,8 +587,6 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
       [[defaultSoundFileNameWithExtension componentsSeparatedByString:@"."]
           objectAtIndex:0];
 
-    
-    
   //[defaultSoundFileName ];
 
   NSString *alertSoundFilePath =
@@ -709,9 +809,10 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 }
 
 - (void)swapViews {
-  UIView *topView;
+  UIView *topView, *bottomView;
 
   topView = [[self.view subviews] objectAtIndex:0];
+  bottomView = [[self.view subviews] objectAtIndex:1];
 
   if (topView.tag == 2) {
     _countDownViewIsOn = YES; // future state
@@ -727,6 +828,8 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   }
 
   [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+  topView.hidden = NO;
+  bottomView.hidden = YES;
 }
 
 - (void)sendActiveTimerNotification {
@@ -741,44 +844,82 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  NSDictionary *titleAttributes = @{
+    NSFontAttributeName :
+        [UIFont preferredFontForTextStyle:UIFontTextStyleBody],
+    NSForegroundColorAttributeName :
+        [[SnowAppearanceManager sharedInstance] currentTheme].primary
+  };
+
+  self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
+
+  self.title = @"Timer";
+
+  // Let app delegate know that we are the top parentless VC
+
+  AppDelegate *app =
+      (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  app.topVC = self;
+
+  // self.title = @"Timer";
   // Do any additional setup after loading the view.
 
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-      initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                           target:self
-                           action:@selector(close:)];
-    
-    /**
-    
-       UIColor *navBarBC =
+  UIImage *closeBt = [UIImage
+      getTintedImage:[UIImage imageNamed:@"snow_menu_close"]
+           withColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                         .primary];
+
+  UIBarButtonItem *menuCloseButton =
+      [[UIBarButtonItem alloc] initWithImage:closeBt
+                                       style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(close:)];
+
+  self.navigationItem.leftBarButtonItem = menuCloseButton;
+
+  /*
+
+self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                         target:self
+                         action:@selector(close:)];
+
+   */
+
+  [self.navigationController.navigationBar
+      setTintColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                       .primary];
+
+  /**
+
+     UIColor *navBarBC =
+  [[SnowAppearanceManager sharedInstance] currentTheme].primary;
+
+self.view.backgroundColor =
     [[SnowAppearanceManager sharedInstance] currentTheme].primary;
 
-  self.view.backgroundColor =
-      [[SnowAppearanceManager sharedInstance] currentTheme].primary;
-    
-     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    
-    UIImage *navBarBI = [UIImage imageWithColor:navBarBC];
-    
-    UIColor *navBarTintC =
-    [[SnowAppearanceManager sharedInstance] currentTheme].secondary;
-    
-   
-    
-    [self.navigationController.navigationBar setTintColor:navBarTintC];
-    
+   self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+
+  UIImage *navBarBI = [UIImage imageWithColor:navBarBC];
+
+  UIColor *navBarTintC =
+  [[SnowAppearanceManager sharedInstance] currentTheme].secondary;
+
+
+
+  [self.navigationController.navigationBar setTintColor:navBarTintC];
+
 */
-    [self.navigationController.navigationBar
-     setBackgroundImage:[UIImage new]
-     forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
+  [self.navigationController.navigationBar
+      setBackgroundImage:[UIImage new]
+           forBarMetrics:UIBarMetricsDefault];
+  [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 
   [self setup];
   [self setupTimerButtons];
   [self setupCountdownView];
 
-  //[self showActiveTimerIndicators];
+  _timerCountDown.hidden = YES;
 
   [self activateActiveTimersIndicators];
 }
@@ -893,13 +1034,12 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   _timerSettings.frame = self.view.bounds;
   _timerCountDown.frame = self.view.bounds; // timerSettingsRect;
 
-    _buttonContainer.frame = buttonContainerFrame;
+  _buttonContainer.frame = buttonContainerFrame;
 
   _buttonContainer.center =
       CGPointMake(_timerSettings.center.x,
                   _timerSettings.center.y + 44); //_timerSettings.center;
 
-     
   _timer25.frame = timerRect25;
   _timer45.frame = timerRect45;
   _timer5.frame = timerRect5;

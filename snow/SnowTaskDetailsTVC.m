@@ -334,8 +334,10 @@ adSize.height);
         [buttonCell.button setTitle:@"complete" forState:UIControlStateNormal];
       }
 
-      [buttonCell.button setTitleColor:[UIColor greenColor]
-                              forState:UIControlStateNormal];
+      [buttonCell.button
+          setTitleColor:[[SnowAppearanceManager sharedInstance] currentTheme]
+                            .primary
+               forState:UIControlStateNormal];
 
     }
 
@@ -434,8 +436,8 @@ titleForHeaderInSection:(NSInteger)section {
   createTaskVC.editModeOn = YES;
   UINavigationController *nav =
       [[UINavigationController alloc] initWithRootViewController:createTaskVC];
-    
-    nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
+  nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 
   [self
       presentViewController:nav

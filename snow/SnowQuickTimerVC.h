@@ -13,6 +13,7 @@
 #import "SnowButtonTypeA1.h"
 #import "SnowNotificationManager.h"
 #import "SnowAppearanceManager.h"
+#import "AppDelegate.h"
 
 @interface SnowQuickTimerVC : UIViewController <AVAudioPlayerDelegate>
 
