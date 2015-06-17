@@ -66,3 +66,9 @@
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 5
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
+// GoogleAnalytics
+#define COCOAPODS_POD_AVAILABLE_GoogleAnalytics
+#define COCOAPODS_VERSION_MAJOR_GoogleAnalytics 3
+#define COCOAPODS_VERSION_MINOR_GoogleAnalytics 12
+#define COCOAPODS_VERSION_PATCH_GoogleAnalytics 0
+

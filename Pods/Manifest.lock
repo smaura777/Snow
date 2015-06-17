@@ -25,13 +25,16 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - GoogleAnalytics (3.12.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - FMDB (~> 2.5)
+  - GoogleAnalytics
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  GoogleAnalytics: ef2e0b800ef3c1e62688cdfc959e0d3132bc246c
 
 COCOAPODS: 0.37.1
