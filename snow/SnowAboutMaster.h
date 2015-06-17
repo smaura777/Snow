@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SnowBaseTVC.h"
 
-@interface SnowAboutMaster : SnowBaseTVC
 
+@interface SnowAboutMaster : SnowBaseTVC
+@property(nonatomic, copy) void (^menuTapped)(void);
 @end

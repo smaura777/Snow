@@ -14,6 +14,7 @@
 #import "SnowTaskAllTVC.h"
 #import "SnowSearchResultsTVC.h"
 #import "SnowListManager.h"
+#import "SnowAboutMaster.h"
 
 @interface SnowMainContainerVC
     : UIViewController <UISearchControllerDelegate, UISearchResultsUpdating>

@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  _themeNames = @[ @"Grass", @"Azure", @"Sunny", @"Neon", @"Light" ];
+  _themeNames = @[ @"Grass", @"Azure", @"orange", @"Sunny", @"Neon", @"Light" ];
   _selectedTheme = [[SnowAppearanceManager sharedInstance] currentTheme];
 }
 
@@ -59,24 +59,25 @@
       [tableView dequeueReusableCellWithIdentifier:@"theme"
                                       forIndexPath:indexPath];
 
-    cell.backgroundColor = [UIColor clearColor];
-    cell.tintColor =
-    [[SnowAppearanceManager sharedInstance] currentTheme].primary;
-    cell.textLabel.textColor =
-    [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
-    
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    
-    
+  cell.backgroundColor = [UIColor clearColor];
+  cell.tintColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].primary;
+  cell.textLabel.textColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
+
+  cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
   cell.textLabel.text = [_themeNames objectAtIndex:indexPath.row];
 
   if ([_selectedTheme.themeKey
           isEqualToString:[cell.textLabel.text lowercaseString]]) {
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    cell.textLabel.font =  [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.textLabel.font =
+        [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
   } else {
     cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.font =  [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    cell.textLabel.font =
+        [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
   }
 
   return cell;

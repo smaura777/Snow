@@ -7,12 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ic_close_white_2x.png"
+      "filename" : "ic_crop_square_white_2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "ic_close_white_3x.png"
+      "filename" : "ic_crop_square_white_3x.png"
     }
   ],
   "info" : {

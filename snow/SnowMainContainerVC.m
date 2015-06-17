@@ -178,6 +178,21 @@ preparation before navigation
                                            initWithRootViewController:searchVC]
                              WithTitle:@"search_vc"];
         }
+        else if ([menuTilte isEqualToString:@"about"]){
+            if ([strongSelf.topVCTitle isEqualToString:@"about_vc"]) {
+                [strongSelf toggleMenu:nil];
+                return;
+            }
+            
+            SnowAboutMaster *about = [[SnowAboutMaster alloc] initWithStyle:UITableViewStylePlain];
+            about.menuTapped = ^{
+                [strongSelf toggleMenu:nil];
+            };
+            
+            [strongSelf swappedTopVCWith:[[UINavigationController alloc]
+                                          initWithRootViewController:about]
+                               WithTitle:@"about_vc"];
+        }
 
       };
     }

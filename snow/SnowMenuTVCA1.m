@@ -52,8 +52,8 @@
     @"archive",
     @"themes",
     @"sound",
-    @"background",
-    @"settings"
+    //  @"background",
+    @"about"
   ];
 
   _menuImageNames = @[
@@ -61,9 +61,9 @@
     @"snow_menu_search",
     @"snow_menu_list",
     @"snow_menu_archive",
-    @"snow_menu_settings",
-    @"snow_menu_settings",
-    @"snow_menu_settings",
+    @"snow_menu_theme",
+    @"snow_menu_sound",
+    // @"snow_menu_settings",
     @"snow_menu_settings"
   ];
 
@@ -124,11 +124,6 @@ self.tableView.tableHeaderView = header;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  /*
-    SnowCellTypeA1 *cell =
-        [tableView dequeueReusableCellWithIdentifier:@"SnowCellTypeA1"
-                                        forIndexPath:indexPath];
-    */
 
   SnowCellTypeA1 *cell =
       [[SnowCellTypeA1 alloc] initWithStyle:UITableViewCellStyleDefault
@@ -137,16 +132,6 @@ self.tableView.tableHeaderView = header;
   cell.backgroundColor = [UIColor clearColor];
 
   NSLog(@"Populating cell %ld", indexPath.row);
-
-  /*
-
-  UITableViewCell *cell =
-  [tableView dequeueReusableCellWithIdentifier:@"basic"
-                                  forIndexPath:indexPath];
-
-  cell.textLabel.text = [_menuEntries objectAtIndex:indexPath.row];
-
-  */
 
   NSString *menuTitle = [_menuEntries objectAtIndex:indexPath.row];
 
@@ -166,58 +151,6 @@ self.tableView.tableHeaderView = header;
   return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath
-*)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath]
-withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the
-array, and add a new row to the table view
-    }
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath
-*)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath
-*)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little
-preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - table delegate
 
 - (void)btapped:(id)sender {
@@ -227,7 +160,7 @@ preparation before navigation
   NSString *searchMenu = @"search";
   NSString *archiveMenu = @"archive";
   NSString *themeMenu = @"themes";
-  NSString *settingsMenu = @"settings";
+  NSString *settingsMenu = @"about";
   NSString *soundMenu = @"sound";
 
   NSLog(@"button tapped in %s  for cell %@", __func__, bt.titleLabel.text);
@@ -251,7 +184,14 @@ preparation before navigation
 
   } else if ([settingsMenu
                  isEqualToString:[bt.titleLabel.text lowercaseString]]) {
+    /*
+    SnowAboutMaster *about = [[SnowAboutMaster alloc]
+    initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:about animated:YES];
+    */
+
     self.appMenuSelected([bt.titleLabel.text lowercaseString]);
+
   } else if ([soundMenu isEqualToString:[bt.titleLabel.text lowercaseString]]) {
     // show vc
 

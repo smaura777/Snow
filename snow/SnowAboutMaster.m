@@ -7,92 +7,111 @@
 //
 
 #import "SnowAboutMaster.h"
+#import "SnowTwoLabelCell.h"
+#import "SnowWeb.h"
 
 @interface SnowAboutMaster ()
 
 @end
 
-@implementation SnowAboutMaster
+@implementation SnowAboutMaster {
+  NSArray *_entries;
+}
+
+static NSString *privacy = @"http://glifn.com";
+
+static NSString *homePage = @"http://glifn.com";
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
+
+  _entries = @[ @"About", @"Privacy Policy", @"Version\t\t\t\t1.0" ];
+
+  [self.tableView registerClass:[UITableViewCell class]
+         forCellReuseIdentifier:@"basic"];
+
+  [self.tableView registerClass:[SnowTwoLabelCell class]
+         forCellReuseIdentifier:@"two_label_cell"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    UIBarButtonItem *drawer = [[UIBarButtonItem alloc]
+                               initWithImage:[UIImage imageNamed:@"snow_menu_drawer"]
+                               style:UIBarButtonItemStylePlain
+                               target:self
+                               action:@selector(toggleMenu:)];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = drawer;
+
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
+  // Return the number of sections.
+  return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+  // Return the number of rows in the section.
+  NSInteger sectionCount = [_entries count];
+
+  return sectionCount;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  SnowTwoLabelCell *cell =
+      [tableView dequeueReusableCellWithIdentifier:@"basic"
+                                      forIndexPath:indexPath];
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+  // Configure the cell...
+  cell.backgroundColor = [UIColor clearColor];
+  NSString *key = [_entries objectAtIndex:indexPath.row];
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+  cell.textLabel.textColor =
+      [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+  cell.textLabel.font =
+      [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+  cell.textLabel.text = key;
 
-/*
-#pragma mark - Navigation
+  // cell.value.textColor =  [[SnowAppearanceManager sharedInstance]
+  // currentTheme].textColor;
+  // cell.value.font = [UIFont
+  // preferredFontForTextStyle:UIFontTextStyleHeadline];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+  // cell.value.text = [_entries objectForKey:key];
+
+  if (indexPath.row < 2) {
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+  }
+
+  return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+  if (indexPath.section > 1) {
+    return;
+  }
+
+  SnowWeb *vc = [[SnowWeb alloc] init];
+//  UINavigationController *nav =
+//      [[UINavigationController alloc] initWithRootViewController:vc];
+  vc.url = privacy;
+    [self.navigationController pushViewController:vc animated:YES ];
+  
+}
+
+- (void)toggleMenu:(id)sender {
+  self.menuTapped();
+}
 
 @end
