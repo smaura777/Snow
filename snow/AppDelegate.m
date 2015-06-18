@@ -44,9 +44,9 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
 
   // Override point for customization after application launch.
 
+  [self setupAnalytics];
   [SnowDataManager sharedInstance];
   [SnowAppearanceManager sharedInstance];
-
   [SnowLoggingManager sharedInstance].mode = 0;
 
   [self applyTheme];
@@ -67,7 +67,6 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // and it begins the transition to the background state.
   // Use this method to pause ongoing tasks, disable timers, and throttle down
   // OpenGL ES frame rates. Games should use this method to pause the game.
-
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -76,13 +75,11 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // application to its current state in case it is terminated later.
   // If your application supports background execution, this method is called
   // instead of applicationWillTerminate: when the user quits.
-
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
   // Called as part of the transition from the background to the inactive state;
   // here you can undo many of the changes made on entering the background.
-  
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -99,21 +96,19 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
 - (void)application:(UIApplication *)application
     didRegisterUserNotificationSettings:
         (UIUserNotificationSettings *)notificationSettings {
-  
+
   [[SnowNotificationManager sharedInstance] setSnowLocalNotificationOn:YES];
   [[SnowNotificationManager sharedInstance] fireNotifications];
 }
 
 - (void)application:(UIApplication *)application
     didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  
 }
 
 - (void)application:(UIApplication *)application
     didReceiveLocalNotification:(UILocalNotification *)notification {
   application.applicationIconBadgeNumber = 0;
 
- 
   UIAlertController *alert;
 
   NSDictionary *timerInfo = notification.userInfo;
@@ -209,7 +204,7 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
                                       ofType:defaultSoundFileNameExtension];
 
   if (!alertSoundFilePath) {
-   // NSLog(@"Could not find sound file ");
+    // NSLog(@"Could not find sound file ");
   }
 
   NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:alertSoundFilePath];
@@ -259,6 +254,16 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   size:28]}];
 
   */
+}
+
+#pragma mark - Google Analytics setup
+- (void)setupAnalytics {
+  [GAI sharedInstance].trackUncaughtExceptions = YES;
+  [GAI sharedInstance].dispatchInterval = 30;
+
+  [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
+
+  [[GAI sharedInstance] trackerWithTrackingId:@"UA-59456103-2"];
 }
 
 @end

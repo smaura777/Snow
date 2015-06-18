@@ -7,6 +7,9 @@
 //
 
 #import "SnowQuickTimerVC.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 #define STM_buttonBorderColor                                                  \
   [UIColor colorWithHue:0.5 saturation:1 brightness:1 alpha:0.10];
@@ -841,8 +844,20 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 
 #pragma mark - VC Utility
 
+- (void)updateAnalyticsWithScreen:(NSString *)screen {
+  id tracker = [[GAI sharedInstance] defaultTracker];
+  if (tracker && screen) {
+    // [tracker set:kGAIScreenName value:screen];
+    [tracker send:[[[GAIDictionaryBuilder createScreenView]
+                         set:screen
+                      forKey:kGAIScreenName] build]];
+  }
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  [self updateAnalyticsWithScreen:@"Quick Timer Screen"];
 
   NSDictionary *titleAttributes = @{
     NSFontAttributeName :

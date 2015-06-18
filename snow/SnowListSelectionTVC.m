@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self updateAnalyticsWithScreen:@"List Selection Screen"];
+
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
 
@@ -45,8 +47,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-    self.tableView.backgroundColor =
-    [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
+  self.tableView.backgroundColor =
+      [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self updateAnalyticsWithScreen:@"Task detail Screen"];
+
   [self.tableView registerClass:[UITableViewCell class]
          forCellReuseIdentifier:@"basic"];
 

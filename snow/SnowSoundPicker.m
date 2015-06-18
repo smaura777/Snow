@@ -28,6 +28,9 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+   [self updateAnalyticsWithScreen:@"Alert Sound Switcher Screen"]; 
+    
   /*
 _session = [AVAudioSession sharedInstance];
 [_session setCategory:AVAudioSessionCategoryPlayback error:nil];

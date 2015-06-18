@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [super updateAnalyticsWithScreen:@"Create List Screen"];
 
   AppDelegate *app =
       (AppDelegate *)[[UIApplication sharedApplication] delegate];

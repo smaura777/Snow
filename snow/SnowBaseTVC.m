@@ -25,16 +25,16 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 
- /*
-  NSDictionary *titleAttributes = @{
-    NSFontAttributeName :
-        [UIFont fontWithName:@"AvenirNextCondensed-Medium" size:14.0],
-    NSForegroundColorAttributeName : [UIColor whiteColor]
-  };
+  /*
+   NSDictionary *titleAttributes = @{
+     NSFontAttributeName :
+         [UIFont fontWithName:@"AvenirNextCondensed-Medium" size:14.0],
+     NSForegroundColorAttributeName : [UIColor whiteColor]
+   };
 
-  self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
-  */
-    
+   self.navigationController.navigationBar.titleTextAttributes =
+   titleAttributes;
+   */
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -151,7 +151,7 @@
                             AndLabel:(UILabel *)msgLabel {
 
   if (sec_count == 0) {
-  
+
     if (self.tableView.backgroundView == nil) {
 
       msgLabel.frame = self.tableView.frame;
@@ -188,6 +188,18 @@
   [alert addAction:action1];
 
   [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - analytics
+
+- (void)updateAnalyticsWithScreen:(NSString *)screen {
+  id tracker = [[GAI sharedInstance] defaultTracker];
+  if (tracker && screen) {
+    // [tracker set:kGAIScreenName value:screen];
+    [tracker send:[[[GAIDictionaryBuilder createScreenView]
+                         set:screen
+                      forKey:kGAIScreenName] build]];
+  }
 }
 
 @end

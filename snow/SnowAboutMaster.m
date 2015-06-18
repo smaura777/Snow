@@ -24,6 +24,8 @@ static NSString *homePage = @"http://glifn.com/snow/";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+     [self updateAnalyticsWithScreen:@"About Screen"]; 
 
   _entries = @[ @"About", @"Privacy Policy", @"Version" ];
 

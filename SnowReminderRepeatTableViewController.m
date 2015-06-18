@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self updateAnalyticsWithScreen:@"Create Task Reminder Repeat Screen"];
+
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
 

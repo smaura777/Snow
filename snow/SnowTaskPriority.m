@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  [self updateAnalyticsWithScreen:@"Task priority selection Screen"];
+
   _selectedPriority = _initialPriority;
   _priorities = @[ @"low", @"medium", @"high" ];
 

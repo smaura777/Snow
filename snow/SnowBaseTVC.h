@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "UIImage+SnowImageUtils.h"
 #import "SnowAppearanceManager.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface SnowBaseTVC : UITableViewController
 
@@ -27,5 +30,7 @@
                             AndLabel:(UILabel *)msgLabel;
 
 - (void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)msg;
+
+- (void)updateAnalyticsWithScreen:(NSString *)screen;
 
 @end

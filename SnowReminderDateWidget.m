@@ -7,6 +7,9 @@
 //
 
 #import "SnowReminderDateWidget.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface SnowReminderDateWidget ()
 
@@ -16,8 +19,12 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
-    //[UIColor blackColor];
+
+  [self updateAnalyticsWithScreen:@"Create Task Reminder Screen"];
+
+  self.view.backgroundColor =
+      [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
+  //[UIColor blackColor];
   //[[SnowAppearanceManager sharedInstance] currentTheme].ternary;
   /*
 _reminderDatePicker.tintColor =
@@ -27,8 +34,8 @@ _reminderDatePicker.tintColor =
   //[[UIDatePicker appearance] setTintColor: [[SnowAppearanceManager
   // sharedInstance] currentTheme].primary;
 
-    _reminderDatePicker.backgroundColor = [UIColor clearColor];
-      //[UIColor colorWithRed:.7 green:.7 blue:.7 alpha:.77];
+  _reminderDatePicker.backgroundColor = [UIColor clearColor];
+  //[UIColor colorWithRed:.7 green:.7 blue:.7 alpha:.77];
 
   // check for key value compliance
 
@@ -39,7 +46,7 @@ _reminderDatePicker.tintColor =
           forKey:@"textColor"];
 
   } @catch (NSException *exception) {
-    //NSLog(@"CAUGHT %@", [exception name]);
+    // NSLog(@"CAUGHT %@", [exception name]);
   }
 
   // [_reminderLabel setValue: [UIFont fontWithName:@"AvenirNext-Medium"
@@ -53,6 +60,16 @@ _reminderDatePicker.tintColor =
   // Do any additional setup after loading the view.
   if (_currentReminder) {
     [_reminderDatePicker setDate:_currentReminder animated:YES];
+  }
+}
+
+- (void)updateAnalyticsWithScreen:(NSString *)screen {
+  id tracker = [[GAI sharedInstance] defaultTracker];
+  if (tracker && screen) {
+    // [tracker set:kGAIScreenName value:screen];
+    [tracker send:[[[GAIDictionaryBuilder createScreenView]
+                         set:screen
+                      forKey:kGAIScreenName] build]];
   }
 }
 

@@ -28,6 +28,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self updateAnalyticsWithScreen:@"All Tasks For List Screen"];
+
   _emptyMessage = @"No tasks";
 
   _firstLoad = YES;

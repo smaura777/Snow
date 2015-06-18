@@ -319,6 +319,8 @@
 - (void)viewDidLoad {
 
   [super viewDidLoad];
+
+  [self updateAnalyticsWithScreen:@"Home Screen"];
   _emptyMessage = @"No tasks";
 
   // [self setNeedsStatusBarAppearanceUpdate];

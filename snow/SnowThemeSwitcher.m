@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+    [self updateAnalyticsWithScreen:@"Theme Switcher Screen"]; 
+    
   _themeNames = @[ @"fog", @"azure", @"orange", @"sunny", @"neon", @"light" ];
   _selectedTheme = [[SnowAppearanceManager sharedInstance] currentTheme];
 }

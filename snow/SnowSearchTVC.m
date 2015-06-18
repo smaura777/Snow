@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self updateAnalyticsWithScreen:@"Search Screen"];
+
   // _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0,
   // self.view.frame.size.width, 44.0)];
 

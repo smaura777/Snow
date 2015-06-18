@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  [self updateAnalyticsWithScreen:@"Archive Screen"];
+
   _emptyMessage = @"No archived tasks";
   _firstLoad = YES;
   // _forceReload =  NO;
