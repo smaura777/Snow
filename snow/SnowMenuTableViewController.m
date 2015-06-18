@@ -22,13 +22,13 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-    NSProcessInfo *info = [NSProcessInfo processInfo];
-    
-    NSLog(@"OS Info Major %ld Minor %ld  Patch %ld",
-          info.operatingSystemVersion.majorVersion,
-          info.operatingSystemVersion.minorVersion,
-          info.operatingSystemVersion.patchVersion
-          );
+//    NSProcessInfo *info = [NSProcessInfo processInfo];
+//    
+//    NSLog(@"OS Info Major %ld Minor %ld  Patch %ld",
+//          info.operatingSystemVersion.majorVersion,
+//          info.operatingSystemVersion.minorVersion,
+//          info.operatingSystemVersion.patchVersion
+//          );
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -50,7 +50,7 @@
   UITableViewCell *cell =
       [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
-  NSLog(@"Cell view tag %ld ", cell.tag);
+ //NSLog(@"Cell view tag %ld ", cell.tag);
 
   switch (cell.tag) {
 
@@ -76,7 +76,7 @@
 
   } break;
   case 20: {
-    NSLog(@"Search invoke");
+   // NSLog(@"Search invoke");
     /**
     [self presentViewController:_searchController animated:YES completion:^{
         NSLog(@"NOTHING");

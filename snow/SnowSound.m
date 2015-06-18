@@ -22,11 +22,11 @@ NSString *const SNOW_ALERT_SHORT_INDUSTRIAL_ALARM = @"industrial_alarm.caf";
 + (NSString *)nameForKey:(NSString *)key {
 
   NSDictionary *soundDisplayName = @{
-    SNOW_ALERT_LONG_RAILS : @"Train",
-    SNOW_ALERT_LONG_POLICE_BRIT : @"London",
-    SNOW_ALERT_LONG_SCHOOL_ALARM : @"School",
-    SNOW_ALERT_SHORT_INDUSTRIAL_ALARM : @"Industrial",
-    SNOW_ALERT_SHORT_PHONE_VIBRATE : @"Vibrate"
+    SNOW_ALERT_LONG_RAILS : @"train",
+    SNOW_ALERT_LONG_POLICE_BRIT : @"london",
+    SNOW_ALERT_LONG_SCHOOL_ALARM : @"school",
+    SNOW_ALERT_SHORT_INDUSTRIAL_ALARM : @"industrial",
+    SNOW_ALERT_SHORT_PHONE_VIBRATE : @"vibrate"
   };
   NSString *val = [[soundDisplayName objectForKey:key] copy];
   return val;
@@ -49,6 +49,8 @@ NSString *const SNOW_ALERT_SHORT_INDUSTRIAL_ALARM = @"industrial_alarm.caf";
 - (NSString *)setupWithSoundName:(NSString *)name {
 
   NSString *filename;
+
+    name = [name lowercaseString];
 
   if ([name isEqualToString:SNOW_ALERT_LONG_RAILS]) {
     filename = SNOW_ALERT_LONG_RAILS;

@@ -266,22 +266,22 @@ const double kSnowDataStore_version = 1.0;
 
     BOOL st1 = [db executeUpdate:sql1];
     if (st1 == NO) {
-      NSLog(@"Last Error: %@", [db lastErrorMessage]);
+      // NSLog(@"Last Error: %@", [db lastErrorMessage]);
     }
 
     BOOL st2 = [db executeUpdate:sql2];
     if (st2 == NO) {
-      NSLog(@"Last Error: %@", [db lastErrorMessage]);
+      // NSLog(@"Last Error: %@", [db lastErrorMessage]);
     }
 
     BOOL st3 = [db executeUpdate:sql3];
     if (st3 == NO) {
-      NSLog(@"Last Error: %@", [db lastErrorMessage]);
+      // NSLog(@"Last Error: %@", [db lastErrorMessage]);
     }
 
     BOOL st4 = [db executeUpdate:sql4];
     if (st4 == NO) {
-      NSLog(@"Last Error: %@", [db lastErrorMessage]);
+      // NSLog(@"Last Error: %@", [db lastErrorMessage]);
     }
 
   }];
@@ -296,7 +296,7 @@ const double kSnowDataStore_version = 1.0;
     [self checkDBVersion];
     [self dumpDatabase];
   } else {
-    NSLog(@"CREATE STMT ===========  %@\n", kSnowDataStore_createdb);
+    // NSLog(@"CREATE STMT ===========  %@\n", kSnowDataStore_createdb);
 
     _queue = [FMDatabaseQueue databaseQueueWithPath:[_databaseURL path]];
     [_queue inDatabase:^(FMDatabase *db) {
@@ -305,7 +305,7 @@ const double kSnowDataStore_version = 1.0;
 
       if (st == NO) {
         [db rollback];
-        NSLog(@"Last Error: %@", [db lastErrorMessage]);
+        // NSLog(@"Last Error: %@", [db lastErrorMessage]);
       } else {
         [db commit];
       }
@@ -389,7 +389,7 @@ const double kSnowDataStore_version = 1.0;
       BOOL cst = [db executeStatements:dbStmt];
       if (cst == NO) {
         [db rollback];
-        NSLog(@"lAST ERROR %@", [db lastError]);
+        // NSLog(@"lAST ERROR %@", [db lastError]);
       } else {
         [db commit];
       }
@@ -405,7 +405,7 @@ const double kSnowDataStore_version = 1.0;
       BOOL ust = [db executeStatements:dbStmt];
       if (ust == NO) {
         [db rollback];
-        NSLog(@"lAST ERROR %@", [db lastError]);
+        // NSLog(@"lAST ERROR %@", [db lastError]);
       } else {
         [db commit];
       }
@@ -419,23 +419,26 @@ const double kSnowDataStore_version = 1.0;
   NSString *dumpsql_task = @"SELECT * FROM snowtask ";
   [_queue inDatabase:^(FMDatabase *db) {
     FMResultSet *results = [db executeQuery:dumpsql_list];
-    NSLog(@"id title created type lastupdated task_count");
+    // NSLog(@"id title created type lastupdated task_count");
     while ([results next]) {
+      /*
       NSLog(@"%@ %@  %@ %@ %@ %@ ", [results stringForColumn:@"id"],
             [results stringForColumn:@"title"],
             [NSNumber numberWithInt:[results intForColumn:@"created"]],
             [NSNumber numberWithInt:[results intForColumn:@"type"]],
             [NSNumber numberWithInt:[results intForColumn:@"lastupdated"]],
             [NSNumber numberWithInt:[results intForColumn:@"task_count"]]);
+       */
     }
 
     [results close];
 
     results = [db executeQuery:dumpsql_task];
-    NSLog(@"id listID title created type priority reminder repeat deleted \
+    //NSLog(@"id listID title created type priority reminder repeat deleted \
               completed completionDate lastupdated");
     while ([results next]) {
-      NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@",
+      /**
+       NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@",
             [results stringForColumn:@"id"],
             [results stringForColumn:@"listID"],
             [results stringForColumn:@"title"],
@@ -448,12 +451,13 @@ const double kSnowDataStore_version = 1.0;
             [NSNumber numberWithInt:[results intForColumn:@"completed"]],
             [NSNumber numberWithInt:[results intForColumn:@"completionDate"]],
             [NSNumber numberWithInt:[results intForColumn:@"lastupdated"]]);
+       */
     }
 
   }];
 
-  NSLog(@"\n\n ===== LIST TABLE ======== \n %@",
-        [[self fetchTaskForList:nil] description]);
+  // NSLog(@"\n\n ===== LIST TABLE ======== \n %@",
+  // [[self fetchTaskForList:nil] description]);
 }
 
 // ===================================================================
@@ -468,7 +472,7 @@ const double kSnowDataStore_version = 1.0;
             [[NSUUID UUID] UUIDString], list.title,
             [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]];
 
-    NSLog(@"status q3 : %d", st3);
+    // NSLog(@"status q3 : %d", st3);
 
     FMResultSet *results = [db executeQuery:@"SELECT * FROM snowlist"];
 
@@ -505,7 +509,7 @@ const double kSnowDataStore_version = 1.0;
 
     ];
 
-    NSLog(@"status q3 : %d", st3);
+    // NSLog(@"status q3 : %d", st3);
 
     FMResultSet *results = [db executeQuery:@"SELECT * FROM snowlist"];
 
@@ -568,11 +572,11 @@ const double kSnowDataStore_version = 1.0;
         }
 
       } else {
-        NSLog(@"Could not delete list: %@", list.title);
+        // NSLog(@"Could not delete list: %@", list.title);
       }
 
     } else {
-      NSLog(@"Could not delete task associated with %@ ", list.title);
+      // NSLog(@"Could not delete task associated with %@ ", list.title);
     }
 
   }];
@@ -636,7 +640,7 @@ const double kSnowDataStore_version = 1.0;
         s.taskcount =
             [NSNumber numberWithInteger:[results intForColumn:@"task_count"]];
         [tmp addObject:s];
-        // NSLog(@"snow content %@", [tmp description]);
+        // //NSLog(@"snow content %@", [tmp description]);
       }
 
       _cachedList = tmp;
@@ -664,7 +668,7 @@ const double kSnowDataStore_version = 1.0;
             [NSNumber numberWithInteger:[results intForColumn:@"task_count"]];
 
         [tmp addObject:s];
-        // NSLog(@"snow content %@", [tmp description]);
+        // //NSLog(@"snow content %@", [tmp description]);
       }
 
       _cachedList = tmp;
@@ -695,7 +699,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
             [NSNumber numberWithInteger:[results intForColumn:@"task_count"]];
 
         [tmp addObject:s];
-        // NSLog(@"snow content %@", [tmp description]);
+        // //NSLog(@"snow content %@", [tmp description]);
       }
 
       _cachedList = tmp;
@@ -729,7 +733,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
             [NSNumber numberWithInteger:[results intForColumn:@"task_count"]];
 
         [tmp addObject:s];
-        // NSLog(@"snow content %@", [tmp description]);
+        // //NSLog(@"snow content %@", [tmp description]);
       }
 
       handler(nil, tmp);
@@ -799,7 +803,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
             [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]];
 
     if (!queryStatus) {
-      NSLog(@" Last Error: %@", [db lastErrorMessage]);
+      // NSLog(@" Last Error: %@", [db lastErrorMessage]);
     }
 
   }];
@@ -1300,12 +1304,12 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
     NSNumber *lu =
         [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]];
 
-    NSLog(@"LAST UPDATED %@ ", lu);
+    // NSLog(@"LAST UPDATED %@ ", lu);
 
     NSNumber *lu2 =
         [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
 
-    NSLog(@"LAST UPDATED %@ ", lu2);
+    // NSLog(@"LAST UPDATED %@ ", lu2);
 
     BOOL queryStatus = [db
         executeUpdate:
@@ -1314,7 +1318,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
             [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]];
 
     if (!queryStatus) {
-      NSLog(@"Could not saved timer object : %@", [db lastErrorMessage]);
+      // NSLog(@"Could not saved timer object : %@", [db lastErrorMessage]);
     }
 
   }];
@@ -1327,7 +1331,8 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
     BOOL queryStatus = [db executeUpdate:st, tm.itemId];
 
     if (!queryStatus) {
-      NSLog(@"Could not remove saved timer object : %@", [db lastErrorMessage]);
+      // NSLog(@"Could not remove saved timer object : %@", [db
+      // lastErrorMessage]);
     }
 
   }];
@@ -1374,7 +1379,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
             timer.itemId];
 
     if (!queryStatus) {
-      NSLog(@"Could not update timer object : %@", [db lastErrorMessage]);
+      // NSLog(@"Could not update timer object : %@", [db lastErrorMessage]);
     }
 
   }];
@@ -1422,7 +1427,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
       }
 
       if (!updateStatus) {
-        NSLog(@" failed background update %@ ", [db lastErrorMessage]);
+        // NSLog(@" failed background update %@ ", [db lastErrorMessage]);
       }
     }
 
@@ -1453,7 +1458,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
 
     return theme;
   } else {
-    NSLog(@"Last Error: %@", [db lastErrorMessage]);
+    // NSLog(@"Last Error: %@", [db lastErrorMessage]);
     [db close];
   }
 
@@ -1500,7 +1505,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
       }
 
       if (!updateStatus) {
-        NSLog(@" failed background update %@ ", [db lastErrorMessage]);
+        // NSLog(@" failed background update %@ ", [db lastErrorMessage]);
       }
     }
   }];
@@ -1533,7 +1538,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
 
     return background;
   } else {
-    NSLog(@"Last Error: %@", [db lastErrorMessage]);
+    //NSLog(@"Last Error: %@", [db lastErrorMessage]);
     [db close];
   }
 
@@ -1583,7 +1588,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
       }
 
       if (!updateStatus) {
-        NSLog(@" failed sound update %@ ", [db lastErrorMessage]);
+        // NSLog(@" failed sound update %@ ", [db lastErrorMessage]);
       }
     }
   }];
@@ -1613,7 +1618,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
 
     return sound;
   } else {
-    NSLog(@"Last Error: %@", [db lastErrorMessage]);
+    // NSLog(@"Last Error: %@", [db lastErrorMessage]);
     [db close];
   }
 

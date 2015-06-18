@@ -210,7 +210,7 @@
     [[SnowDataManager sharedInstance]
                    removeList:selectedList
         WithCompletionHandler:^(NSError *error, NSArray *lists) {
-          NSLog(@"list %@  deleted successfully ", selectedList.itemID);
+         // NSLog(@"list %@  deleted successfully ", selectedList.itemID);
 
           _completeList = lists;
 

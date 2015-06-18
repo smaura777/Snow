@@ -17,6 +17,7 @@
 #import "SnowBackground.h"
 #import "SnowTimer.h"
 #import "SnowSound.h"
+#import "SnowLoggingManager.h"
 
 @interface SnowDataManager : NSObject
 @property NSArray *cachedList;
@@ -88,10 +89,7 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler;
 - (SnowBackground *)fetchDefaultBackground;
 
 #pragma mark -  Sound alert preferences
--(void)updateDefaultSound:(SnowSound *)sound;
--(SnowSound *)fetchDefaultSound;
-
-
-
+- (void)updateDefaultSound:(SnowSound *)sound;
+- (SnowSound *)fetchDefaultSound;
 
 @end

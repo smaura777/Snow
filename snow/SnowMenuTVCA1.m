@@ -118,7 +118,7 @@ self.tableView.tableHeaderView = header;
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
-  NSLog(@"mENU ITEM COUNT = %ld", [_menuEntries count]);
+  //NSLog(@"mENU ITEM COUNT = %ld", [_menuEntries count]);
   return [_menuEntries count];
 }
 
@@ -131,7 +131,7 @@ self.tableView.tableHeaderView = header;
 
   cell.backgroundColor = [UIColor clearColor];
 
-  NSLog(@"Populating cell %ld", indexPath.row);
+  //NSLog(@"Populating cell %ld", indexPath.row);
 
   NSString *menuTitle = [_menuEntries objectAtIndex:indexPath.row];
 
@@ -163,7 +163,7 @@ self.tableView.tableHeaderView = header;
   NSString *settingsMenu = @"about";
   NSString *soundMenu = @"sound";
 
-  NSLog(@"button tapped in %s  for cell %@", __func__, bt.titleLabel.text);
+  //NSLog(@"button tapped in %s  for cell %@", __func__, bt.titleLabel.text);
 
   if ([listMenu isEqualToString:[bt.titleLabel.text lowercaseString]]) {
     self.appMenuSelected([bt.titleLabel.text lowercaseString]);

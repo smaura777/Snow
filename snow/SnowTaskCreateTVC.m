@@ -22,10 +22,13 @@
 
 @implementation SnowTaskCreateTVC {
   BOOL _isReminderEnabled;
+  BOOL _firstLoad;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  _firstLoad = YES;
 
   AppDelegate *app =
       (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -230,6 +233,10 @@
     simpleTextViewCell.textView.returnKeyType = UIReturnKeyDone;
 
     [simpleTextViewCell.textView sizeToFit];
+    if (_firstLoad == YES) {
+      [simpleTextViewCell.textView becomeFirstResponder];
+      _firstLoad = NO;
+    }
 
   } break;
 
@@ -299,13 +306,13 @@
         enableReminder.textAlignment = NSTextAlignmentCenter;
         enableReminder.textColor =
             [[SnowAppearanceManager sharedInstance] currentTheme].primary;
-        NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
+        //NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
         if ([[cell.contentView subviews] count] > 0) {
           for (UIView *v in [cell.contentView subviews]) {
             [v removeFromSuperview];
           }
         }
-        NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
+        //NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
         [cell.contentView addSubview:enableReminder];
 
         // cell.textLabel.text = @"enable reminder";
@@ -326,13 +333,13 @@
     disableReminder.text = @"disable reminder";
     disableReminder.textAlignment = NSTextAlignmentCenter;
     // disableReminder.textColor = [UIColor whiteColor];
-    NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
+    //NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
     if ([[cell.contentView subviews] count] > 0) {
       for (UIView *v in [cell.contentView subviews]) {
         [v removeFromSuperview];
       }
     }
-    NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
+    //NSLog(@" subv count %ld", [[cell.contentView subviews] count]);
 
     [cell.contentView addSubview:disableReminder];
 
@@ -342,7 +349,7 @@
   } break;
 
   default:
-    NSLog(@"hit default");
+    //NSLog(@"hit default");
     break;
   }
 
@@ -425,7 +432,7 @@ titleForHeaderInSection:(NSInteger)section {
   int dateChangeCount = 0;
 
   if (!_selectedList) {
-    NSLog(@"No List selected "); // Should never be feasible
+    //NSLog(@"No List selected "); // Should never be feasible
     return;
   }
 
@@ -496,7 +503,7 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 - (IBAction)changeListAction:(id)sender {
-  NSLog(@"Change list action....");
+  //NSLog(@"Change list action....");
   // UIStoryboard* storyboard = self.storyboard;
   UIStoryboard *storyboard =
       [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -527,9 +534,9 @@ titleForHeaderInSection:(NSInteger)section {
   format.dateStyle = NSDateFormatterShortStyle;
   format.timeStyle = NSDateFormatterShortStyle;
 
-  NSLog(@"Set a reminder tappeed ");
+  //NSLog(@"Set a reminder tappeed ");
 
-  NSLog(@"Change list action....");
+  //NSLog(@"Change list action....");
   // UIStoryboard* storyboard = self.storyboard;
 
   UIStoryboard *storyboard =
@@ -543,12 +550,12 @@ titleForHeaderInSection:(NSInteger)section {
   }
 
   rdw.reminderChanged = ^(NSDate *item) {
-    NSLog(@"Something Changed...%@ \n\n", [item description]);
+    //NSLog(@"Something Changed...%@ \n\n", [item description]);
 
     if (![_reminderDate isEqualToDate:item]) {
       _dateHasChanged = YES;
       _reminderDate = item;
-      NSLog(@"New reminder date older than previous one ");
+      //NSLog(@"New reminder date older than previous one ");
       [self.tableView reloadData];
     }
 
@@ -575,7 +582,7 @@ titleForHeaderInSection:(NSInteger)section {
   }
 
   rdw.repeatSelected = ^(NSInteger item) {
-    NSLog(@"Something Changed repeat every ...%ld", item);
+    //NSLog(@"Something Changed repeat every ...%ld", item);
 
     _repeatFrequencyString = [repeatOptions objectAtIndex:item];
 
@@ -632,16 +639,16 @@ titleForHeaderInSection:(NSInteger)section {
 #pragma mark -  UITextViewDelegate
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-  NSLog(@"TEXTVIEW EDITING ENDED ...");
+  //NSLog(@"TEXTVIEW EDITING ENDED ...");
   if ([textView.text length] > 0) {
     //_taskTitle = textView.text;
   }
 
-  NSLog(@"%s", __func__);
+  //NSLog(@"%s", __func__);
 }
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
-  NSLog(@"%s", __func__);
+  //NSLog(@"%s", __func__);
   return YES;
 }
 
@@ -651,7 +658,7 @@ titleForHeaderInSection:(NSInteger)section {
   if ([text length] > 0) {
     unichar last = [text characterAtIndex:0];
     if ([[NSCharacterSet newlineCharacterSet] characterIsMember:last]) {
-      NSLog(@"Got a newline character ...");
+      //NSLog(@"Got a newline character ...");
       [textView resignFirstResponder];
     }
     //_taskTitle = textView.text ;
@@ -667,7 +674,7 @@ titleForHeaderInSection:(NSInteger)section {
                            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
   }
 
-  NSLog(@"%s", __func__);
+  //NSLog(@"%s", __func__);
 }
 
 - (void)toggleReminderSettings {
@@ -733,6 +740,7 @@ titleForHeaderInSection:(NSInteger)section {
     _taskPriority = [NSNumber numberWithInt:0];
   }
 
+  _firstLoad = YES;
   [self.tableView reloadData];
 }
 

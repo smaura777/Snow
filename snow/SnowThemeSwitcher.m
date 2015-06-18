@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  _themeNames = @[ @"Grass", @"Azure", @"orange", @"Sunny", @"Neon", @"Light" ];
+  _themeNames = @[ @"fog", @"azure", @"orange", @"sunny", @"neon", @"light" ];
   _selectedTheme = [[SnowAppearanceManager sharedInstance] currentTheme];
 }
 

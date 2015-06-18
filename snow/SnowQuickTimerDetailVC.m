@@ -87,7 +87,7 @@
     [_timerEngine invalidate];
 
     _timerLabel.text = [NSString stringWithFormat:@"00:00:00", nil];
-    NSLog(@"Timer invalidated");
+    // NSLog(@"Timer invalidated");
   }
 }
 
@@ -152,7 +152,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
   [_timerEngine invalidate];
-  NSLog(@"Timer invalidated");
+  // NSLog(@"Timer invalidated");
 }
 
 - (void)viewDidLoad {
@@ -165,7 +165,7 @@
   NSDateFormatter *df = [[NSDateFormatter alloc] init];
   [df setDateFormat:@"EEEE, MMMM d, YYYY hh:mm:ss a"];
 
-  NSLog(@"Timer expires on %@", [df stringFromDate:_fireDate]);
+  // NSLog(@"Timer expires on %@", [df stringFromDate:_fireDate]);
 
   _timerEngine.tolerance = 0.1;
 

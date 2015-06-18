@@ -13,8 +13,7 @@
 @interface SnowBaseTVC : UITableViewController
 
 @property(nonatomic, strong) UILabel *emptyLabel;
-@property (nonatomic,strong) UIImage *closeBt;
-
+@property(nonatomic, strong) UIImage *closeBt;
 
 - (void)showEmptyTable:(UITableView *)table
           ForContainer:(UIView *)container

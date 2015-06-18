@@ -13,6 +13,7 @@
 #import "SnowAppearanceManager.h"
 #import "UIImage+SnowImageUtils.h"
 #import <AVFoundation/AVFoundation.h>
+#import "SnowLoggingManager.h"
 
 @interface AppDelegate () <AVAudioPlayerDelegate>
 
@@ -44,8 +45,9 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // Override point for customization after application launch.
 
   [SnowDataManager sharedInstance];
-
   [SnowAppearanceManager sharedInstance];
+
+  [SnowLoggingManager sharedInstance].mode = 0;
 
   [self applyTheme];
 
@@ -65,7 +67,7 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // and it begins the transition to the background state.
   // Use this method to pause ongoing tasks, disable timers, and throttle down
   // OpenGL ES frame rates. Games should use this method to pause the game.
-  NSLog(@"called %s", __func__);
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -74,20 +76,19 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // application to its current state in case it is terminated later.
   // If your application supports background execution, this method is called
   // instead of applicationWillTerminate: when the user quits.
-  NSLog(@"called %s", __func__);
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
   // Called as part of the transition from the background to the inactive state;
   // here you can undo many of the changes made on entering the background.
-  NSLog(@"called %s", __func__);
+  
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   // Restart any tasks that were paused (or not yet started) while the
   // application was inactive. If the application was previously in the
   // background, optionally refresh the user interface.
-  NSLog(@"called %s", __func__);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -98,28 +99,28 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
 - (void)application:(UIApplication *)application
     didRegisterUserNotificationSettings:
         (UIUserNotificationSettings *)notificationSettings {
-  NSLog(@"Ready for local notifications ");
+  
   [[SnowNotificationManager sharedInstance] setSnowLocalNotificationOn:YES];
   [[SnowNotificationManager sharedInstance] fireNotifications];
 }
 
 - (void)application:(UIApplication *)application
     didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  NSLog(@"Ready for remote notifications ");
+  
 }
 
 - (void)application:(UIApplication *)application
     didReceiveLocalNotification:(UILocalNotification *)notification {
   application.applicationIconBadgeNumber = 0;
 
-  NSLog(@"************** Received local notification ");
+ 
   UIAlertController *alert;
 
   NSDictionary *timerInfo = notification.userInfo;
   if ([timerInfo valueForKey:@"TimerItemKey"]) {
 
-      [self prepPlayer];
-      
+    [self prepPlayer];
+
     alert = [UIAlertController
         alertControllerWithTitle:@"Timer"
                          message:notification.alertBody
@@ -128,20 +129,18 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
     UIAlertAction *action1 =
         [UIAlertAction actionWithTitle:@"close"
                                  style:UIAlertActionStyleCancel
-                               handler:^(UIAlertAction *action){
-                                   
-                                   if (_aPlayer && ([_aPlayer isPlaying]) ){
-                                       [_aPlayer stop];
-                                   }
+                               handler:^(UIAlertAction *action) {
+
+                                 if (_aPlayer && ([_aPlayer isPlaying])) {
+                                   [_aPlayer stop];
+                                 }
 
                                }];
 
     [alert addAction:action1];
-      if (_aPlayer && (![_aPlayer isPlaying]) ){
-          [_aPlayer play];
-      }
-      
-      
+    if (_aPlayer && (![_aPlayer isPlaying])) {
+      [_aPlayer play];
+    }
 
   } else {
 
@@ -210,7 +209,7 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
                                       ofType:defaultSoundFileNameExtension];
 
   if (!alertSoundFilePath) {
-    NSLog(@"Could not find sound file ");
+   // NSLog(@"Could not find sound file ");
   }
 
   NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:alertSoundFilePath];

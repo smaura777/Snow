@@ -82,7 +82,7 @@
         [UIFont fontWithName:@"AvenirNextCondensed-Regular" size:28]
   }];
 
-  NSLog(@"TEXT HEIGHT %lg", textSize.height);
+  // NSLog(@"TEXT HEIGHT %lg", textSize.height);
 
   CGSize adSize = CGSizeMake(_taskHeadline.bounds.size.width, 200);
 
@@ -112,7 +112,7 @@
         [UIFont fontWithName:@"AvenirNextCondensed-Regular" size:28]
   }];
 
-  NSLog(@"TEXT HEIGHT %lg", textSize.height);
+  //NSLog(@"TEXT HEIGHT %lg", textSize.height);
 
   CGSize adSize =
       CGSizeMake(_taskHeadline.bounds.size.width, textSize.height + 100);
@@ -426,7 +426,7 @@ titleForHeaderInSection:(NSInteger)section {
     return;
   }
 
-  NSLog(@"DO EDIT ...");
+  // NSLog(@"DO EDIT ...");
 
   SnowTaskCreateTVC *createTaskVC =
       [[SnowTaskCreateTVC alloc] initWithStyle:UITableViewStyleGrouped];
@@ -488,7 +488,7 @@ titleForHeaderInSection:(NSInteger)section {
                  removeTask:_detailTask
       WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
 
-        NSLog(@"Clear operation completed for task ");
+        // NSLog(@"Clear operation completed for task ");
         [_delegate popDetail];
 
       }];
@@ -515,7 +515,7 @@ titleForHeaderInSection:(NSInteger)section {
   [[SnowDataManager sharedInstance]
                  updateTask:_detailTask
       WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Task was reset successfullly");
+        // NSLog(@"Task was reset successfullly");
 
         if (shouldRescheduleReminder) {
           [[SnowNotificationManager sharedInstance]
@@ -528,16 +528,16 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 - (void)doComplete:(id)sender {
-  NSLog(@"DO DELETE ...");
+  // NSLog(@"DO DELETE ...");
   _detailTask.completed = YES;
 
   [[SnowDataManager sharedInstance]
                  updateTask:_detailTask
       WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Delete operation completed for task ");
+        // NSLog(@"Delete operation completed for task ");
 
         if (error) {
-          NSLog(@"Failed updated %s", __FUNCTION__);
+          // NSLog(@"Failed updated %s", __FUNCTION__);
         }
 
       }];
@@ -546,16 +546,16 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 - (void)doDelete:(id)sender {
-  NSLog(@"DO DELETE ...");
+  // NSLog(@"DO DELETE ...");
   _detailTask.deleted = YES;
 
   [[SnowDataManager sharedInstance]
                  updateTask:_detailTask
       WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Delete operation completed for task ");
+        // NSLog(@"Delete operation completed for task ");
 
         if (error) {
-          NSLog(@"Failed updated %s", __FUNCTION__);
+          // NSLog(@"Failed updated %s", __FUNCTION__);
         }
 
       }];

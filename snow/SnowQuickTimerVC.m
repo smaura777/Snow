@@ -183,7 +183,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 - (void)timerButtonTapped:(id)sender {
 
   UIButton *bt = (UIButton *)sender;
-  NSLog(@"Button %ld touched ", bt.tag);
+  // NSLog(@"Button %ld touched ", bt.tag);
 
   _timerObject = [[SnowDataManager sharedInstance]
       fetchSavedTimerForKey:[NSString stringWithFormat:@"%ld", bt.tag]];
@@ -413,7 +413,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 - (void)startTimer {
 
   if (!_timerObject) {
-    NSLog(@"Could not fetch timer...");
+    // NSLog(@"Could not fetch timer...");
     return;
   }
 
@@ -508,7 +508,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
     _isTimerPaused = NO;
     _timerLabel.text = [NSString stringWithFormat:@"Done!", nil];
     [self removeTimer];
-    NSLog(@"Time is up");
+    // NSLog(@"Time is up");
 
     /**
     [self performSelector:@selector(playAlert)
@@ -524,8 +524,8 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
         animations:^{
           _timerComplete.alpha = 1;
         }
-        completion:^(BOOL finished) {
-          NSLog(@"COMPLETED ....");
+        completion:^(BOOL finished){
+            // NSLog(@"COMPLETED ....");
         }];
   }
 }
@@ -552,7 +552,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 }
 
 - (void)cancelTimer {
-  NSLog(@"Cancelling timer....");
+  // NSLog(@"Cancelling timer....");
   [_timerEngine invalidate];
   _isTimerPaused = NO;
   _timerLabel.text = @"";
@@ -599,7 +599,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
    **/
 
   if (!alertSoundFilePath) {
-    NSLog(@"Could not find sound file ");
+    // NSLog(@"Could not find sound file ");
   }
 
   NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:alertSoundFilePath];
@@ -930,7 +930,7 @@ self.view.backgroundColor =
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  NSLog(@"CALLED %s", __func__);
+  // NSLog(@"CALLED %s", __func__);
 
   /**
   [[NSNotificationCenter defaultCenter]
@@ -976,18 +976,18 @@ self.view.backgroundColor =
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-  NSLog(@"CALLED %s", __func__);
+  // NSLog(@"CALLED %s", __func__);
 
   [self disableAllActiveTimers];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealloc {
-  NSLog(@"========================== VC  dealloc called...");
+  // NSLog(@"========================== VC  dealloc called...");
 }
 
 - (void)appHasGoneInBackground:(NSNotification *)note {
-  NSLog(@"Received notif %@", note.name);
+  // NSLog(@"Received notif %@", note.name);
   _backgroundModeOn = YES;
   [self disableAllActiveTimers];
 
@@ -1072,13 +1072,13 @@ self.view.backgroundColor =
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player
                        successfully:(BOOL)flag {
 
-  NSLog(@"Player ddi stop");
+  // NSLog(@"Player ddi stop");
 }
 
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player
                                  error:(NSError *)error {
 
-  NSLog(@"Player decoding error");
+  // NSLog(@"Player decoding error");
 }
 
 @end

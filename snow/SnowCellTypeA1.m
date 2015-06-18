@@ -29,7 +29,7 @@
   self = [super initWithStyle:UITableViewCellStyleDefault
               reuseIdentifier:reuseIdentifier];
 
-  //self.backgroundColor = [UIColor blackColor];
+  // self.backgroundColor = [UIColor blackColor];
 
   return self;
 }
@@ -83,7 +83,7 @@
 - (void)layoutSubviews {
   CGRect inFrame = CGRectInset(self.bounds, 0, 0);
 
-  NSLog(@"Layout subview called for %@", _buttonLabel);
+  // NSLog(@"Layout subview called for %@", _buttonLabel);
 
   _menuButton.frame = inFrame;
 }

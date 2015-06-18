@@ -241,8 +241,8 @@
 
   [[SnowDataManager sharedInstance]
                  updateTask:task
-      WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Delete operation completed for task ");
+      WithCompletionHandler:^(NSError *error, NSDictionary *tasks){
+
       }];
 
   [self updateTableActionsFor:task AtIndex:indexPath];
@@ -296,8 +296,8 @@
 
   [[SnowDataManager sharedInstance]
                  updateTask:task
-      WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Update operation completed for task ");
+      WithCompletionHandler:^(NSError *error, NSDictionary *tasks){
+
       }];
 
   [self updateTableActionsFor:task AtIndex:indexPath];
@@ -316,7 +316,7 @@
       [UIAlertAction actionWithTitle:@"complete"
                                style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                               NSLog(@"Completed");
+
                                [self completeTask:task AtIndexPath:index];
 
                              }];
@@ -325,7 +325,7 @@
       [UIAlertAction actionWithTitle:@"delete"
                                style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                               NSLog(@"Cleared");
+
                                [self deleteTask:task AtIndexPath:index];
 
                              }];
@@ -333,8 +333,7 @@
   UIAlertAction *ac3 =
       [UIAlertAction actionWithTitle:@"cancel"
                                style:UIAlertActionStyleDestructive
-                             handler:^(UIAlertAction *action) {
-                               NSLog(@"Cancelled");
+                             handler:^(UIAlertAction *action){
 
                              }];
 
@@ -366,7 +365,7 @@
 
   [_listTable objectForKey:[[_listTable allKeys] firstObject]];
 
-    createTaskVC.selectedList = _list;  //[_listManager defaultList];
+  createTaskVC.selectedList = _list; //[_listManager defaultList];
 
   //[_listTable objectForKey:[[_listTable allKeys] firstObject]];
 

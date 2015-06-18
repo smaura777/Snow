@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@import WebKit;
+#import <WebKit/WebKit.h>
 
-@interface SnowWeb : UIViewController <WKNavigationDelegate>
+@interface SnowWeb : UIViewController <UIWebViewDelegate>
 @property (nonatomic,copy) NSString *url;
 @end

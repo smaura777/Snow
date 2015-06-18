@@ -68,11 +68,11 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   }
 
   if ([task.reminder compare:[NSDate date]] <= 0) {
-    NSLog(@"Current alert fire date <= now , will fire next time then");
+    // NSLog(@"Current alert fire date <= now , will fire next time then");
     NSDate *nextNotifyDate = [userCal dateByAddingComponents:nextFireDate
                                                       toDate:task.reminder
                                                      options:0];
-    NSLog(@"Next Fire date %@", [nextNotifyDate description]);
+    // NSLog(@"Next Fire date %@", [nextNotifyDate description]);
 
     //   we adjust the next firing date only for repeating tasks
     if (![task.repeat isEqualToString:@"none"]) {
@@ -186,8 +186,8 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
 - (void)fireNotifications {
   if (!_SnowLocalNotificationOn) {
-    NSLog(@"Notifications not enabled ");
-    NSLog(@"Notifications Pending %ld", [_pendingNotifications count]);
+    // NSLog(@"Notifications not enabled ");
+    // NSLog(@"Notifications Pending %ld", [_pendingNotifications count]);
     return;
   }
 
@@ -198,7 +198,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
   [_pendingNotifications removeAllObjects];
 
-  NSLog(@"Notifications Scheduled  %ld", [_scheduledNotifications count]);
+  // NSLog(@"Notifications Scheduled  %ld", [_scheduledNotifications count]);
 }
 
 - (void)enableNotifications {
@@ -226,7 +226,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
     return;
   }
 
-  NSLog(@"%s ", __func__);
+  // NSLog(@"%s ", __func__);
 
   SnowTimer *tm =
       [[SnowDataManager sharedInstance] fetchSavedTimerForKey:tmo.timerName];
@@ -247,7 +247,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
       NSDateFormatter *fm = [[NSDateFormatter alloc] init];
       fm.dateFormat = @"E MM DD YYYY h:m:ss ";
-      NSLog(@"Timer should fire on %@", [fm stringFromDate:tmFireDate]);
+      // NSLog(@"Timer should fire on %@", [fm stringFromDate:tmFireDate]);
 
       [self enableNotifications];
       UILocalNotification *noti = [[UILocalNotification alloc] init];
@@ -286,7 +286,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
     return;
   }
 
-  NSLog(@"%s ", __func__);
+  // NSLog(@"%s ", __func__);
 
   NSArray *notifications =
       [[UIApplication sharedApplication] scheduledLocalNotifications];
@@ -315,7 +315,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 #pragma mark - NOTIFICATION ACTIONS
 
 - (void)completeNotification:(UILocalNotification *)notif {
-  NSLog(@"Received forground notification for %@ ", notif.alertBody);
+  // NSLog(@"Received forground notification for %@ ", notif.alertBody);
 
   NSString *taskId = [notif.userInfo objectForKey:@"TaskItemKey"];
 
@@ -354,7 +354,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 }
 
 - (void)clearNotification:(UILocalNotification *)notif {
-  NSLog(@"Received forground notification for %@ ", notif.alertBody);
+  // NSLog(@"Received forground notification for %@ ", notif.alertBody);
 
   NSString *taskId = [notif.userInfo objectForKey:@"TaskItemKey"];
 

@@ -10,6 +10,8 @@
 		4A5DFE8A81C6655B57D95985 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE7548C684B79F05BC7F83E /* libPods.a */; };
 		6A049D1B1B04685600EA7EF0 /* SnowTaskPriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A049D1A1B04685600EA7EF0 /* SnowTaskPriority.m */; };
 		6A07B31C1AE8A12900DD70F0 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07B31B1AE8A12900DD70F0 /* BackgroundLayer.m */; };
+		6A0E0B931B3240130064FDB7 /* SnowLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0E0B921B3240130064FDB7 /* SnowLoggingManager.m */; };
+		6A0E0B941B3240130064FDB7 /* SnowLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0E0B921B3240130064FDB7 /* SnowLoggingManager.m */; };
 		6A1A70261AC8DD72000AB2B7 /* SnowTaskCreateTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A70251AC8DD72000AB2B7 /* SnowTaskCreateTVC.m */; };
 		6A1A70291AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A70281AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.m */; };
 		6A1A702C1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A702B1AC8EC2D000AB2B7 /* SnowListSelectionTVC.m */; };
@@ -179,6 +181,8 @@
 		6A049D1A1B04685600EA7EF0 /* SnowTaskPriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTaskPriority.m; sourceTree = "<group>"; };
 		6A07B31A1AE8A12900DD70F0 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		6A07B31B1AE8A12900DD70F0 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		6A0E0B911B3240130064FDB7 /* SnowLoggingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowLoggingManager.h; sourceTree = "<group>"; };
+		6A0E0B921B3240130064FDB7 /* SnowLoggingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowLoggingManager.m; sourceTree = "<group>"; };
 		6A1A70241AC8DD72000AB2B7 /* SnowTaskCreateTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTaskCreateTVC.h; sourceTree = "<group>"; };
 		6A1A70251AC8DD72000AB2B7 /* SnowTaskCreateTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTaskCreateTVC.m; sourceTree = "<group>"; };
 		6A1A70271AC8E5DA000AB2B7 /* SnowCellTypeTwoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowCellTypeTwoLabel.h; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 				6A6592B41B1672F4000AF85A /* SnowButtonTypeA1.m */,
 				6AE384C21B18D6FC00DDE38D /* SnowButtonTypeA2.h */,
 				6AE384C31B18D6FC00DDE38D /* SnowButtonTypeA2.m */,
+				6A0E0B911B3240130064FDB7 /* SnowLoggingManager.h */,
+				6A0E0B921B3240130064FDB7 /* SnowLoggingManager.m */,
 			);
 			name = utilities;
 			sourceTree = "<group>";
@@ -900,6 +906,7 @@
 				6A2091271B2FD6AC00324B40 /* OverlayVC.m in Sources */,
 				6A2091281B2FD6AC00324B40 /* SnowQuickTimerVC.m in Sources */,
 				6A2091291B2FD6AC00324B40 /* SnowSearchTVC.m in Sources */,
+				6A0E0B941B3240130064FDB7 /* SnowLoggingManager.m in Sources */,
 				6A20912A1B2FD6AC00324B40 /* SnowCardA2.m in Sources */,
 				6A20912B1B2FD6AC00324B40 /* SnowNotificationManager.m in Sources */,
 				6A20912C1B2FD6AC00324B40 /* SnowListSelectionTVC.m in Sources */,
@@ -939,6 +946,7 @@
 				6AD9AD2B1B27BF0100EA0F80 /* SnowCardA3.m in Sources */,
 				6A6592B21B16714C000AF85A /* UIImage+SnowImageUtils.m in Sources */,
 				6A41C0481B2662210088E5C5 /* SnowSimpleTextFieldCell.m in Sources */,
+				6A0E0B931B3240130064FDB7 /* SnowLoggingManager.m in Sources */,
 				6A8890BD1B28F21C00ED6B5B /* SnowAboutMaster.m in Sources */,
 				6ABDCCE51B00409600EA5A5C /* SnowTwoLabelCell.m in Sources */,
 				6AF301791AB9C8CC00313723 /* AppDelegate.m in Sources */,

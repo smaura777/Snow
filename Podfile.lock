@@ -20,21 +20,30 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ARChromeActivity (1.0.2)
   - FMDB (2.5):
     - FMDB/standard (= 2.5)
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
   - GoogleAnalytics (3.12.0)
+  - KINWebBrowser (1.2.5):
+    - ARChromeActivity (= 1.0.2)
+    - TUSafariActivity (= 1.0.2)
+  - TUSafariActivity (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - FMDB (~> 2.5)
   - GoogleAnalytics
+  - KINWebBrowser
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  ARChromeActivity: 6488aedc8dd0624b103ea8caf6218e52692aaf77
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   GoogleAnalytics: ef2e0b800ef3c1e62688cdfc959e0d3132bc246c
+  KINWebBrowser: 773e75882717d735cc37772cf71d5eb2b28554fe
+  TUSafariActivity: 32e3e5dc9123e5533a42d41e1c3246d12911a4a2
 
 COCOAPODS: 0.37.1

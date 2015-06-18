@@ -71,7 +71,7 @@
   self.tableView.estimatedRowHeight = 100.0;
 
   CGRect wrapperFrame = CGRectMake(0, 0, self.tableView.bounds.size.width, 100);
- // CGRect segmentFrame = CGRectInset(wrapperFrame, 40, 25);
+  // CGRect segmentFrame = CGRectInset(wrapperFrame, 40, 25);
 
   UIView *segmentWrapper = [[UIView alloc] initWithFrame:wrapperFrame];
 
@@ -168,18 +168,18 @@ taskFilter.tintColor =
 
   switch (_taskStatus) {
   case 0: {
-    NSLog(@" ALL SECTION COUNT = %ld ",
-          [[_listManager fetchArchivedLists] count]);
+    // NSLog(@" ALL SECTION COUNT = %ld ",
+    // [[_listManager fetchArchivedLists] count]);
     section_count = [[_listManager fetchArchivedLists] count];
   } break;
   case 1: {
-    NSLog(@" COMPLETED  SECTION COUNT = %ld ",
-          [[_listManager fetchCompletedLists] count]);
+    // NSLog(@" COMPLETED  SECTION COUNT = %ld ",
+    // [[_listManager fetchCompletedLists] count]);
     section_count = [[_listManager fetchCompletedLists] count];
   } break;
   case 2: {
-    NSLog(@"DELETED SECTION COUNT = %ld ",
-          [[_listManager fetchDeletedLists] count]);
+    // NSLog(@"DELETED SECTION COUNT = %ld ",
+    // [[_listManager fetchDeletedLists] count]);
     section_count = [[_listManager fetchDeletedLists] count];
   } break;
   default:
@@ -438,8 +438,8 @@ taskFilter.tintColor =
 
   [[SnowDataManager sharedInstance]
                  removeTask:task
-      WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Clear operation completed for task ");
+      WithCompletionHandler:^(NSError *error, NSDictionary *tasks){
+          // NSLog(@"Clear operation completed for task ");
 
       }];
 
@@ -448,22 +448,21 @@ taskFilter.tintColor =
 
 - (void)clearAllTasks:(id)sender {
 
-  NSLog(@"Clear all");
+  // NSLog(@"Clear all");
 
   [[SnowDataManager sharedInstance]
       removeAllArchivedTasksWithCompletionHandler:^(NSError *error,
-                                                    NSDictionary *task) {
-          NSLog(@"All done");
+                                                    NSDictionary *task){
+          // NSLog(@"All done");
 
       }];
-    
-    // ===== Reload table, refresh cache  & take care of empty sections
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .5 * NSEC_PER_SEC),
-                   dispatch_get_main_queue(), ^{
-                       [self filterTasks:_filter];
-                   });
 
+  // ===== Reload table, refresh cache  & take care of empty sections
+
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .5 * NSEC_PER_SEC),
+                 dispatch_get_main_queue(), ^{
+                   [self filterTasks:_filter];
+                 });
 }
 
 - (void)unarchivedTask:(SnowTask *)task AtIndexPath:(NSIndexPath *)indexPath {
@@ -485,8 +484,8 @@ taskFilter.tintColor =
 
   [[SnowDataManager sharedInstance]
                  updateTask:task
-      WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Task was reset successfullly");
+      WithCompletionHandler:^(NSError *error, NSDictionary *tasks){
+          // NSLog(@"Task was reset successfullly");
 
       }];
 
@@ -561,7 +560,7 @@ taskFilter.tintColor =
 
   _taskStatus = taskSelector.selectedSegmentIndex;
 
-  NSLog(@"Selected %@", [taskSelector titleForSegmentAtIndex:_taskStatus]);
+  // NSLog(@"Selected %@", [taskSelector titleForSegmentAtIndex:_taskStatus]);
 
   switch (_taskStatus) {
   case 0: {
@@ -602,7 +601,7 @@ taskFilter.tintColor =
       [UIAlertAction actionWithTitle:@"unarchive"
                                style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                               NSLog(@"unarchive");
+                               // NSLog(@"unarchive");
                                [self unarchivedTask:task AtIndexPath:index];
 
                              }];
@@ -611,7 +610,7 @@ taskFilter.tintColor =
       [UIAlertAction actionWithTitle:@"clear"
                                style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                               NSLog(@"Cleared");
+                               // NSLog(@"Cleared");
                                [self clearTask:task AtIndexPath:index];
 
                              }];
@@ -619,8 +618,8 @@ taskFilter.tintColor =
   UIAlertAction *ac3 =
       [UIAlertAction actionWithTitle:@"cancel"
                                style:UIAlertActionStyleDestructive
-                             handler:^(UIAlertAction *action) {
-                               NSLog(@"Cancelled");
+                             handler:^(UIAlertAction *action){
+                                 // NSLog(@"Cancelled");
 
                              }];
 

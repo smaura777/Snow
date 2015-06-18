@@ -90,7 +90,7 @@
       [UIAlertAction actionWithTitle:@"complete"
                                style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                               NSLog(@"Completed");
+                               // NSLog(@"Completed");
                                [self completeTask:task AtIndexPath:index];
 
                              }];
@@ -99,7 +99,7 @@
       [UIAlertAction actionWithTitle:@"delete"
                                style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction *action) {
-                               NSLog(@"Cleared");
+                               // NSLog(@"Cleared");
                                [self deleteTask:task AtIndexPath:index];
 
                              }];
@@ -107,8 +107,8 @@
   UIAlertAction *ac3 =
       [UIAlertAction actionWithTitle:@"cancel"
                                style:UIAlertActionStyleDestructive
-                             handler:^(UIAlertAction *action) {
-                               NSLog(@"Cancelled");
+                             handler:^(UIAlertAction *action){
+                                 // NSLog(@"Cancelled");
 
                              }];
 
@@ -141,7 +141,7 @@
   // sl.modalPresentationStyle = UIModalPresentationCustom;
   // sl.transitioningDelegate = self;
 
-  NSLog(@"LC %@", [[sl childViewControllers] firstObject]);
+  // NSLog(@"LC %@", [[sl childViewControllers] firstObject]);
 
   [self
       presentViewController:sl
@@ -262,22 +262,22 @@
 
 
 
-  NSLog(@"Alert view bounds : width %lg  height %lg  x: %lg  y : %lg ",
+  //NSLog(@"Alert view bounds : width %lg  height %lg  x: %lg  y : %lg ",
         alert.view.bounds.size.width, alert.view.bounds.size.height,
         alert.view.bounds.origin.x, alert.view.bounds.origin.y);
 
   [self presentViewController:alert animated:YES completion:nil];
 
-  NSLog(@"Alert view frame : width %lg  height %lg  x: %lg  y : %lg ",
+  //NSLog(@"Alert view frame : width %lg  height %lg  x: %lg  y : %lg ",
         alert.view.frame.size.width, alert.view.frame.size.height,
         alert.view.frame.origin.x, alert.view.frame.origin.y);
 
-  NSLog(@"ALERT VIEW SUBVIEWS : %@ ", [alert.view subviews]);
+  //NSLog(@"ALERT VIEW SUBVIEWS : %@ ", [alert.view subviews]);
    **/
 }
 
 - (void)viewTap:(id)sender {
-  NSLog(@"VIEW TAPPED ");
+  // NSLog(@"VIEW TAPPED ");
 }
 
 /*
@@ -366,11 +366,13 @@
              target:self
              action:@selector(doThat:)];
 
-  UIBarButtonItem *item3 =
-      [[UIBarButtonItem alloc] initWithTitle:@"A+"
-                                       style:UIBarButtonItemStylePlain
-                                      target:self
-                                      action:@selector(showAvailableFonts:)];
+  /*
+ UIBarButtonItem *item3 =
+     [[UIBarButtonItem alloc] initWithTitle:@"A+"
+                                      style:UIBarButtonItemStylePlain
+                                     target:self
+                                     action:@selector(showAvailableFonts:)];
+*/
 
   UIBarButtonItem *item4 = [[UIBarButtonItem alloc]
       initWithImage:[UIImage imageNamed:@"snow_bar_timer"]
@@ -378,7 +380,7 @@
              target:self
              action:@selector(showQuickTimer:)];
 
-  self.navigationItem.rightBarButtonItems = @[ item, item2, item3, item4 ];
+  self.navigationItem.rightBarButtonItems = @[ item, item2, item4 ];
 
   UIBarButtonItem *drawer = [[UIBarButtonItem alloc]
       initWithImage:[UIImage imageNamed:@"snow_menu_drawer"]
@@ -456,7 +458,7 @@ _segmentWrapper.backgroundColor =
 
   NSInteger _taskStatus = taskSelector.selectedSegmentIndex;
 
-  NSLog(@"Selected %@", [taskSelector titleForSegmentAtIndex:_taskStatus]);
+  // NSLog(@"Selected %@", [taskSelector titleForSegmentAtIndex:_taskStatus]);
 
   switch (_taskStatus) {
   case 0: {
@@ -493,7 +495,9 @@ _segmentWrapper.backgroundColor =
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
-  NSLog(@"view will appear");
+  [[SnowLoggingManager sharedInstance]
+      SnowLog:@"View will appear called inside %s", __func__];
+
   // [self applyTheme];
 
   // Setup background change notifications
@@ -624,7 +628,7 @@ _segmentWrapper.backgroundColor =
 - (void)showEmptyDataMessageIfNeeded:(NSInteger)sec_count {
 
   if (sec_count == 0) {
-    NSLog(@"You have not created any tasks yet %@ ",
+    //NSLog(@"You have not created any tasks yet %@ ",
           self.tableView.backgroundView);
     if (self.tableView.backgroundView == nil) {
       _emptyLabel = [[UILabel alloc] init];
@@ -675,7 +679,7 @@ return [list.tasklist count];
   [self configCell:cell WithIdentifier:1 atIndexPath:indexPath];
 
 #ifdef DEBUG
-// NSLog(@"Cell recursive description:\n\n%@\n\n", [cell
+// //NSLog(@"Cell recursive description:\n\n%@\n\n", [cell
 // performSelector:@selector(recursiveDescription)]);
 #endif
 
@@ -783,8 +787,8 @@ UINavigationController* nav = (UINavigationController*)
 
   [[SnowDataManager sharedInstance]
                  updateTask:task
-      WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Delete operation completed for task ");
+      WithCompletionHandler:^(NSError *error, NSDictionary *tasks){
+          // NSLog(@"Delete operation completed for task ");
 
       }];
 
@@ -837,15 +841,15 @@ UINavigationController* nav = (UINavigationController*)
 
   [[SnowDataManager sharedInstance]
                  updateTask:task
-      WithCompletionHandler:^(NSError *error, NSDictionary *tasks) {
-        NSLog(@"Update operation completed for task ");
+      WithCompletionHandler:^(NSError *error, NSDictionary *tasks){
+          // NSLog(@"Update operation completed for task ");
       }];
 
   [self updateTableActionsFor:task AtIndex:indexPath];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-  NSLog(@"Value entered in field is : %@ ", textField.text);
+  // NSLog(@"Value entered in field is : %@ ", textField.text);
 }
 
 - (void)toggleMenu:(id)sender {
@@ -984,7 +988,7 @@ animationControllerForDismissedController:(UIViewController *)dismissed {
 #pragma mark - task Options tapped
 
 - (void)taskOptionsTapped:(id)sender {
-  NSLog(@"Task Options tapped ========= ======= +++++++++++++++");
+  // NSLog(@"Task Options tapped ========= ======= +++++++++++++++");
 }
 
 #pragma mark - Remote task updates

@@ -28,7 +28,7 @@
 
   if ([theme isEqualToString:@"azure"]) {
     [self azure];
-  } else if ([theme isEqualToString:@"grass"]) {
+  } else if ([theme isEqualToString:@"fog"]) {
     [self grass];
   } else if ([theme isEqualToString:@"neon"]) {
     [self neon];
@@ -40,26 +40,22 @@
     [self light];
   } else {
     // default
-    [self grass];
-    _themeKey = @"grass";
+    [self azure];
+    _themeKey = @"azure";
   }
 }
 
 - (void)azure {
-  NSLog(@"Theme selected azure ");
+  // NSLog(@"Theme selected azure ");
   _primary = kSnowColor_BLUE;
   _secondary = kSnowColor_BLUE_DARK;
   _textColor = kSnowColor_WHITE_OPAQUE;
 
   _textColor = kSnowColor_WHITE_OPAQUE;
 
-  _primary = [UIColor
-      colorWithRed:.1
-             green:.7
-              blue:.99
-             alpha:1];
-    
-    _secondary = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+  _primary = [UIColor colorWithRed:.1 green:.7 blue:.99 alpha:1];
+
+  _secondary = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
   _ternary = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
   _primaryLabel = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
   _secondaryLabel = [UIColor colorWithRed:.4 green:.4 blue:.4 alpha:1];
@@ -102,7 +98,7 @@ _secondary = kSnowColor_GREEN_DARK;
 }
 
 - (void)neon {
-  NSLog(@"Theme selected neon ");
+  // NSLog(@"Theme selected neon ");
   _primary = kSnowColor_RED;
   _secondary = kSnowColor_RED_DARK;
   _textColor = kSnowColor_WHITE_OPAQUE;
@@ -122,7 +118,7 @@ _secondary = kSnowColor_GREEN_DARK;
 }
 
 - (void)sunny {
-  NSLog(@"Theme selected sunny ");
+  // NSLog(@"Theme selected sunny ");
   //_primary = kSnowColor_ORANGE;
   //_secondary = kSnowColor_ORANGE_DARK;
   // _textColor = kSnowColor_WHITE_OPAQUE;

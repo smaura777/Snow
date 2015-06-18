@@ -39,7 +39,7 @@ _reminderDatePicker.tintColor =
           forKey:@"textColor"];
 
   } @catch (NSException *exception) {
-    NSLog(@"CAUGHT %@", [exception name]);
+    //NSLog(@"CAUGHT %@", [exception name]);
   }
 
   // [_reminderLabel setValue: [UIFont fontWithName:@"AvenirNext-Medium"

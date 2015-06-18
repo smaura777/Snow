@@ -115,7 +115,7 @@ const float UI_CUES_WIDTH = 80.0f;
 - (void)layoutSubviews {
   [super layoutSubviews];
 
-  NSLog(@"Layout subview called =======");
+  ////NSLog(@"Layout subview called =======");
 
   CGRect cframe =
       CGRectMake(self.bounds.origin.x + 9, self.bounds.origin.y,
@@ -123,7 +123,7 @@ const float UI_CUES_WIDTH = 80.0f;
 
   //_sub.frame = _dataContainerView.frame;
 
-  // NSLog(@"CONTAINER FRAME : %@ ", _dataContainerView);
+  // //NSLog(@"CONTAINER FRAME : %@ ", _dataContainerView);
 
   _sub.frame = cframe;
 
@@ -212,12 +212,12 @@ const float UI_CUES_WIDTH = 80.0f;
 }
 
 - (void)deleteTapped:(id)sender {
-  NSLog(@"DELETE TAPPED");
+  ////////NSLog(@"DELETE TAPPED");
   self.deleteTask();
 }
 
 - (void)doneTapped:(id)sender {
-  NSLog(@"DONE TAPPED");
+  ////NSLog(@"DONE TAPPED");
   self.completeTask();
 }
 
@@ -242,14 +242,14 @@ const float UI_CUES_WIDTH = 80.0f;
 
 /**
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
-  NSLog(@"TOUCH BEGAN");
+  ////NSLog(@"TOUCH BEGAN");
 
   //[_sub touchesBegan:touches withEvent:event];
 }
 **/
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-  NSLog(@"hIT TEST CALLED ...");
+  ////NSLog(@"hIT TEST CALLED ...");
 
   if (_reachedLimit == YES) {
 
@@ -257,15 +257,15 @@ const float UI_CUES_WIDTH = 80.0f;
     CGPoint donePoint = [_materialDone convertPoint:point fromView:self];
 
     if ([_materialDelete pointInside:deletePoint withEvent:event]) {
-      NSLog(@"Point on delete");
+      ////NSLog(@"Point on delete");
       return _materialDelete;
     } else if ([_materialDone pointInside:donePoint withEvent:event]) {
-      NSLog(@"Point on done");
+      ////NSLog(@"Point on done");
       return _materialDone;
     }
   }
   // else {
-  NSLog(@"Hit container..");
+  ////NSLog(@"Hit container..");
   // return [_dataContainerView hitTest:point withEvent:event];
   // }
 
@@ -273,7 +273,7 @@ const float UI_CUES_WIDTH = 80.0f;
 }
 
 - (void)ManageTapWhileOpen:(UITapGestureRecognizer *)pan {
-  NSLog(@"RECEIVED TAP #######################\n");
+  ////NSLog(@"RECEIVED TAP #######################\n");
 
   [UIView animateWithDuration:0.2
       animations:^{
@@ -290,7 +290,7 @@ const float UI_CUES_WIDTH = 80.0f;
 }
 
 - (void)ManagePan:(UIPanGestureRecognizer *)pan {
-  // NSLog(@"CANCEL TOUCH IN VIEW %d", _dataContainerView.);
+  // //NSLog(@"CANCEL TOUCH IN VIEW %d", _dataContainerView.);
   switch (pan.state) {
   case UIGestureRecognizerStateBegan: {
     if (_tap == nil) {
@@ -311,28 +311,28 @@ const float UI_CUES_WIDTH = 80.0f;
   break;
 
   case UIGestureRecognizerStateChanged: {
-    NSLog(@"NEW SESSION = %d", _newSession);
+    // NSLog(@"NEW SESSION = %d", _newSession);
 
     CGPoint prevPos = _lastTranslation;
 
-    NSLog(@"PREV X %lf Y %lf", prevPos.x, prevPos.y);
+    // NSLog(@"PREV X %lf Y %lf", prevPos.x, prevPos.y);
 
     _lastTranslation = [pan translationInView:self];
 
-    NSLog(@"LAST  X %lf Y %lf", _lastTranslation.x, _lastTranslation.y);
+    // NSLog(@"LAST  X %lf Y %lf", _lastTranslation.x, _lastTranslation.y);
 
     // direction
     if (prevPos.x > _lastTranslation.x) {
       isPanningLeft = YES;
-      NSLog(@"Moving LEFT ++++++++++");
+      // NSLog(@"Moving LEFT ++++++++++");
     } else {
-      NSLog(@"Moving RIGHT ++++++++++");
+      // NSLog(@"Moving RIGHT ++++++++++");
       isPanningLeft = NO;
     }
 
     /**
       if ((fabs(_lastTranslation.x) >= 150)) {
-        NSLog(@" STOPPPPPING");
+        //NSLog(@" STOPPPPPING");
 
         // RESET POSITION IF WE GO OVER
 
@@ -340,13 +340,13 @@ const float UI_CUES_WIDTH = 80.0f;
           [UIView animateWithDuration:0.2
               animations:^{
                 if (!isPanningLeft) {
-                  NSLog(@" RESETTING RIGHT");
+                  //NSLog(@" RESETTING RIGHT");
                   _dataContainerView.frame = CGRectMake(
                       150, _origin.y, _dataContainerView.frame.size.width,
                       _dataContainerView.frame.size.height);
 
                 } else {
-                  NSLog(@" RESETTING LEFT");
+                  //NSLog(@" RESETTING LEFT");
                   _dataContainerView.frame = CGRectMake(
                       -150, _origin.y, _dataContainerView.frame.size.width,
                       _dataContainerView.frame.size.height);
@@ -364,12 +364,12 @@ const float UI_CUES_WIDTH = 80.0f;
 
     **/
 
-    NSLog(@"CONTAINER POS ^^^^  X %lf  ORIGINAL %lf \n ",
-          _dataContainerView.frame.origin.x, _restPosForContainer.origin.x);
+    // NSLog(@"CONTAINER POS ^^^^  X %lf  ORIGINAL %lf \n ",
+    //_dataContainerView.frame.origin.x, _restPosForContainer.origin.x);
 
     if ((isPanningLeft == YES) &&
         (fabs(_dataContainerView.frame.origin.x) >= 140)) {
-      NSLog(@"LIMIT REACHED \\\\\\\\\\\\\\ ");
+      // NSLog(@"LIMIT REACHED \\\\\\\\\\\\\\ ");
       _reachedLimit = YES;
       return;
     } else {
@@ -377,14 +377,14 @@ const float UI_CUES_WIDTH = 80.0f;
     }
 
     if ((!isPanningLeft) && (_dataContainerView.frame.origin.x >= 8.0)) {
-      NSLog(@"******* NOT UPDATING POS .......");
+      // NSLog(@"******* NOT UPDATING POS .......");
       return;
     }
 
     _dataContainerView.center =
         CGPointMake(_originalCenter.x + _lastTranslation.x, _originalCenter.y);
 
-    NSLog(@"UPDATING POS .......");
+    // NSLog(@"UPDATING POS .......");
 
     _newSession = NO;
 
@@ -422,7 +422,7 @@ const float UI_CUES_WIDTH = 80.0f;
   break;
 
   default:
-    NSLog(@"Default panning case");
+    // NSLog(@"Default panning case");
     break;
   }
 }
@@ -463,12 +463,12 @@ const float UI_CUES_WIDTH = 80.0f;
       mcue = 0.95;
     }
 
-    NSLog(@"MCUE %lf", mcue);
+    //NSLog(@"MCUE %lf", mcue);
 
     _delete.transform = CGAffineTransformMakeScale(mcue, mcue);
     _done.transform = CGAffineTransformMakeScale(mcue, mcue);
 
-    NSLog(@"cue alpha %lf ", cueAlpha);
+    //NSLog(@"cue alpha %lf ", cueAlpha);
   */
   }
 
@@ -481,7 +481,8 @@ const float UI_CUES_WIDTH = 80.0f;
 
     if (_dataContainerView.frame.origin.x <= 0) {
       if (!_deleteOnDragRelease) {
-        // NSLog(@" ++++++++++++++++++ Will not delete  _deleteOnDragRelease %d
+        // //NSLog(@" ++++++++++++++++++ Will not delete  _deleteOnDragRelease
+        // %d
         // ",
         //      _deleteOnDragRelease);
 
@@ -492,8 +493,8 @@ const float UI_CUES_WIDTH = 80.0f;
                          }];
 
       } else {
-        NSLog(@" ++++++++++++++++++ Will delete  _deleteOnDragRelease %d ",
-              _deleteOnDragRelease);
+        // NSLog(@" ++++++++++++++++++ Will delete  _deleteOnDragRelease %d ",
+        //_deleteOnDragRelease);
 
         // self.deleteTask();
 
@@ -511,7 +512,7 @@ const float UI_CUES_WIDTH = 80.0f;
                          }];
 
       } else {
-        NSLog(@"COMPLETE TASK .....");
+        // NSLog(@"COMPLETE TASK .....");
         // self.completeTask();
 
         [UIView animateWithDuration:0.5

@@ -223,23 +223,23 @@ preparation before navigation
 #pragma mark - search delegates  UISearchControllerDelegate
 
 - (void)willPresentSearchController:(UISearchController *)searchController {
-  NSLog(@" %s", __func__);
+  // NSLog(@" %s", __func__);
 }
 
 - (void)presentSearchController:(UISearchController *)searchController {
-  NSLog(@" %s", __func__);
-  NSLog(@"SEARCH_CONTROLLER FRAME %@", searchController);
+  // NSLog(@" %s", __func__);
+  // NSLog(@"SEARCH_CONTROLLER FRAME %@", searchController);
 }
 
 - (void)didPresentSearchController:(UISearchController *)searchController {
-  NSLog(@" %s", __func__);
+  // NSLog(@" %s", __func__);
 }
 
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
   [searchBar resignFirstResponder];
-  NSLog(@" %s", __func__);
+  // NSLog(@" %s", __func__);
 }
 
 #pragma mark - UISearchResultsUpdating delegate method
@@ -247,7 +247,7 @@ preparation before navigation
     (UISearchController *)searchController {
 
   NSString *searchedItem = searchController.searchBar.text;
-  NSLog(@"Searching for %@ ...", searchedItem);
+  // NSLog(@"Searching for %@ ...", searchedItem);
   NSString *trimmedSearchString = [searchController.searchBar.text
       stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 

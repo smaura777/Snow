@@ -20,7 +20,7 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-  NSLog(@"SDFDS");
+  // NSLog(@"SDFDS");
   return UIStatusBarStyleLightContent;
 }
 
@@ -86,7 +86,7 @@ preparation before navigation
 }
 
 - (void)toggleMenu:(id)sender {
-  NSLog(@"Menu tapped......");
+  // NSLog(@"Menu tapped......");
   if (_menuOpen == NO) {
     if (!_mainMenuNav) {
 
@@ -101,7 +101,7 @@ preparation before navigation
         SnowTaskAllTVC *allTasks;
 
         if ([menuTilte isEqualToString:@"home"]) {
-          NSLog(@"Load Home vc");
+          // NSLog(@"Load Home vc");
 
           if ([strongSelf.topVCTitle isEqualToString:@"Home"]) {
             [strongSelf toggleMenu:nil];
@@ -121,7 +121,7 @@ preparation before navigation
                              WithTitle:@"Home"];
 
         } else if ([menuTilte isEqualToString:@"list"]) { // List
-          NSLog(@"Load list  vc");
+          // NSLog(@"Load list  vc");
           if ([strongSelf.topVCTitle isEqualToString:@"List"]) {
             [strongSelf toggleMenu:nil];
             return;
@@ -142,7 +142,7 @@ preparation before navigation
         }
 
         else if ([menuTilte isEqualToString:@"archive"]) { // task
-          NSLog(@"Load task  vc");
+          // NSLog(@"Load task  vc");
           // Already on top ?
           if ([strongSelf.topVCTitle isEqualToString:@"All_tasks"]) {
             [strongSelf toggleMenu:nil];
@@ -177,21 +177,21 @@ preparation before navigation
           [strongSelf swappedTopVCWith:[[UINavigationController alloc]
                                            initWithRootViewController:searchVC]
                              WithTitle:@"search_vc"];
-        }
-        else if ([menuTilte isEqualToString:@"about"]){
-            if ([strongSelf.topVCTitle isEqualToString:@"about_vc"]) {
-                [strongSelf toggleMenu:nil];
-                return;
-            }
-            
-            SnowAboutMaster *about = [[SnowAboutMaster alloc] initWithStyle:UITableViewStylePlain];
-            about.menuTapped = ^{
-                [strongSelf toggleMenu:nil];
-            };
-            
-            [strongSelf swappedTopVCWith:[[UINavigationController alloc]
-                                          initWithRootViewController:about]
-                               WithTitle:@"about_vc"];
+        } else if ([menuTilte isEqualToString:@"about"]) {
+          if ([strongSelf.topVCTitle isEqualToString:@"about_vc"]) {
+            [strongSelf toggleMenu:nil];
+            return;
+          }
+
+          SnowAboutMaster *about =
+              [[SnowAboutMaster alloc] initWithStyle:UITableViewStylePlain];
+          about.menuTapped = ^{
+            [strongSelf toggleMenu:nil];
+          };
+
+          [strongSelf swappedTopVCWith:[[UINavigationController alloc]
+                                           initWithRootViewController:about]
+                             WithTitle:@"about_vc"];
         }
 
       };
@@ -303,7 +303,7 @@ preparation before navigation
     (UISearchController *)searchController {
 
   NSString *searchedItem = searchController.searchBar.text;
-  NSLog(@"Searching for %@ ...", searchedItem);
+  // NSLog(@"Searching for %@ ...", searchedItem);
   NSArray *taskList = [_listManager fetchTasks];
   SnowSearchResultsTVC *resultTVC =
       (SnowSearchResultsTVC *)searchController.searchResultsController;
@@ -313,7 +313,7 @@ preparation before navigation
 
 #pragma mark - topGesture
 - (void)topVCtapped:(UITapGestureRecognizer *)tap {
-  NSLog(@" ... Overlay view tapped....");
+  // NSLog(@" ... Overlay view tapped....");
   [self toggleMenu:nil];
 }
 

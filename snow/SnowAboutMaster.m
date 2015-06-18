@@ -18,29 +18,28 @@
   NSArray *_entries;
 }
 
-static NSString *privacy = @"http://glifn.com";
+static NSString *privacy = @"http://glifn.com/privacy/";
 
-static NSString *homePage = @"http://glifn.com";
+static NSString *homePage = @"http://glifn.com/snow/";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  _entries = @[ @"About", @"Privacy Policy", @"Version\t\t\t\t1.0" ];
+  _entries = @[ @"About", @"Privacy Policy", @"Version" ];
 
   [self.tableView registerClass:[UITableViewCell class]
          forCellReuseIdentifier:@"basic"];
 
   [self.tableView registerClass:[SnowTwoLabelCell class]
          forCellReuseIdentifier:@"two_label_cell"];
-    
-    UIBarButtonItem *drawer = [[UIBarButtonItem alloc]
-                               initWithImage:[UIImage imageNamed:@"snow_menu_drawer"]
-                               style:UIBarButtonItemStylePlain
-                               target:self
-                               action:@selector(toggleMenu:)];
-    
-    self.navigationItem.leftBarButtonItem = drawer;
 
+  UIBarButtonItem *drawer = [[UIBarButtonItem alloc]
+      initWithImage:[UIImage imageNamed:@"snow_menu_drawer"]
+              style:UIBarButtonItemStylePlain
+             target:self
+             action:@selector(toggleMenu:)];
+
+  self.navigationItem.leftBarButtonItem = drawer;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,31 +64,69 @@ static NSString *homePage = @"http://glifn.com";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  SnowTwoLabelCell *cell =
-      [tableView dequeueReusableCellWithIdentifier:@"basic"
-                                      forIndexPath:indexPath];
 
-  // Configure the cell...
+  UITableViewCell *cell;
+
+  switch (indexPath.row) {
+  case 0:
+  case 1: {
+    cell = [tableView dequeueReusableCellWithIdentifier:@"basic"
+                                           forIndexPath:indexPath];
+  } break;
+  case 2: {
+    cell = [tableView dequeueReusableCellWithIdentifier:@"two_label_cell"
+                                           forIndexPath:indexPath];
+  }
+
+  break;
+
+  default:
+    cell = [tableView dequeueReusableCellWithIdentifier:@"basic"
+                                           forIndexPath:indexPath];
+    break;
+  }
+
+  //  SnowTwoLabelCell *cell =
+  //      [tableView dequeueReusableCellWithIdentifier:@"basic"
+  //                                      forIndexPath:indexPath];
+
   cell.backgroundColor = [UIColor clearColor];
   NSString *key = [_entries objectAtIndex:indexPath.row];
 
-  cell.textLabel.textColor =
-      [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
+  switch (indexPath.row) {
+  case 0:
+  case 1: {
 
-  cell.textLabel.font =
-      [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.textLabel.textColor =
+        [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
 
-  cell.textLabel.text = key;
+    cell.textLabel.font =
+        [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 
-  // cell.value.textColor =  [[SnowAppearanceManager sharedInstance]
-  // currentTheme].textColor;
-  // cell.value.font = [UIFont
-  // preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.textLabel.text = key;
 
-  // cell.value.text = [_entries objectForKey:key];
+    if (indexPath.row < 2) {
+      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
 
-  if (indexPath.row < 2) {
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+  } break;
+  case 2: {
+    SnowTwoLabelCell *twoLabelCell = (SnowTwoLabelCell *)cell;
+    twoLabelCell.title.textColor =
+        [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
+    twoLabelCell.value.textColor =
+        [[SnowAppearanceManager sharedInstance] currentTheme].textColor;
+    twoLabelCell.title.font =
+        [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    twoLabelCell.value.font =
+        [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    twoLabelCell.title.text = key;
+    twoLabelCell.value.text = @"1.0";
+
+  } break;
+
+  default:
+    break;
   }
 
   return cell;
@@ -98,16 +135,24 @@ static NSString *homePage = @"http://glifn.com";
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-  if (indexPath.section > 1) {
+  [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+  NSString *weblink;
+
+  if (indexPath.row > 1) {
     return;
   }
 
+  if (indexPath.row == 0) {
+    weblink = homePage;
+  } else {
+    weblink = privacy;
+  }
+
   SnowWeb *vc = [[SnowWeb alloc] init];
-//  UINavigationController *nav =
-//      [[UINavigationController alloc] initWithRootViewController:vc];
-  vc.url = privacy;
-    [self.navigationController pushViewController:vc animated:YES ];
-  
+  vc.url = weblink;
+
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)toggleMenu:(id)sender {

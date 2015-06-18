@@ -42,10 +42,7 @@
   CGRect inFrame = CGRectInset(self.bounds, 20, 2);
 
   _button.frame = inFrame; // CGRectMake(150, 0, 200, 50);;
-                           /*
-                             NSLog(@"Cell recursive description:\n\n%@\n\n",
-                                   [self performSelector:@selector(recursiveDescription)]);
-                           */
+                           
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

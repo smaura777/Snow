@@ -23,13 +23,13 @@
               reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:UITableViewCellStyleSubtitle
               reuseIdentifier:reuseIdentifier];
-  NSLog(@"Cell A style %ld", style);
+  // NSLog(@"Cell A style %ld", style);
 
   self.selectionStyle = UITableViewCellSelectionStyleGray;
 
-//  UIPanGestureRecognizer *pan =
-//      [[UIPanGestureRecognizer alloc] initWithTarget:self
-//                                              action:@selector(panning:)];
+  //  UIPanGestureRecognizer *pan =
+  //      [[UIPanGestureRecognizer alloc] initWithTarget:self
+  //                                              action:@selector(panning:)];
 
   UISwipeGestureRecognizer *swipe =
       [[UISwipeGestureRecognizer alloc] initWithTarget:self
@@ -42,11 +42,11 @@
 }
 
 - (void)panning:(UIPanGestureRecognizer *)sender {
-  NSLog(@"Panning .... *********************");
+  // NSLog(@"Panning .... *********************");
 }
 
 - (void)swipping:(UISwipeGestureRecognizer *)sender {
-  NSLog(@"Swipping .... *********************");
+  // NSLog(@"Swipping .... *********************");
 }
 
 @end

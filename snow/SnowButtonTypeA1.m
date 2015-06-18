@@ -76,7 +76,7 @@
 }
 
 - (void)dealloc {
-  NSLog(@"Dealloc called for %s ", __func__);
+  //NSLog(@"Dealloc called for %s ", __func__);
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -86,7 +86,7 @@
     return;
   }
     
-   NSLog(@" %s :Setting button listening status to %d",__func__,status);
+   //NSLog(@" %s :Setting button listening status to %d",__func__,status);
 
   _blinkON = status;
 
@@ -103,7 +103,7 @@
 
 - (void)blink:(NSNotification *)note {
 
-  NSLog(@"Received %@ in %s", note.name, __func__);
+  //NSLog(@"Received %@ in %s", note.name, __func__);
 
   __weak typeof(self) weakSelf = self;
 

@@ -405,7 +405,7 @@ _session = [AVAudioSession sharedInstance];
                                       ofType:defaultSoundFileNameExtension];
 
   if (!alertSoundFilePath) {
-    NSLog(@"Could not find sound file ");
+   // NSLog(@"Could not find sound file ");
   }
 
   NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:alertSoundFilePath];
@@ -429,7 +429,7 @@ _session = [AVAudioSession sharedInstance];
 
 #pragma mark - AVAudioSessionNotifications callback
 - (void)audioInterrupt:(NSNotification *)notif {
-  NSLog(@"AUDIO INTERRUPT ...... >>>>>>>>>>>>>>>>>>>>>>");
+  //NSLog(@"AUDIO INTERRUPT ...... >>>>>>>>>>>>>>>>>>>>>>");
   if (_aPlayer) {
     [_aPlayer stop];
     [_playPause setSelected:NO];

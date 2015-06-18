@@ -151,8 +151,7 @@
                             AndLabel:(UILabel *)msgLabel {
 
   if (sec_count == 0) {
-    NSLog(@"You have not created any tasks yet %@ ",
-          self.tableView.backgroundView);
+  
     if (self.tableView.backgroundView == nil) {
 
       msgLabel.frame = self.tableView.frame;

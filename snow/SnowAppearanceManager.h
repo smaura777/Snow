@@ -10,13 +10,13 @@
 #import "SnowTheme.h"
 #import "SnowBackground.h"
 #import "SnowSound.h"
+#import "SnowLoggingManager.h"
 
 @interface SnowAppearanceManager : NSObject
 
 @property(nonatomic, strong) SnowTheme *currentTheme;
 @property(nonatomic, strong) SnowBackground *currentBackground;
-@property (nonatomic,strong) SnowSound *currentAlertTone;
-
+@property(nonatomic, strong) SnowSound *currentAlertTone;
 
 // Public Methods
 
@@ -24,6 +24,6 @@
 
 - (void)saveDefaultTheme:(SnowTheme *)theme;
 - (void)saveDefaultBackground:(SnowBackground *)bk;
--(void)saveDefaultAlertTone:(SnowSound *)tone;
+- (void)saveDefaultAlertTone:(SnowSound *)tone;
 
 @end

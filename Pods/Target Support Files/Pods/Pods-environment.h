@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 3
 
+// ARChromeActivity
+#define COCOAPODS_POD_AVAILABLE_ARChromeActivity
+#define COCOAPODS_VERSION_MAJOR_ARChromeActivity 1
+#define COCOAPODS_VERSION_MINOR_ARChromeActivity 0
+#define COCOAPODS_VERSION_PATCH_ARChromeActivity 2
+
 // FMDB
 #define COCOAPODS_POD_AVAILABLE_FMDB
 #define COCOAPODS_VERSION_MAJOR_FMDB 2
@@ -71,4 +77,16 @@
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics 3
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics 12
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics 0
+
+// KINWebBrowser
+#define COCOAPODS_POD_AVAILABLE_KINWebBrowser
+#define COCOAPODS_VERSION_MAJOR_KINWebBrowser 1
+#define COCOAPODS_VERSION_MINOR_KINWebBrowser 2
+#define COCOAPODS_VERSION_PATCH_KINWebBrowser 5
+
+// TUSafariActivity
+#define COCOAPODS_POD_AVAILABLE_TUSafariActivity
+#define COCOAPODS_VERSION_MAJOR_TUSafariActivity 1
+#define COCOAPODS_VERSION_MINOR_TUSafariActivity 0
+#define COCOAPODS_VERSION_PATCH_TUSafariActivity 2
 

@@ -11,45 +11,43 @@
 #import "UIImage+SnowImageUtils.h"
 #import "AppDelegate.h"
 
-
-
-
 @interface SnowWeb ()
 
 @end
 
 @implementation SnowWeb {
 
-  WKWebView *_kweb;
+  UIWebView *_kweb;
   NSURL *_link;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-    
-//    AppDelegate *app =
-//    (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    app.topVC = self;
-//    
-//   UIImage * _closeBt = [UIImage
-//                getTintedImage:[UIImage imageNamed:@"snow_menu_close"]
-//                withColor:[[SnowAppearanceManager sharedInstance] currentTheme]
-//                .primary];
-//
-    
-//    self.navigationItem.leftBarButtonItem =
-//    [[UIBarButtonItem alloc] initWithImage:_closeBt
-//                                     style:UIBarButtonItemStylePlain
-//                                    target:self
-//                                    action:@selector(close:)];
-    
+
+  //    AppDelegate *app =
+  //    (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  //    app.topVC = self;
+  //
+  //   UIImage * _closeBt = [UIImage
+  //                getTintedImage:[UIImage imageNamed:@"snow_menu_close"]
+  //                withColor:[[SnowAppearanceManager sharedInstance]
+  //                currentTheme]
+  //                .primary];
+  //
+
+  //    self.navigationItem.leftBarButtonItem =
+  //    [[UIBarButtonItem alloc] initWithImage:_closeBt
+  //                                     style:UIBarButtonItemStylePlain
+  //                                    target:self
+  //                                    action:@selector(close:)];
+
   // Do any additional setup after loading the view.
 
   if (_url) {
     _link = [NSURL URLWithString:_url];
-    _kweb = [[WKWebView alloc] initWithFrame:self.view.frame];
+    _kweb = [[UIWebView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:_kweb];
-      _kweb.navigationDelegate = self;
+    _kweb.delegate = self;
   }
 }
 
@@ -64,12 +62,10 @@
   // Dispose of any resources that can be recreated.
 }
 
--(void)close:(id)sender{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    
+- (void)close:(id)sender {
+  [self.presentingViewController dismissViewControllerAnimated:YES
+                                                    completion:nil];
 }
-
-
 
 /*
 #pragma mark - Navigation
@@ -82,16 +78,23 @@ preparation before navigation
 }
 */
 
-#pragma amrk - nav delegate
+#pragma amrk - uiwebview delegate
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"Navigation succeeded");
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+  //NSLog(@"Loading failed");
+}
+
+/**
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation
+*)navigation {
+    //NSLog(@"Navigation succeeded");
 }
 
 
-- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"Navigation failed");
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation
+*)navigation withError:(NSError *)error {
+    //NSLog(@"Navigation failed");
 }
-
+**/
 
 @end
