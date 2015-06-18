@@ -189,7 +189,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   // NSLog(@"Button %ld touched ", bt.tag);
 
   _timerObject = [[SnowDataManager sharedInstance]
-      fetchSavedTimerForKey:[NSString stringWithFormat:@"%ld", bt.tag]];
+      fetchSavedTimerForKey:[NSString stringWithFormat:@"%ld", (long)(long)bt.tag]];
 
   if (_timerObject != nil && (_timerObject.timerState == 2)) {
 
@@ -407,7 +407,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   _timerObject = [[SnowTimer alloc] init];
   _timerObject.itemId = [[NSUUID UUID] UUIDString];
   _timerObject.timerState = 0;
-  _timerObject.timerName = [NSString stringWithFormat:@"%ld", tval];
+  _timerObject.timerName = [NSString stringWithFormat:@"%ld", (long)(long)tval];
   _timerObject.timerValue = tval * 60;
   // save timer
   [[SnowDataManager sharedInstance] saveTimer:_timerObject];

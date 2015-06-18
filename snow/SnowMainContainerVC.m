@@ -302,7 +302,7 @@ preparation before navigation
 - (void)updateSearchResultsForSearchController:
     (UISearchController *)searchController {
 
-  NSString *searchedItem = searchController.searchBar.text;
+  //NSString *searchedItem = searchController.searchBar.text;
   // NSLog(@"Searching for %@ ...", searchedItem);
   NSArray *taskList = [_listManager fetchTasks];
   SnowSearchResultsTVC *resultTVC =

@@ -248,7 +248,7 @@ preparation before navigation
 - (void)updateSearchResultsForSearchController:
     (UISearchController *)searchController {
 
-  NSString *searchedItem = searchController.searchBar.text;
+ // NSString *searchedItem = searchController.searchBar.text;
   // NSLog(@"Searching for %@ ...", searchedItem);
   NSString *trimmedSearchString = [searchController.searchBar.text
       stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];

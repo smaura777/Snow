@@ -78,12 +78,12 @@
       [UIFont fontWithName:@"AvenirNextCondensed-Regular" size:24];
   _taskHeadlineLabel.text = _detailTask.title;
   [_taskHeadline addSubview:_taskHeadlineLabel];
-
+/*
   CGSize textSize = [_detailTask.title sizeWithAttributes:@{
     NSFontAttributeName :
         [UIFont fontWithName:@"AvenirNextCondensed-Regular" size:28]
   }];
-
+*/
   // NSLog(@"TEXT HEIGHT %lg", textSize.height);
 
   CGSize adSize = CGSizeMake(_taskHeadline.bounds.size.width, 200);

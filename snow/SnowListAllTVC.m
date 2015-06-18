@@ -177,7 +177,7 @@
      cell.value.clipsToBounds =YES;
  */
 
-  cell.value.text = [NSString stringWithFormat:@"%ld", taskCount];
+  cell.value.text = [NSString stringWithFormat:@"%lu", taskCount];
 
   return cell;
 }

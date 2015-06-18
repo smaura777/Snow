@@ -466,7 +466,7 @@ const double kSnowDataStore_version = 1.0;
 
 - (BOOL)saveList:(SnowList *)list {
   [_queue inDatabase:^(FMDatabase *db) {
-    BOOL st3 = [db
+     [db
         executeUpdate:
             @"INSERT INTO snowlist (id,title,created) VALUES (?,?,?) ",
             [[NSUUID UUID] UUIDString], list.title,
@@ -501,7 +501,7 @@ const double kSnowDataStore_version = 1.0;
 - (void)saveList:(SnowList *)list
     WithCompletionHandler:(void (^)(NSError *error, NSArray *list))handler {
   [_queue inDatabase:^(FMDatabase *db) {
-    BOOL st3 = [db
+     [db
         executeUpdate:
             @"INSERT INTO snowlist (id,title,created) VALUES (?,?,?) ",
             [[NSUUID UUID] UUIDString], list.title,
@@ -1300,14 +1300,14 @@ WithCompletionHandler:(void (^)(NSError *error, NSArray *lists))handler {
   [_queue inDatabase:^(FMDatabase *db) {
     NSString *st = @"INSERT INTO snowtimer "
         @" (id,title,expiration,lastupdated) VALUES (?,?,?,?); ";
-
-    NSNumber *lu =
-        [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]];
+//
+//    NSNumber *lu =
+//        [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]];
 
     // NSLog(@"LAST UPDATED %@ ", lu);
 
-    NSNumber *lu2 =
-        [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
+//    NSNumber *lu2 =
+//        [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
 
     // NSLog(@"LAST UPDATED %@ ", lu2);
 

@@ -38,7 +38,7 @@
 
 -(void)customizeForType:(NSUInteger)type{
     
-    UIColor *btBorderColor = [[SnowAppearanceManager sharedInstance] currentTheme].primary;
+    //UIColor *btBorderColor = [[SnowAppearanceManager sharedInstance] currentTheme].primary;
     /*
     [UIColor colorWithHue:0.5
                                          saturation:1 brightness:1 alpha:0.10];
