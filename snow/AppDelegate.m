@@ -28,10 +28,11 @@
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-  if (([UIApplication sharedApplication].currentUserNotificationSettings.types &
-       UIUserNotificationTypeBadge)) {
-    application.applicationIconBadgeNumber = 0;
-  }
+  //  if (([UIApplication
+  //  sharedApplication].currentUserNotificationSettings.types &
+  //       UIUserNotificationTypeBadge)) {
+  //    application.applicationIconBadgeNumber = 0;
+  //  }
 
   NSError *setCategoryErr;
 
@@ -51,6 +52,8 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   [SnowDataManager sharedInstance];
   [SnowAppearanceManager sharedInstance];
   [SnowLoggingManager sharedInstance].mode = 0;
+  [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
+  [[SnowNotificationManager sharedInstance] getAllPendingNotifications];
 
   [self applyTheme];
 
@@ -89,6 +92,9 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // Restart any tasks that were paused (or not yet started) while the
   // application was inactive. If the application was previously in the
   // background, optionally refresh the user interface.
+    
+    // Remove badge
+    [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -101,7 +107,6 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
         (UIUserNotificationSettings *)notificationSettings {
 
   [[SnowNotificationManager sharedInstance] setSnowLocalNotificationOn:YES];
-  [[SnowNotificationManager sharedInstance] fireNotifications];
 }
 
 - (void)application:(UIApplication *)application
@@ -110,7 +115,10 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
 
 - (void)application:(UIApplication *)application
     didReceiveLocalNotification:(UILocalNotification *)notification {
-  application.applicationIconBadgeNumber = 0;
+  
+  // Clear badge
+    [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
+
 
   UIAlertController *alert;
 
@@ -267,6 +275,9 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
 
   [[GAI sharedInstance] trackerWithTrackingId:@"UA-59456103-2"];
+  
+   // Disable IFDA
+    [[[GAI sharedInstance] defaultTracker] setAllowIDFACollection:NO];
 }
 
 @end

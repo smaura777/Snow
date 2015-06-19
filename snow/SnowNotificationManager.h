@@ -11,7 +11,6 @@
 #import "SnowList.h"
 #import "SnowTimer.h"
 
-
 extern NSString *SNOW_COMPLETE_NOTIF;
 extern NSString *SNOW_CLEAR_NOTIF;
 
@@ -43,4 +42,29 @@ extern NSString *SNOW_CLEAR_NOTIF;
 - (void)scheduleNotificationWithTimerObject:(SnowTimer *)tm;
 - (void)unscheduleNotificationWithTimerObject:(SnowTimer *)tm;
 
+
+
+
+
+
+// Registration
+- (void)registerForLocalNotifications;
+
+/*
+ Check Availability of
+    UIUserNotificationTypeBadge
+    UIUserNotificationTypeSound
+    UIUserNotificationTypeAlert;
+*/
+
+- (void)updateNotificationPropertiesSettings;
+
+// Get All pending notifications by domain (task || timers)
+-(NSDictionary *)getAllPendingNotifications;
+
+
+-(void)clearBadgeIndicator;
+
 @end
+
+

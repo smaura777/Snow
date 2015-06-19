@@ -14,7 +14,11 @@
 NSString *SNOW_COMPLETE_NOTIF = @"SNOW_COMPLETE_NOTIF";
 NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
-@implementation SnowNotificationManager
+@implementation SnowNotificationManager {
+  BOOL SnowNotificationTypeBadge;
+  BOOL SnowNotificationTypeSound;
+  BOOL SnowNotificationTypeAlert;
+}
 
 + (instancetype)sharedInstance {
   static SnowNotificationManager *notificationManager = nil;
@@ -43,6 +47,20 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   NSCalendar *userCal = [NSCalendar currentCalendar];
   NSDateComponents *nextFireDate = [[NSDateComponents alloc] init];
 
+  if (!_SnowLocalNotificationOn) {
+    return;
+  }
+
+  // Update settings
+
+  [self updateNotificationPropertiesSettings];
+
+  if ((!SnowNotificationTypeBadge) && (!SnowNotificationTypeAlert) &&
+      (!SnowNotificationTypeSound)) {
+   // NSLog(@"No Notifcation types allowed");
+    return;
+  }
+
   // NSTimeInterval nextFireDate = 0;
 
   if ((task == nil) || ([task.title length] == 0) || (task.itemID == nil) ||
@@ -50,7 +68,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
     return;
   }
 
-  [self enableNotifications];
+  //  [self enableNotifications];
   UILocalNotification *noti = [[UILocalNotification alloc] init];
 
   if ([task.repeat isEqualToString:@"daily"]) {
@@ -65,6 +83,8 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   } else if ([task.repeat isEqualToString:@"yearly"]) {
     noti.repeatInterval = NSCalendarUnitYear;
     [nextFireDate setYear:1];
+  } else {
+    noti.repeatInterval = 0;
   }
 
   if ([task.reminder compare:[NSDate date]] <= 0) {
@@ -83,11 +103,21 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
     noti.fireDate = task.reminder;
   }
 
-  noti.soundName = UILocalNotificationDefaultSoundName;
+  // Conditional settings
+  if (SnowNotificationTypeSound) {
+    noti.soundName = UILocalNotificationDefaultSoundName;
+  }
+
   noti.timeZone = [NSTimeZone defaultTimeZone];
-  noti.alertBody = task.title;
-  noti.applicationIconBadgeNumber = 1;
-  noti.alertAction = @"Ok";
+
+  if (SnowNotificationTypeAlert) {
+    noti.alertBody = task.title;
+    noti.alertAction = @"Ok";
+  }
+
+  if (SnowNotificationTypeBadge) {
+    noti.applicationIconBadgeNumber = 1;
+  }
 
   NSDictionary *infoDict =
       [NSDictionary dictionaryWithObject:task.itemID forKey:@"TaskItemKey"];
@@ -160,6 +190,9 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 - (void)scheduleNotificationWithMessage:(NSString *)title
                                FireDate:(NSDate *)fire
                               Frequency:(NSCalendarUnit)frequency {
+
+  /*
+
   if ((title == nil) || ([title length] == 0) || (fire == nil)) {
     return;
   }
@@ -182,12 +215,13 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
   [_pendingNotifications addObject:noti];
   [self fireNotifications];
+
+ */
 }
 
 - (void)fireNotifications {
   if (!_SnowLocalNotificationOn) {
     // NSLog(@"Notifications not enabled ");
-    // NSLog(@"Notifications Pending %ld", [_pendingNotifications count]);
     return;
   }
 
@@ -201,6 +235,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   // NSLog(@"Notifications Scheduled  %ld", [_scheduledNotifications count]);
 }
 
+/*
 - (void)enableNotifications {
   static dispatch_once_t token;
 
@@ -216,17 +251,30 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
         registerUserNotificationSettings:mySettings];
   });
 }
+*/
 
 #pragma mark - Timers
 
 // Timers
 - (void)scheduleNotificationWithTimerObject:(SnowTimer *)tmo {
 
+  if (!_SnowLocalNotificationOn) {
+    return;
+  }
+
   if (tmo == nil) {
     return;
   }
 
-  // NSLog(@"%s ", __func__);
+  // Update settings
+
+  [self updateNotificationPropertiesSettings];
+
+  if ((!SnowNotificationTypeBadge) && (!SnowNotificationTypeAlert) &&
+      (!SnowNotificationTypeSound)) {
+   // NSLog(@"No Notifcation types allowed");
+    return;
+  }
 
   SnowTimer *tm =
       [[SnowDataManager sharedInstance] fetchSavedTimerForKey:tmo.timerName];
@@ -247,9 +295,9 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
       NSDateFormatter *fm = [[NSDateFormatter alloc] init];
       fm.dateFormat = @"E MM DD YYYY h:m:ss ";
-      // NSLog(@"Timer should fire on %@", [fm stringFromDate:tmFireDate]);
+      //NSLog(@"Timer should fire on %@", [fm stringFromDate:tmFireDate]);
 
-      [self enableNotifications];
+      //      [self enableNotifications];
       UILocalNotification *noti = [[UILocalNotification alloc] init];
 
       noti.fireDate = tmFireDate;
@@ -258,7 +306,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
       noti.timeZone = [NSTimeZone defaultTimeZone];
       noti.alertBody =
           [NSString stringWithFormat:@" time's up : %@", tm.timerName];
-      noti.applicationIconBadgeNumber = 1;
+
       noti.alertAction = @"Ok";
 
       NSDictionary *infoDict =
@@ -387,6 +435,78 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
         [[NSNotificationCenter defaultCenter]
             postNotification:clearNotification];
       }];
+}
+
+// Registration
+- (void)registerForLocalNotifications {
+  UIUserNotificationType types = UIUserNotificationTypeBadge |
+                                 UIUserNotificationTypeSound |
+                                 UIUserNotificationTypeAlert;
+
+  UIUserNotificationSettings *mySettings =
+      [UIUserNotificationSettings settingsForTypes:types categories:nil];
+
+  [[UIApplication sharedApplication]
+      registerUserNotificationSettings:mySettings];
+}
+
+/*
+ Check Availability of
+ UIUserNotificationTypeBadge
+ UIUserNotificationTypeSound
+ UIUserNotificationTypeAlert;
+ */
+
+- (void)updateNotificationPropertiesSettings {
+  UIUserNotificationSettings *currentSettings =
+      [[UIApplication sharedApplication] currentUserNotificationSettings];
+  SnowNotificationTypeAlert =
+      ((currentSettings.types & UIUserNotificationTypeAlert) != 0) ? YES : NO;
+  SnowNotificationTypeSound =
+      ((currentSettings.types & UIUserNotificationTypeSound) != 0) ? YES : NO;
+  SnowNotificationTypeBadge =
+      ((currentSettings.types & UIUserNotificationTypeBadge) != 0) ? YES : NO;
+}
+
+- (NSDictionary *)getAllPendingNotifications {
+  NSMutableDictionary *noteList = nil;
+
+  NSMutableArray *taskNotes = [NSMutableArray new];
+  NSMutableArray *timeNotes = [NSMutableArray new];
+
+  NSArray *notifications =
+      [[UIApplication sharedApplication] scheduledLocalNotifications];
+//
+//  NSLog(@"Number of scheduled notifications %lu ",
+//        (unsigned long)[notifications count]);
+
+  for (UILocalNotification *item in notifications) {
+
+    if ([item.userInfo objectForKey:@"TaskItemKey"]) {
+      [taskNotes addObject:item];
+    } else if ([item.userInfo objectForKey:@"TimerItemKey"]) {
+      [timeNotes addObject:item];
+    }
+  }
+
+  if ([taskNotes count] > 0) {
+    [noteList setObject:taskNotes forKey:@"tasks"];
+  }
+
+  if ([timeNotes count] > 0) {
+    [noteList setObject:timeNotes forKey:@"timer"];
+  }
+
+  return noteList;
+}
+
+- (void)clearBadgeIndicator {
+
+  [self updateNotificationPropertiesSettings];
+
+  if (SnowNotificationTypeBadge) {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+  }
 }
 
 @end

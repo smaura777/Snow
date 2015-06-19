@@ -529,6 +529,9 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 - (IBAction)reminderTapped:(id)sender {
+    
+    [[SnowNotificationManager sharedInstance] registerForLocalNotifications];
+
   static NSDateFormatter *format;
 
   format = [[NSDateFormatter alloc] init];
@@ -567,6 +570,8 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 - (IBAction)reminderRepeatTapped:(id)sender {
+    [[SnowNotificationManager sharedInstance] registerForLocalNotifications];
+    
   NSArray *repeatOptions =
       @[ @"none", @"daily", @"weekly", @"monthly", @"yearly" ];
 
@@ -684,6 +689,8 @@ titleForHeaderInSection:(NSInteger)section {
     _repeatFrequencyString = @"no";
     _repeatFrequency = 0;
     _reminderDate = nil;
+  } else {
+    [[SnowNotificationManager sharedInstance] registerForLocalNotifications];
   }
 }
 

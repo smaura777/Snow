@@ -59,6 +59,9 @@
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
   _listManager = [SnowListManager new];
+  if (_list) {
+    self.title = _list.title;
+  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
