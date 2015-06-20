@@ -477,8 +477,8 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   NSArray *notifications =
       [[UIApplication sharedApplication] scheduledLocalNotifications];
 //
-//  NSLog(@"Number of scheduled notifications %lu ",
-//        (unsigned long)[notifications count]);
+  NSLog(@"Number of scheduled notifications %lu ",
+        (unsigned long)[notifications count]);
 
   for (UILocalNotification *item in notifications) {
 
@@ -497,6 +497,10 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
     [noteList setObject:timeNotes forKey:@"timer"];
   }
 
+    NSLog(@"=========  Pending task Notifs %lu", [taskNotes count]);
+    NSLog(@"=========  Pending timer notifs Notifs %lu", [timeNotes count]);
+    
+    
   return noteList;
 }
 
