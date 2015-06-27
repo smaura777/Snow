@@ -92,9 +92,9 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   // Restart any tasks that were paused (or not yet started) while the
   // application was inactive. If the application was previously in the
   // background, optionally refresh the user interface.
-    
-    // Remove badge
-    [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
+
+  // Remove badge
+  [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -115,10 +115,22 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
 
 - (void)application:(UIApplication *)application
     didReceiveLocalNotification:(UILocalNotification *)notification {
-  
-  // Clear badge
-    [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
 
+  // NSLog(@"Current app state is : %ld", application.applicationState);
+
+  switch (application.applicationState) {
+  case UIApplicationStateBackground:
+  case UIApplicationStateInactive:
+    // Do not re-run notification alerts when app is launched as a result of
+    // clicking on a notification alert
+    return;
+    break;
+  default:
+    break;
+  }
+
+  // Clear badge
+  [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
 
   UIAlertController *alert;
 
@@ -275,9 +287,9 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
 
   [[GAI sharedInstance] trackerWithTrackingId:@"UA-59456103-2"];
-  
-   // Disable IFDA
-    [[[GAI sharedInstance] defaultTracker] setAllowIDFACollection:NO];
+
+  // Disable IFDA
+  [[[GAI sharedInstance] defaultTracker] setAllowIDFACollection:NO];
 }
 
 @end
