@@ -20,7 +20,6 @@
               reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 
-    
   [self setupCell];
 
   [self enableCellActions];
@@ -105,6 +104,10 @@
       setImage:[UIImage getTintedImage:[UIImage imageNamed:@"snow_more"]
                              withColor:[UIColor darkGrayColor]]
       forState:UIControlStateNormal];
+    
+   // _taskOptions.layer.borderWidth = 1.0;
+   // _taskOptions.layer.borderColor = [UIColor blackColor].CGColor;
+    
   /*
 [_taskOptions setImage:[UIImage imageNamed:@"snow_more"]
               forState:UIControlStateNormal];
@@ -339,6 +342,26 @@
                                                  attribute:NSLayoutAttributeTop
                                                 multiplier:1
                                                   constant:0]];
+
+  [_taskOptions
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_taskOptions
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1
+                                  constant:50]];
+
+  [_taskOptions
+      addConstraint:[NSLayoutConstraint
+                        constraintWithItem:_taskOptions
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1
+                                  constant:50]];
 
   [_actionView addConstraint:[NSLayoutConstraint
                                  constraintWithItem:_taskOptions
