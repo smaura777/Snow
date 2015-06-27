@@ -362,22 +362,16 @@
 #pragma mark - add task
 
 - (void)doThat:(id)sender {
-  // UIStoryboard *storyBoard =
-  //  [UIStoryboard storyboardWithName:@"Main" bundle:nil]; // self.storyboard;
 
   SnowTaskCreateTVC *createTaskVC =
       [[SnowTaskCreateTVC alloc] initWithStyle:UITableViewStyleGrouped];
 
-  [_listTable objectForKey:[[_listTable allKeys] firstObject]];
-
-  createTaskVC.selectedList = _list; //[_listManager defaultList];
-
-  //[_listTable objectForKey:[[_listTable allKeys] firstObject]];
-
-  [createTaskVC populateVC];
-
   UINavigationController *nav =
       [[UINavigationController alloc] initWithRootViewController:createTaskVC];
+
+  [_listTable objectForKey:[[_listTable allKeys] firstObject]];
+  createTaskVC.selectedList = _list;
+  [createTaskVC populateVC];
 
   // self.definesPresentationContext = YES;
 
