@@ -190,7 +190,7 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
 
   _timerObject = [[SnowDataManager sharedInstance]
       fetchSavedTimerForKey:[NSString stringWithFormat:@"%ld", bt.tag]];
-    //NSLog(@"Timer pressed == %ld", bt.tag);
+  // NSLog(@"Timer pressed == %ld", bt.tag);
 
   if (_timerObject != nil && (_timerObject.timerState == 2)) {
 
@@ -809,6 +809,11 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
                                      YES completion:^{
     [[SnowNotificationManager sharedInstance]
         scheduleNotificationWithTimerObject:_timerObject];
+
+    // Clean timer object state now since countdown view is no longer front and
+    // center
+    _timerObject = nil;
+
   }];
 }
 
@@ -859,8 +864,8 @@ static NSString *SnowActiveTimersOff = @"SNOW_INAACTIVE_TIMERS";
   [super viewDidLoad];
 
   [self updateAnalyticsWithScreen:@"Quick Timer Screen"];
-    
-    [[SnowNotificationManager sharedInstance] registerForLocalNotifications];
+
+  [[SnowNotificationManager sharedInstance] registerForLocalNotifications];
 
   NSDictionary *titleAttributes = @{
     NSFontAttributeName :
@@ -1018,6 +1023,10 @@ self.view.backgroundColor =
 
     [[SnowNotificationManager sharedInstance]
         scheduleNotificationWithTimerObject:_timerObject];
+
+    // Clean timer object state now since countdown view is no longer front and
+    // center
+    _timerObject = nil;
   }
 
   @synchronized(self) {
