@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+ [[SnowNotificationManager sharedInstance] registerForLocalNotifications];  
+    
   [self updateAnalyticsWithScreen:@"Archive Screen"];
 
   _emptyMessage = @"No archived tasks";

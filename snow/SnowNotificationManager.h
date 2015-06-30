@@ -28,7 +28,7 @@ extern NSString *SNOW_CLEAR_NOTIF;
                                FireDate:(NSDate *)fire
                               Frequency:(NSCalendarUnit)frequency;
 
-// Main interface
+#pragma mark - tasks
 - (void)scheduleNotificationWithTask:(SnowTask *)task;
 - (void)unscheduleNotificationWithTask:(SnowTask *)task;
 
@@ -38,11 +38,14 @@ extern NSString *SNOW_CLEAR_NOTIF;
 - (void)completeNotification:(UILocalNotification *)notif;
 - (void)clearNotification:(UILocalNotification *)notif;
 
-// Timers
+
+#pragma mark -  Timers
 - (void)scheduleNotificationWithTimerObject:(SnowTimer *)tm;
 - (void)unscheduleNotificationWithTimerObject:(SnowTimer *)tm;
 
 
+#pragma mark -  clear all notifications
+-(void)unscheduleAllLocalNotifications;
 
 
 

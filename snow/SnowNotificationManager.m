@@ -57,7 +57,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
   if ((!SnowNotificationTypeBadge) && (!SnowNotificationTypeAlert) &&
       (!SnowNotificationTypeSound)) {
-   // NSLog(@"No Notifcation types allowed");
+    // NSLog(@"No Notifcation types allowed");
     return;
   }
 
@@ -272,7 +272,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
   if ((!SnowNotificationTypeBadge) && (!SnowNotificationTypeAlert) &&
       (!SnowNotificationTypeSound)) {
-   // NSLog(@"No Notifcation types allowed");
+    // NSLog(@"No Notifcation types allowed");
     return;
   }
 
@@ -295,7 +295,7 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
       NSDateFormatter *fm = [[NSDateFormatter alloc] init];
       fm.dateFormat = @"E MM DD YYYY h:m:ss ";
-      //NSLog(@"Timer should fire on %@", [fm stringFromDate:tmFireDate]);
+      // NSLog(@"Timer should fire on %@", [fm stringFromDate:tmFireDate]);
 
       //      [self enableNotifications];
       UILocalNotification *noti = [[UILocalNotification alloc] init];
@@ -476,10 +476,10 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
 
   NSArray *notifications =
       [[UIApplication sharedApplication] scheduledLocalNotifications];
-//
+  /*
   NSLog(@"Number of scheduled notifications %lu ",
         (unsigned long)[notifications count]);
-
+*/
   for (UILocalNotification *item in notifications) {
 
     if ([item.userInfo objectForKey:@"TaskItemKey"]) {
@@ -496,11 +496,10 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   if ([timeNotes count] > 0) {
     [noteList setObject:timeNotes forKey:@"timer"];
   }
-
-    NSLog(@"=========  Pending task Notifs %lu", [taskNotes count]);
-    NSLog(@"=========  Pending timer notifs Notifs %lu", [timeNotes count]);
-    
-    
+/*
+  NSLog(@"=========  Pending task Notifs %lu", [taskNotes count]);
+  NSLog(@"=========  Pending timer notifs Notifs %lu", [timeNotes count]);
+*/
   return noteList;
 }
 
@@ -511,6 +510,11 @@ NSString *SNOW_CLEAR_NOTIF = @"SNOW_CLEAR_NOTIF";
   if (SnowNotificationTypeBadge) {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
   }
+}
+
+#pragma mark -  clear all notifications
+- (void)unscheduleAllLocalNotifications {
+  [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 @end

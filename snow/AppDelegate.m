@@ -23,16 +23,8 @@
   AVAudioPlayer *_aPlayer;
 }
 
-//   [UIColor colorWithRed:0 green:.54 blue:.54 alpha:1]
-
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-  //  if (([UIApplication
-  //  sharedApplication].currentUserNotificationSettings.types &
-  //       UIUserNotificationTypeBadge)) {
-  //    application.applicationIconBadgeNumber = 0;
-  //  }
 
   NSError *setCategoryErr;
 
@@ -40,11 +32,6 @@
       setCategory:AVAudioSessionCategoryAmbient
       withOptions:AVAudioSessionCategoryOptionMixWithOthers
             error:&setCategoryErr];
-  /*
-[[AVAudioSession sharedInstance]
-setCategory:AVAudioSessionCategoryOptionMixWithOthers
-                                       error:&setCategoryErr];
-*/
 
   // Override point for customization after application launch.
 
@@ -53,13 +40,14 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
   [SnowAppearanceManager sharedInstance];
   [SnowLoggingManager sharedInstance].mode = 0;
   [[SnowNotificationManager sharedInstance] clearBadgeIndicator];
+
+  // Debugging
   [[SnowNotificationManager sharedInstance] getAllPendingNotifications];
 
   [self applyTheme];
 
   SnowMainContainerVC *snow = [[SnowMainContainerVC alloc] init];
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  // self.window.backgroundColor = [UIColor cyanColor];
   [self.window setRootViewController:snow];
   [self.window makeKeyAndVisible];
 
@@ -249,27 +237,10 @@ setCategory:AVAudioSessionCategoryOptionMixWithOthers
 
 - (void)applyTheme {
 
-  //  UIColor *tableBC =
-  //      [[SnowAppearanceManager sharedInstance] currentTheme]
-  //          .ternary;
-  //  UIColor *navBarBC =
-  //      [[SnowAppearanceManager sharedInstance] currentTheme].primary;
-
-  //  UIImage *navBarBI = [UIImage imageWithColor:navBarBC];
-  //
-  //  UIColor *navBarTintC =
-  //      [[SnowAppearanceManager sharedInstance] currentTheme].secondary;
-
   [[UIApplication sharedApplication]
       setStatusBarStyle:UIStatusBarStyleLightContent];
 
   /*
-  [[UINavigationBar appearance] setBackgroundImage:navBarBI
-                                     forBarMetrics:UIBarMetricsDefault];
-
-  [[UINavigationBar appearance] setTintColor:navBarTintC];
-
-  [[UITableView appearance] setBackgroundColor:tableBC];
 
   [[UINavigationBar appearance] setTitleTextAttributes:
    @{NSForegroundColorAttributeName:[UIColor whiteColor],
