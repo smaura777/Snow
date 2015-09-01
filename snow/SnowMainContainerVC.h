@@ -17,10 +17,9 @@
 #import "SnowAboutMaster.h"
 
 @interface SnowMainContainerVC
-    : UIViewController <UISearchControllerDelegate, UISearchResultsUpdating>
+    : UIViewController<UISearchControllerDelegate, UISearchResultsUpdating>
 
-@property(nonatomic, strong)
-    /*SnowMenuTableViewController*/ SnowMenuTVCA1 *mainMenu;
+@property(nonatomic, strong) SnowMenuTVCA1 *mainMenu;
 @property(nonatomic, strong) UINavigationController *mainMenuNav;
 
 @property(nonatomic, strong) SnowTableViewController *home;
@@ -29,13 +28,6 @@
 @property(nonatomic, copy) NSString *topVCTitle;
 
 @property(nonatomic, assign, getter=isMenuOpen) BOOL menuOpen;
-
-/*
-@property(nonatomic, strong) UISearchController *searchController;
-
-
-@property(nonatomic,strong)   SnowSearchResultsTVC *snowSearchResults ;
-*/
 
 @property(nonatomic, strong) SnowListManager *listManager;
 

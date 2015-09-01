@@ -26,11 +26,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // NSString *wooshSoundPath =[[NSBundle mainBundle] pathForResource:@"woosh"
-  // ofType:@"caf"] ;
-  // NSURL *wooshSoundUrl = [NSURL fileURLWithPath:wooshSoundPath];
-  // AudioServicesCreateSystemSoundID( (__bridge CFURLRef)wooshSoundUrl,
-  // &wooshSound);
 
   _listManager = [SnowListManager new];
 
@@ -47,17 +42,6 @@
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little
-preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)loadTopChildViewController {
   _menuOpen = NO;
@@ -86,10 +70,8 @@ preparation before navigation
 }
 
 - (void)toggleMenu:(id)sender {
-  // NSLog(@"Menu tapped......");
   if (_menuOpen == NO) {
     if (!_mainMenuNav) {
-
       _mainMenu = [[SnowMenuTVCA1 alloc] initWithStyle:UITableViewStylePlain];
 
       __weak typeof(self) weakSelf = self;
@@ -120,7 +102,7 @@ preparation before navigation
                                            initWithRootViewController:snowHome]
                              WithTitle:@"Home"];
 
-        } else if ([menuTilte isEqualToString:@"list"]) { // List
+        } else if ([menuTilte isEqualToString:@"list"]) {  // List
           // NSLog(@"Load list  vc");
           if ([strongSelf.topVCTitle isEqualToString:@"List"]) {
             [strongSelf toggleMenu:nil];
@@ -141,8 +123,8 @@ preparation before navigation
 
         }
 
-        else if ([menuTilte isEqualToString:@"archive"]) { // task
-          // NSLog(@"Load task  vc");
+        else if ([menuTilte isEqualToString:@"archive"]) {  // task
+
           // Already on top ?
           if ([strongSelf.topVCTitle isEqualToString:@"All_tasks"]) {
             [strongSelf toggleMenu:nil];
@@ -161,7 +143,6 @@ preparation before navigation
                                            initWithRootViewController:allTasks]
                              WithTitle:@"All_tasks"];
         } else if ([menuTilte isEqualToString:@"search"]) {
-
           if ([strongSelf.topVCTitle isEqualToString:@"search_vc"]) {
             [strongSelf toggleMenu:nil];
             return;
@@ -301,9 +282,6 @@ preparation before navigation
 #pragma mark - UISearchResultsUpdating delegate method
 - (void)updateSearchResultsForSearchController:
     (UISearchController *)searchController {
-
-  //NSString *searchedItem = searchController.searchBar.text;
-  // NSLog(@"Searching for %@ ...", searchedItem);
   NSArray *taskList = [_listManager fetchTasks];
   SnowSearchResultsTVC *resultTVC =
       (SnowSearchResultsTVC *)searchController.searchResultsController;
