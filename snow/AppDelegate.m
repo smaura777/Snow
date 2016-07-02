@@ -15,7 +15,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "SnowLoggingManager.h"
 
-@interface AppDelegate () <AVAudioPlayerDelegate>
+@interface AppDelegate ()<AVAudioPlayerDelegate>
 
 @end
 
@@ -25,7 +25,6 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
   NSError *setCategoryErr;
 
   [[AVAudioSession sharedInstance]
@@ -47,6 +46,7 @@
   [self applyTheme];
 
   SnowMainContainerVC *snow = [[SnowMainContainerVC alloc] init];
+
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   [self.window setRootViewController:snow];
   [self.window makeKeyAndVisible];
@@ -93,7 +93,6 @@
 - (void)application:(UIApplication *)application
     didRegisterUserNotificationSettings:
         (UIUserNotificationSettings *)notificationSettings {
-
   [[SnowNotificationManager sharedInstance] setSnowLocalNotificationOn:YES];
 }
 
@@ -103,18 +102,17 @@
 
 - (void)application:(UIApplication *)application
     didReceiveLocalNotification:(UILocalNotification *)notification {
-
   // NSLog(@"Current app state is : %ld", application.applicationState);
 
   switch (application.applicationState) {
-  case UIApplicationStateBackground:
-  case UIApplicationStateInactive:
-    // Do not re-run notification alerts when app is launched as a result of
-    // clicking on a notification alert
-    return;
-    break;
-  default:
-    break;
+    case UIApplicationStateBackground:
+    case UIApplicationStateInactive:
+      // Do not re-run notification alerts when app is launched as a result of
+      // clicking on a notification alert
+      return;
+      break;
+    default:
+      break;
   }
 
   // Clear badge
@@ -124,7 +122,6 @@
 
   NSDictionary *timerInfo = notification.userInfo;
   if ([timerInfo valueForKey:@"TimerItemKey"]) {
-
     [self prepPlayer];
 
     alert = [UIAlertController
@@ -149,7 +146,6 @@
     }
 
   } else {
-
     alert = [UIAlertController
         alertControllerWithTitle:@"Task Alert"
                          message:notification.alertBody
@@ -184,18 +180,15 @@
   }
 
   if (_topVC == nil) {
-
     [self.window.rootViewController presentViewController:alert
                                                  animated:YES
                                                completion:nil];
   } else {
-
     [_topVC presentViewController:alert animated:YES completion:nil];
   }
 }
 
 - (void)prepPlayer {
-
   _aPlayer = nil;
 
   NSError *audioErr;
@@ -227,7 +220,7 @@
 
   [_aPlayer prepareToPlay];
 
-  _aPlayer.numberOfLoops = 1; // infinite
+  _aPlayer.numberOfLoops = 1;  // infinite
 }
 
 #pragma mark - AVAudioPlayerDelegate
@@ -236,7 +229,6 @@
 }
 
 - (void)applyTheme {
-
   [[UIApplication sharedApplication]
       setStatusBarStyle:UIStatusBarStyleLightContent];
 
