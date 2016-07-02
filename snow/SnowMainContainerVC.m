@@ -72,6 +72,7 @@
 - (void)toggleMenu:(id)sender {
   if (_menuOpen == NO) {
     if (!_mainMenuNav) {
+      // Create main menu
       _mainMenu = [[SnowMenuTVCA1 alloc] initWithStyle:UITableViewStylePlain];
 
       __weak typeof(self) weakSelf = self;
@@ -83,8 +84,6 @@
         SnowTaskAllTVC *allTasks;
 
         if ([menuTilte isEqualToString:@"home"]) {
-          // NSLog(@"Load Home vc");
-
           if ([strongSelf.topVCTitle isEqualToString:@"Home"]) {
             [strongSelf toggleMenu:nil];
             return;
@@ -121,9 +120,7 @@
                                            initWithRootViewController:listAll]
                              WithTitle:@"List"];
 
-        }
-
-        else if ([menuTilte isEqualToString:@"archive"]) {  // task
+        } else if ([menuTilte isEqualToString:@"archive"]) {  // task
 
           // Already on top ?
           if ([strongSelf.topVCTitle isEqualToString:@"All_tasks"]) {
@@ -176,8 +173,13 @@
         }
 
       };
+      // End of block definition
+        
     }
 
+    // Create submenu and add it to the view hierarchy -- below the currently
+    // visible view.
+      
     _mainMenuNav =
         [[UINavigationController alloc] initWithRootViewController:_mainMenu];
     [self addChildViewController:_mainMenuNav];
@@ -204,7 +206,7 @@
     // animate top view out of the way
     [UIView animateWithDuration:0.25
         animations:^{
-          //  AudioServicesPlaySystemSound(wooshSound);
+          
           _topVC.view.frame = openFrame;
 
         }
@@ -235,7 +237,6 @@
 
     [UIView animateWithDuration:0.25
         animations:^{
-          //  AudioServicesPlaySystemSound(wooshSound);
           _topVC.view.frame = self.view.frame;
 
         }
@@ -243,7 +244,7 @@
 
           _topVC.view.layer.shadowOpacity = 0.0;
           _topVC.view.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-          //_topVC.view.layer.cornerRadius = 0;
+          
 
           [_mainMenuNav willMoveToParentViewController:nil];
           [_mainMenuNav.view removeFromSuperview];
