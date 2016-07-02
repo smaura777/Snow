@@ -40,7 +40,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 @interface KINWebBrowserViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, assign) BOOL previousNavigationControllerToolbarHidden, previousNavigationControllerNavigationBarHidden;
-@property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *stopButton, *actionButton, *fixedSeparator, *flexibleSeparator;
+@property (nonatomic, strong) UIBarButtonItem *backButton, *forwardButton, *refreshButton, *stopButton, *fixedSeparator, *flexibleSeparator;
 @property (nonatomic, strong) NSTimer *fakeProgressTimer;
 @property (nonatomic, strong) UIPopoverController *actionPopoverController;
 @property (nonatomic, assign) BOOL uiWebViewIsLoading;
@@ -125,6 +125,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         [self.wkWebView setFrame:self.view.bounds];
         [self.wkWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
         [self.wkWebView setNavigationDelegate:self];
+        [self.wkWebView setUIDelegate:self];
         [self.wkWebView setMultipleTouchEnabled:YES];
         [self.wkWebView setAutoresizesSubviews:YES];
         [self.wkWebView.scrollView setAlwaysBounceVertical:YES];
@@ -174,18 +175,31 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 
 #pragma mark - Public Interface
 
-- (void)loadURL:(NSURL *)URL {
+- (void)loadRequest:(NSURLRequest *)request {
     if(self.wkWebView) {
-        [self.wkWebView loadRequest:[NSURLRequest requestWithURL:URL]];
+        [self.wkWebView loadRequest:request];
     }
     else if(self.uiWebView) {
-        [self.uiWebView loadRequest:[NSURLRequest requestWithURL:URL]];
+        [self.uiWebView loadRequest:request];
     }
+}
+
+- (void)loadURL:(NSURL *)URL {
+    [self loadRequest:[NSURLRequest requestWithURL:URL]];
 }
 
 - (void)loadURLString:(NSString *)URLString {
     NSURL *URL = [NSURL URLWithString:URLString];
     [self loadURL:URL];
+}
+
+- (void)loadHTMLString:(NSString *)HTMLString {
+    if(self.wkWebView) {
+        [self.wkWebView loadHTMLString:HTMLString baseURL:nil];
+    }
+    else if(self.uiWebView) {
+        [self.uiWebView loadHTMLString:HTMLString baseURL:nil];
+    }
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
@@ -321,6 +335,15 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
+#pragma mark - WKUIDelegate
+
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+
 #pragma mark - Toolbar State
 
 - (void)updateToolbarState {
@@ -382,10 +405,16 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 }
 
 - (void)setupToolbarItems {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
     self.refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
     self.stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopButtonPressed:)];
-    self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backbutton"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
-    self.forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forwardbutton"] style:UIBarButtonItemStylePlain target:self action:@selector(forwardButtonPressed:)];
+    
+    UIImage *backbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"backbutton" ofType:@"png"]];
+    self.backButton = [[UIBarButtonItem alloc] initWithImage:backbuttonImage style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
+    
+    UIImage *forwardbuttonImage = [UIImage imageWithContentsOfFile: [bundle pathForResource:@"forwardbutton" ofType:@"png"]];
+    self.forwardButton = [[UIBarButtonItem alloc] initWithImage:forwardbuttonImage style:UIBarButtonItemStylePlain target:self action:@selector(forwardButtonPressed:)];
     self.actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
     self.fixedSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     self.fixedSeparator.width = 50.0f;
@@ -452,30 +481,32 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         URLForActivityItem = self.uiWebView.request.URL;
         URLTitle = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        TUSafariActivity *safariActivity = [[TUSafariActivity alloc] init];
-        ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
-        
-        NSMutableArray *activities = [[NSMutableArray alloc] init];
-        [activities addObject:safariActivity];
-        [activities addObject:chromeActivity];
-        if(self.customActivityItems != nil) {
-            [activities addObjectsFromArray:self.customActivityItems];
-        }
-        
-        UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[URLForActivityItem] applicationActivities:activities];
-        
-        if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            if(self.actionPopoverController) {
-                [self.actionPopoverController dismissPopoverAnimated:YES];
+    if (URLForActivityItem) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            TUSafariActivity *safariActivity = [[TUSafariActivity alloc] init];
+            ARChromeActivity *chromeActivity = [[ARChromeActivity alloc] init];
+            
+            NSMutableArray *activities = [[NSMutableArray alloc] init];
+            [activities addObject:safariActivity];
+            [activities addObject:chromeActivity];
+            if(self.customActivityItems != nil) {
+                [activities addObjectsFromArray:self.customActivityItems];
             }
-            self.actionPopoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-            [self.actionPopoverController presentPopoverFromBarButtonItem:self.actionButton permittedArrowDirections: UIPopoverArrowDirectionAny animated:YES];
-        }
-        else {
-            [self presentViewController:controller animated:YES completion:NULL];
-        }
-    });
+            
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[URLForActivityItem] applicationActivities:activities];
+            
+            if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                if(self.actionPopoverController) {
+                    [self.actionPopoverController dismissPopoverAnimated:YES];
+                }
+                self.actionPopoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+                [self.actionPopoverController presentPopoverFromBarButtonItem:self.actionButton permittedArrowDirections: UIPopoverArrowDirectionAny animated:YES];
+            }
+            else {
+                [self presentViewController:controller animated:YES completion:NULL];
+            }
+        });
+    }
 }
 
 
@@ -547,7 +578,10 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 
 - (void)launchExternalAppWithURL:(NSURL *)URL {
     self.URLToLaunchWithPermission = URL;
-    [self.externalAppPermissionAlertView show];
+    if (![self.externalAppPermissionAlertView isVisible]) {
+        [self.externalAppPermissionAlertView show];
+    }
+
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -572,7 +606,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 
 #pragma mark - Interface Orientation
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 

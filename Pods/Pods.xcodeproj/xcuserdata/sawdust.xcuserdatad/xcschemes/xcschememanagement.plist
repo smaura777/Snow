@@ -4,32 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
+		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ARChromeActivity.xcscheme</key>
+		<key>ARChromeActivity.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FMDB.xcscheme</key>
+		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-KINWebBrowser.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TUSafariActivity-TUSafariActivity.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TUSafariActivity.xcscheme</key>
+		<key>KINWebBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,40 +29,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TUSafariActivity-TUSafariActivity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TUSafariActivity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2D28F8A20178C5C206859DB1</key>
+		<key>2E431163577389EA23905BA6F3468F39</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D7E252AB8E8980CA7669A40</key>
+		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B246DCFC890E8FF68554EBB</key>
+		<key>570441154F4B3221D0F4B6B66C5D18E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D9F6BF3D01829B5AC355BEA</key>
+		<key>79B5E790CBEF825F74B40FE6698662CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2415C7BEB7FB2D06E06898E</key>
+		<key>9A5E1D33B62251D91002217B07B75387</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4CC78D80F10FA9370F92C27</key>
+		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED1D06F486FBAD14E37AA218</key>
+		<key>F7AF14DD2431C8DA79F45F4F1D22075E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

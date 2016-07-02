@@ -64,7 +64,7 @@
  For convenience, two sets of static initializers are available.
  
  */
-@interface KINWebBrowserViewController : UIViewController <WKNavigationDelegate, UIWebViewDelegate>
+@interface KINWebBrowserViewController : UIViewController <WKNavigationDelegate, WKUIDelegate, UIWebViewDelegate>
 
 #pragma mark - Public Properties
 
@@ -105,7 +105,7 @@
 + (UINavigationController *)navigationControllerWithWebBrowserWithConfiguration:(WKWebViewConfiguration *)configuration NS_AVAILABLE_IOS(8_0);
 
 
-
+@property (nonatomic, strong) UIBarButtonItem *actionButton;
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, strong) UIColor *barTintColor;
 @property (nonatomic, assign) BOOL actionButtonHidden;
@@ -117,13 +117,23 @@
 
 #pragma mark - Public Interface
 
-// Load a NSURL to webView
+
+// Load a NSURLURLRequest to web view
+// Can be called any time after initialization
+- (void)loadRequest:(NSURLRequest *)request;
+
+// Load a NSURL to web view
 // Can be called any time after initialization
 - (void)loadURL:(NSURL *)URL;
 
-// Loads a URL as NSString to webView
+// Loads a URL as NSString to web view
 // Can be called any time after initialization
 - (void)loadURLString:(NSString *)URLString;
+
+
+// Loads an string containing HTML to web view
+// Can be called any time after initialization
+- (void)loadHTMLString:(NSString *)HTMLString;
 
 @end
 
